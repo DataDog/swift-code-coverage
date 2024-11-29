@@ -26,7 +26,7 @@ final class CoverageLibrary {
     }
     
     deinit {
-        let _ = Self.cacheLock.whileLocked {
+        Self.cacheLock.whileLocked {
             Self.libraryCache.removeValue(forKey: version)
             dlclose(library)
         }
@@ -37,6 +37,8 @@ final class CoverageLibrary {
             exports.init_processor($0, UInt32(binaries.count))
         }
         if result.is_error {
+            // Crash on empty error string. If is_error is set to true an error string should be set too.
+            // It's more for development of C++ part
             defer { result.error!.deallocate() }
             return .failure(.plugin(error: String(cString: result.error!)))
         }
@@ -50,6 +52,8 @@ final class CoverageLibrary {
     func filesCovered(in profilePath: String, processor: LLVMCoverageProcessor) -> Result<CoveredFiles, Error> {
         let result = exports.covered_files(processor, profilePath)
         if result.is_error {
+            // Crash on empty error string. If is_error is set to true an error string should be set too.
+            // It's more for development of C++ part
             defer { result.error!.deallocate() }
             return .failure(.plugin(error: String(cString: result.error!)))
         }

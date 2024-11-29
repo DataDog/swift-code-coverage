@@ -19,6 +19,7 @@ static const char* errorMessage(Error E) {
     return cstr;
 }
 
+// C wrapper for load() method
 static LLVMCoverageProcessorResult e_init_processor(const char* const* binaries, uint32_t count) {
     std::vector<StringRef> sbinaries;
     sbinaries.reserve(count);
@@ -35,6 +36,7 @@ static LLVMCoverageProcessorResult e_init_processor(const char* const* binaries,
     return LLVMCoverageProcessorResult({.is_error = false, .processor = processor.get()});
 }
 
+// C wrapper for coverage() method
 static CoveredFilesResult e_covered_files(const LLVMCoverageProcessor processor,
                                           const char* profraw_file)
 {
@@ -52,10 +54,14 @@ static CoveredFilesResult e_covered_files(const LLVMCoverageProcessor processor,
     return CoveredFilesResult({.is_error = false, .files = CoverageOrErr.get()});
 }
 
+// C wrapper for delete
 static void e_destroy_processor(LLVMCoverageProcessor coverage) {
     delete static_cast<CodeCoverage*>(coverage);
 }
 
+// Export pointers for all functions in the structure
+// It's simpler to dynamically load it this way
+// Note that it prefixed with llvm version, so two llvm libs could be loaded at the same time
 struct llvm_coverage_library_exports llvm15_coverage_library_exports = {
     .init_processor = &e_init_processor,
     .covered_files = &e_covered_files,
