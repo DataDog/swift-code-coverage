@@ -1,0 +1,11 @@
+--- a/llvm/lib/Support/Unix/Process.inc
++++ b/llvm/lib/Support/Unix/Process.inc
+@@ -141,7 +141,7 @@
+   setrlimit(RLIMIT_CORE, &rlim);
+ #endif
+ 
+-#if defined(HAVE_MACH_MACH_H) && !defined(__GNU__)
++#if defined(HAVE_MACH_MACH_H) && !defined(__GNU__) && !__is_target_os(tvos)
+   // Disable crash reporting on Mac OS X 10.0-10.4
+ 
+   // get information about the original set of exception ports for the task

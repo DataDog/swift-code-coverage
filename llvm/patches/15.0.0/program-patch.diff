@@ -1,0 +1,20 @@
+--- a/llvm/lib/Support/Unix/Program.inc
++++ b/llvm/lib/Support/Unix/Program.inc
+@@ -177,6 +177,9 @@
+                     ArrayRef<Optional<StringRef>> Redirects,
+                     unsigned MemoryLimit, std::string *ErrMsg,
+                     BitVector *AffinityMask) {
++#if __is_target_os(tvos)
++    return false;
++#else
+   if (!llvm::sys::fs::exists(Program)) {
+     if (ErrMsg)
+       *ErrMsg = std::string("Executable \"") + Program.str() +
+@@ -331,6 +334,7 @@
+   PI.Process = child;
+ 
+   return true;
++#endif
+ }
+ 
+ namespace llvm {

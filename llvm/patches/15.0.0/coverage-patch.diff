@@ -1,0 +1,13 @@
+--- a/llvm/lib/ProfileData/Coverage/CoverageMapping.cpp
++++ b/llvm/lib/ProfileData/Coverage/CoverageMapping.cpp
+@@ -282,6 +282,10 @@
+     Function.pushRegion(Region, *ExecutionCount, *AltExecutionCount);
+   }
+ 
++  //[Datadog] We don't want to record not executed functions
++  if(Function.ExecutionCount == 0)
++    return Error::success();
++
+   // Don't create records for (filenames, function) pairs we've already seen.
+   auto FilenamesHash = hash_combine_range(Record.Filenames.begin(),
+                                           Record.Filenames.end());
