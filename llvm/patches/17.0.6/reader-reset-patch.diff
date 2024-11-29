@@ -1,0 +1,12 @@
+--- a/llvm/include/llvm/ProfileData/Coverage/CoverageMappingReader.h
++++ b/llvm/include/llvm/ProfileData/Coverage/CoverageMappingReader.h
+@@ -217,6 +217,8 @@ public:
+                                  StringRef CompilationDir = "");
+ 
+   Error readNextRecord(CoverageMappingRecord &Record) override;
++
++  void reset() { CurrentRecord = 0; };
+ };
+ 
+ /// Reader for the raw coverage filenames.
+ 

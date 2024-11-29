@@ -1,0 +1,1134 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A712C17E2CEFA06D00B4282F /* CodeCoverage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A712C1752CEFA06C00B4282F /* CodeCoverage.framework */; };
+		A712C1832CEFA06D00B4282F /* CodeCoverageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1822CEFA06D00B4282F /* CodeCoverageTests.swift */; };
+		A712C1A02CEFA34100B4282F /* CCoverageLLVM.h in Headers */ = {isa = PBXBuildFile; fileRef = A712C1942CEFA34100B4282F /* CCoverageLLVM.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A712C1A92CEFA39400B4282F /* Symbols.c in Sources */ = {isa = PBXBuildFile; fileRef = A712C1A82CEFA39400B4282F /* Symbols.c */; };
+		A712C1AC2CEFA68B00B4282F /* CodeCoverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1AB2CEFA68B00B4282F /* CodeCoverage.swift */; };
+		A712C1B42CEFB0EA00B4282F /* CoverageLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1B32CEFB0EA00B4282F /* CoverageLibrary.swift */; };
+		A712C1B62CEFC1AE00B4282F /* CoveredBinary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1B52CEFC1AE00B4282F /* CoveredBinary.swift */; };
+		A712C1B82CEFE40700B4282F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1B72CEFE40700B4282F /* Utils.swift */; };
+		A712C1C22CEFEF5900B4282F /* Coverage.h in Headers */ = {isa = PBXBuildFile; fileRef = A712C1C12CEFEF5900B4282F /* Coverage.h */; };
+		A712C1C82CEFEFD900B4282F /* CCoverageLLVM15.plugin in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A712C1BF2CEFEF5900B4282F /* CCoverageLLVM15.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A712C1CD2CEFF1A700B4282F /* Coverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A712C1CC2CEFF1A700B4282F /* Coverage.cpp */; };
+		A712C1E32CF0A37B00B4282F /* Coverage.h in Headers */ = {isa = PBXBuildFile; fileRef = A712C1E22CF0A37B00B4282F /* Coverage.h */; };
+		A712C1EC2CF0A59300B4282F /* CCoverageLLVM17.plugin in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A712C1E02CF0A37B00B4282F /* CCoverageLLVM17.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A712C1F02CF0A7D600B4282F /* Coverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A712C1EF2CF0A7D600B4282F /* Coverage.cpp */; };
+		A712C1F12CF0A8FB00B4282F /* CCoverageLLVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A712C1922CEFA34100B4282F /* CCoverageLLVM.framework */; };
+		A712C1F42CF0AE2B00B4282F /* CoverageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1F32CF0AE2B00B4282F /* CoverageProcessor.swift */; };
+		A712C1F62CF0D2D500B4282F /* CoverageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1F52CF0D2D500B4282F /* CoverageInfo.swift */; };
+		A71756952CF4E57800240492 /* LLVM15.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71756942CF4E47D00240492 /* LLVM15.xcframework */; };
+		A71756982CF4EAE600240492 /* ResetCounters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A71756962CF4EAE600240492 /* ResetCounters.cpp */; };
+		A71756992CF4EAE600240492 /* ResetCounters.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A71756972CF4EAE600240492 /* ResetCounters.hpp */; };
+		A71756A72CF6174D00240492 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A71756A62CF6174D00240492 /* libz.tbd */; };
+		A71756AA2CF6176500240492 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A71756A62CF6174D00240492 /* libz.tbd */; };
+		A71756AE2CF7166D00240492 /* LLVM17.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71756AD2CF7166D00240492 /* LLVM17.xcframework */; };
+		A71756B12CF7196400240492 /* CodeCoverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A71756AF2CF7196400240492 /* CodeCoverage.cpp */; };
+		A71756B22CF7196400240492 /* CodeCoverage.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A71756B02CF7196400240492 /* CodeCoverage.hpp */; };
+		A7C84DF72CF71C930002115A /* ResetCounters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7C84DF32CF71C930002115A /* ResetCounters.cpp */; };
+		A7C84DF82CF71C930002115A /* CodeCoverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7C84DF42CF71C930002115A /* CodeCoverage.cpp */; };
+		A7C84DF92CF71C930002115A /* CodeCoverage.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7C84DF52CF71C930002115A /* CodeCoverage.hpp */; };
+		A7C84DFA2CF71C930002115A /* ResetCounters.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7C84DF62CF71C930002115A /* ResetCounters.hpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A712C17F2CEFA06D00B4282F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A712C1742CEFA06C00B4282F;
+			remoteInfo = CodeCoverage;
+		};
+		A712C1B02CEFA6CB00B4282F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A712C1912CEFA34100B4282F;
+			remoteInfo = CCoverageLLVM;
+		};
+		A712C1C62CEFEF9800B4282F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A712C1BE2CEFEF5900B4282F;
+			remoteInfo = CoverageLLVM15;
+		};
+		A712C1C92CEFEFEB00B4282F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A712C1912CEFA34100B4282F;
+			remoteInfo = CCoverageLLVM;
+		};
+		A712C1EA2CF0A58400B4282F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A712C1DF2CF0A37B00B4282F;
+			remoteInfo = CoverageLLVM17;
+		};
+		A712C1ED2CF0A75800B4282F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A712C1912CEFA34100B4282F;
+			remoteInfo = CCoverageLLVM;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A712C1B22CEFA6CB00B4282F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A712C1C82CEFEFD900B4282F /* CCoverageLLVM15.plugin in Embed Frameworks */,
+				A712C1EC2CF0A59300B4282F /* CCoverageLLVM17.plugin in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A712C1752CEFA06C00B4282F /* CodeCoverage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodeCoverage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A712C17D2CEFA06D00B4282F /* CodeCoverageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeCoverageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A712C1822CEFA06D00B4282F /* CodeCoverageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCoverageTests.swift; sourceTree = "<group>"; };
+		A712C1922CEFA34100B4282F /* CCoverageLLVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCoverageLLVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A712C1942CEFA34100B4282F /* CCoverageLLVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCoverageLLVM.h; sourceTree = "<group>"; };
+		A712C1A82CEFA39400B4282F /* Symbols.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Symbols.c; sourceTree = "<group>"; };
+		A712C1AB2CEFA68B00B4282F /* CodeCoverage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCoverage.swift; sourceTree = "<group>"; };
+		A712C1B32CEFB0EA00B4282F /* CoverageLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageLibrary.swift; sourceTree = "<group>"; };
+		A712C1B52CEFC1AE00B4282F /* CoveredBinary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoveredBinary.swift; sourceTree = "<group>"; };
+		A712C1B72CEFE40700B4282F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		A712C1BF2CEFEF5900B4282F /* CCoverageLLVM15.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCoverageLLVM15.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		A712C1C12CEFEF5900B4282F /* Coverage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Coverage.h; sourceTree = "<group>"; };
+		A712C1CC2CEFF1A700B4282F /* Coverage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Coverage.cpp; sourceTree = "<group>"; };
+		A712C1E02CF0A37B00B4282F /* CCoverageLLVM17.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCoverageLLVM17.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		A712C1E22CF0A37B00B4282F /* Coverage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Coverage.h; sourceTree = "<group>"; };
+		A712C1EF2CF0A7D600B4282F /* Coverage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Coverage.cpp; sourceTree = "<group>"; };
+		A712C1F32CF0AE2B00B4282F /* CoverageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageProcessor.swift; sourceTree = "<group>"; };
+		A712C1F52CF0D2D500B4282F /* CoverageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageInfo.swift; sourceTree = "<group>"; };
+		A71756902CF0E15900240492 /* CodeCoverage.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CodeCoverage.xctestplan; sourceTree = "<group>"; };
+		A71756922CF1FB8100240492 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		A71756942CF4E47D00240492 /* LLVM15.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LLVM15.xcframework; sourceTree = "<group>"; };
+		A71756962CF4EAE600240492 /* ResetCounters.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ResetCounters.cpp; sourceTree = "<group>"; };
+		A71756972CF4EAE600240492 /* ResetCounters.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResetCounters.hpp; sourceTree = "<group>"; };
+		A71756A62CF6174D00240492 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A71756AD2CF7166D00240492 /* LLVM17.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LLVM17.xcframework; sourceTree = "<group>"; };
+		A71756AF2CF7196400240492 /* CodeCoverage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CodeCoverage.cpp; sourceTree = "<group>"; };
+		A71756B02CF7196400240492 /* CodeCoverage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CodeCoverage.hpp; sourceTree = "<group>"; };
+		A7C84DF32CF71C930002115A /* ResetCounters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResetCounters.cpp; sourceTree = "<group>"; };
+		A7C84DF42CF71C930002115A /* CodeCoverage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CodeCoverage.cpp; sourceTree = "<group>"; };
+		A7C84DF52CF71C930002115A /* CodeCoverage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CodeCoverage.hpp; sourceTree = "<group>"; };
+		A7C84DF62CF71C930002115A /* ResetCounters.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResetCounters.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A712C1722CEFA06C00B4282F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A712C1F12CF0A8FB00B4282F /* CCoverageLLVM.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C17A2CEFA06D00B4282F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A712C17E2CEFA06D00B4282F /* CodeCoverage.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C18F2CEFA34100B4282F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C1BC2CEFEF5900B4282F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A71756A72CF6174D00240492 /* libz.tbd in Frameworks */,
+				A71756952CF4E57800240492 /* LLVM15.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C1DD2CF0A37B00B4282F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A71756AE2CF7166D00240492 /* LLVM17.xcframework in Frameworks */,
+				A71756AA2CF6176500240492 /* libz.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A712C16B2CEFA06C00B4282F = {
+			isa = PBXGroup;
+			children = (
+				A71756922CF1FB8100240492 /* Makefile */,
+				A712C1AA2CEFA61E00B4282F /* Sources */,
+				A712C1B92CEFEEED00B4282F /* Tests */,
+				A71756932CF4E44800240492 /* LLVM */,
+				A712C1762CEFA06C00B4282F /* Products */,
+				A712C1AD2CEFA6CB00B4282F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A712C1762CEFA06C00B4282F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A712C1752CEFA06C00B4282F /* CodeCoverage.framework */,
+				A712C17D2CEFA06D00B4282F /* CodeCoverageTests.xctest */,
+				A712C1922CEFA34100B4282F /* CCoverageLLVM.framework */,
+				A712C1BF2CEFEF5900B4282F /* CCoverageLLVM15.plugin */,
+				A712C1E02CF0A37B00B4282F /* CCoverageLLVM17.plugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A712C1772CEFA06C00B4282F /* CodeCoverage */ = {
+			isa = PBXGroup;
+			children = (
+				A712C1AB2CEFA68B00B4282F /* CodeCoverage.swift */,
+				A712C1F52CF0D2D500B4282F /* CoverageInfo.swift */,
+				A712C1B52CEFC1AE00B4282F /* CoveredBinary.swift */,
+				A712C1B32CEFB0EA00B4282F /* CoverageLibrary.swift */,
+				A712C1F32CF0AE2B00B4282F /* CoverageProcessor.swift */,
+				A712C1B72CEFE40700B4282F /* Utils.swift */,
+			);
+			path = CodeCoverage;
+			sourceTree = "<group>";
+		};
+		A712C1812CEFA06D00B4282F /* CodeCoverageTests */ = {
+			isa = PBXGroup;
+			children = (
+				A712C1822CEFA06D00B4282F /* CodeCoverageTests.swift */,
+			);
+			path = CodeCoverageTests;
+			sourceTree = "<group>";
+		};
+		A712C1932CEFA34100B4282F /* CCoverageLLVM */ = {
+			isa = PBXGroup;
+			children = (
+				A712C1A72CEFA36900B4282F /* include */,
+				A712C1A82CEFA39400B4282F /* Symbols.c */,
+			);
+			path = CCoverageLLVM;
+			sourceTree = "<group>";
+		};
+		A712C1A72CEFA36900B4282F /* include */ = {
+			isa = PBXGroup;
+			children = (
+				A712C1942CEFA34100B4282F /* CCoverageLLVM.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		A712C1AA2CEFA61E00B4282F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A712C1932CEFA34100B4282F /* CCoverageLLVM */,
+				A712C1C02CEFEF5900B4282F /* CCoverageLLVM15 */,
+				A712C1E12CF0A37B00B4282F /* CCoverageLLVM17 */,
+				A712C1772CEFA06C00B4282F /* CodeCoverage */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A712C1AD2CEFA6CB00B4282F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A71756A62CF6174D00240492 /* libz.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A712C1B92CEFEEED00B4282F /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A712C1812CEFA06D00B4282F /* CodeCoverageTests */,
+				A71756902CF0E15900240492 /* CodeCoverage.xctestplan */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		A712C1C02CEFEF5900B4282F /* CCoverageLLVM15 */ = {
+			isa = PBXGroup;
+			children = (
+				A712C1C12CEFEF5900B4282F /* Coverage.h */,
+				A712C1CC2CEFF1A700B4282F /* Coverage.cpp */,
+				A71756B02CF7196400240492 /* CodeCoverage.hpp */,
+				A71756AF2CF7196400240492 /* CodeCoverage.cpp */,
+				A71756972CF4EAE600240492 /* ResetCounters.hpp */,
+				A71756962CF4EAE600240492 /* ResetCounters.cpp */,
+			);
+			path = CCoverageLLVM15;
+			sourceTree = "<group>";
+		};
+		A712C1E12CF0A37B00B4282F /* CCoverageLLVM17 */ = {
+			isa = PBXGroup;
+			children = (
+				A712C1E22CF0A37B00B4282F /* Coverage.h */,
+				A712C1EF2CF0A7D600B4282F /* Coverage.cpp */,
+				A7C84DF52CF71C930002115A /* CodeCoverage.hpp */,
+				A7C84DF42CF71C930002115A /* CodeCoverage.cpp */,
+				A7C84DF62CF71C930002115A /* ResetCounters.hpp */,
+				A7C84DF32CF71C930002115A /* ResetCounters.cpp */,
+			);
+			path = CCoverageLLVM17;
+			sourceTree = "<group>";
+		};
+		A71756932CF4E44800240492 /* LLVM */ = {
+			isa = PBXGroup;
+			children = (
+				A71756AD2CF7166D00240492 /* LLVM17.xcframework */,
+				A71756942CF4E47D00240492 /* LLVM15.xcframework */,
+			);
+			name = LLVM;
+			path = llvm/xcframeworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A712C1702CEFA06C00B4282F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C18D2CEFA34100B4282F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A712C1A02CEFA34100B4282F /* CCoverageLLVM.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C1BA2CEFEF5900B4282F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A71756B22CF7196400240492 /* CodeCoverage.hpp in Headers */,
+				A712C1C22CEFEF5900B4282F /* Coverage.h in Headers */,
+				A71756992CF4EAE600240492 /* ResetCounters.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C1DB2CF0A37B00B4282F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A712C1E32CF0A37B00B4282F /* Coverage.h in Headers */,
+				A7C84DFA2CF71C930002115A /* ResetCounters.hpp in Headers */,
+				A7C84DF92CF71C930002115A /* CodeCoverage.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A712C1742CEFA06C00B4282F /* CodeCoverage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A712C1872CEFA06D00B4282F /* Build configuration list for PBXNativeTarget "CodeCoverage" */;
+			buildPhases = (
+				A712C1702CEFA06C00B4282F /* Headers */,
+				A712C1712CEFA06C00B4282F /* Sources */,
+				A712C1722CEFA06C00B4282F /* Frameworks */,
+				A712C1732CEFA06C00B4282F /* Resources */,
+				A712C1B22CEFA6CB00B4282F /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A712C1B12CEFA6CB00B4282F /* PBXTargetDependency */,
+				A712C1EB2CF0A58400B4282F /* PBXTargetDependency */,
+				A712C1C72CEFEF9800B4282F /* PBXTargetDependency */,
+			);
+			name = CodeCoverage;
+			productName = CodeCoverage;
+			productReference = A712C1752CEFA06C00B4282F /* CodeCoverage.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A712C17C2CEFA06D00B4282F /* CodeCoverageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A712C18A2CEFA06D00B4282F /* Build configuration list for PBXNativeTarget "CodeCoverageTests" */;
+			buildPhases = (
+				A712C1792CEFA06D00B4282F /* Sources */,
+				A712C17A2CEFA06D00B4282F /* Frameworks */,
+				A712C17B2CEFA06D00B4282F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A712C1802CEFA06D00B4282F /* PBXTargetDependency */,
+			);
+			name = CodeCoverageTests;
+			productName = CodeCoverageTests;
+			productReference = A712C17D2CEFA06D00B4282F /* CodeCoverageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A712C1912CEFA34100B4282F /* CCoverageLLVM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A712C1A12CEFA34100B4282F /* Build configuration list for PBXNativeTarget "CCoverageLLVM" */;
+			buildPhases = (
+				A712C18D2CEFA34100B4282F /* Headers */,
+				A712C18E2CEFA34100B4282F /* Sources */,
+				A712C18F2CEFA34100B4282F /* Frameworks */,
+				A712C1902CEFA34100B4282F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CCoverageLLVM;
+			productName = CCoverageLLVM;
+			productReference = A712C1922CEFA34100B4282F /* CCoverageLLVM.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A712C1BE2CEFEF5900B4282F /* CCoverageLLVM15 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A712C1C32CEFEF5900B4282F /* Build configuration list for PBXNativeTarget "CCoverageLLVM15" */;
+			buildPhases = (
+				A712C1BA2CEFEF5900B4282F /* Headers */,
+				A712C1BB2CEFEF5900B4282F /* Sources */,
+				A712C1BC2CEFEF5900B4282F /* Frameworks */,
+				A712C1BD2CEFEF5900B4282F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A712C1CA2CEFEFEB00B4282F /* PBXTargetDependency */,
+			);
+			name = CCoverageLLVM15;
+			productName = CoverageLLVM15;
+			productReference = A712C1BF2CEFEF5900B4282F /* CCoverageLLVM15.plugin */;
+			productType = "com.apple.product-type.framework";
+		};
+		A712C1DF2CF0A37B00B4282F /* CCoverageLLVM17 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A712C1E42CF0A37C00B4282F /* Build configuration list for PBXNativeTarget "CCoverageLLVM17" */;
+			buildPhases = (
+				A712C1DB2CF0A37B00B4282F /* Headers */,
+				A712C1DC2CF0A37B00B4282F /* Sources */,
+				A712C1DD2CF0A37B00B4282F /* Frameworks */,
+				A712C1DE2CF0A37B00B4282F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A712C1EE2CF0A75800B4282F /* PBXTargetDependency */,
+			);
+			name = CCoverageLLVM17;
+			productName = CoverageLLVM17;
+			productReference = A712C1E02CF0A37B00B4282F /* CCoverageLLVM17.plugin */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A712C16C2CEFA06C00B4282F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					A712C1742CEFA06C00B4282F = {
+						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
+					};
+					A712C17C2CEFA06D00B4282F = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					A712C1912CEFA34100B4282F = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					A712C1BE2CEFEF5900B4282F = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					A712C1DF2CF0A37B00B4282F = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = A712C16F2CEFA06C00B4282F /* Build configuration list for PBXProject "CodeCoverage" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A712C16B2CEFA06C00B4282F;
+			productRefGroup = A712C1762CEFA06C00B4282F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A712C1912CEFA34100B4282F /* CCoverageLLVM */,
+				A712C1BE2CEFEF5900B4282F /* CCoverageLLVM15 */,
+				A712C1DF2CF0A37B00B4282F /* CCoverageLLVM17 */,
+				A712C1742CEFA06C00B4282F /* CodeCoverage */,
+				A712C17C2CEFA06D00B4282F /* CodeCoverageTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A712C1732CEFA06C00B4282F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C17B2CEFA06D00B4282F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C1902CEFA34100B4282F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C1BD2CEFEF5900B4282F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C1DE2CF0A37B00B4282F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A712C1712CEFA06C00B4282F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A712C1F42CF0AE2B00B4282F /* CoverageProcessor.swift in Sources */,
+				A712C1B42CEFB0EA00B4282F /* CoverageLibrary.swift in Sources */,
+				A712C1B62CEFC1AE00B4282F /* CoveredBinary.swift in Sources */,
+				A712C1B82CEFE40700B4282F /* Utils.swift in Sources */,
+				A712C1AC2CEFA68B00B4282F /* CodeCoverage.swift in Sources */,
+				A712C1F62CF0D2D500B4282F /* CoverageInfo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C1792CEFA06D00B4282F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A712C1832CEFA06D00B4282F /* CodeCoverageTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C18E2CEFA34100B4282F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A712C1A92CEFA39400B4282F /* Symbols.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C1BB2CEFEF5900B4282F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A71756982CF4EAE600240492 /* ResetCounters.cpp in Sources */,
+				A712C1CD2CEFF1A700B4282F /* Coverage.cpp in Sources */,
+				A71756B12CF7196400240492 /* CodeCoverage.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A712C1DC2CF0A37B00B4282F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7C84DF72CF71C930002115A /* ResetCounters.cpp in Sources */,
+				A712C1F02CF0A7D600B4282F /* Coverage.cpp in Sources */,
+				A7C84DF82CF71C930002115A /* CodeCoverage.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A712C1802CEFA06D00B4282F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A712C1742CEFA06C00B4282F /* CodeCoverage */;
+			targetProxy = A712C17F2CEFA06D00B4282F /* PBXContainerItemProxy */;
+		};
+		A712C1B12CEFA6CB00B4282F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A712C1912CEFA34100B4282F /* CCoverageLLVM */;
+			targetProxy = A712C1B02CEFA6CB00B4282F /* PBXContainerItemProxy */;
+		};
+		A712C1C72CEFEF9800B4282F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A712C1BE2CEFEF5900B4282F /* CCoverageLLVM15 */;
+			targetProxy = A712C1C62CEFEF9800B4282F /* PBXContainerItemProxy */;
+		};
+		A712C1CA2CEFEFEB00B4282F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A712C1912CEFA34100B4282F /* CCoverageLLVM */;
+			targetProxy = A712C1C92CEFEFEB00B4282F /* PBXContainerItemProxy */;
+		};
+		A712C1EB2CF0A58400B4282F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A712C1DF2CF0A37B00B4282F /* CCoverageLLVM17 */;
+			targetProxy = A712C1EA2CF0A58400B4282F /* PBXContainerItemProxy */;
+		};
+		A712C1EE2CF0A75800B4282F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A712C1912CEFA34100B4282F /* CCoverageLLVM */;
+			targetProxy = A712C1ED2CF0A75800B4282F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A712C1852CEFA06D00B4282F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024-Present Datadog, Inc.";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A712C1862CEFA06D00B4282F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024-Present Datadog, Inc.";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A712C1882CEFA06D00B4282F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CodeCoverage;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = Debug;
+		};
+		A712C1892CEFA06D00B4282F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CodeCoverage;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = Release;
+		};
+		A712C18B2CEFA06D00B4282F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CodeCoverageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = Debug;
+		};
+		A712C18C2CEFA06D00B4282F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CodeCoverageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = Release;
+		};
+		A712C1A22CEFA34100B4282F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = Debug;
+		};
+		A712C1A32CEFA34100B4282F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = Release;
+		};
+		A712C1C42CEFEF5900B4282F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = mh_dylib;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM15;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Debug;
+		};
+		A712C1C52CEFEF5900B4282F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = mh_dylib;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM15;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Release;
+		};
+		A712C1E52CF0A37C00B4282F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = mh_dylib;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM17;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Debug;
+		};
+		A712C1E62CF0A37C00B4282F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = mh_dylib;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM17;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A712C16F2CEFA06C00B4282F /* Build configuration list for PBXProject "CodeCoverage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A712C1852CEFA06D00B4282F /* Debug */,
+				A712C1862CEFA06D00B4282F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A712C1872CEFA06D00B4282F /* Build configuration list for PBXNativeTarget "CodeCoverage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A712C1882CEFA06D00B4282F /* Debug */,
+				A712C1892CEFA06D00B4282F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A712C18A2CEFA06D00B4282F /* Build configuration list for PBXNativeTarget "CodeCoverageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A712C18B2CEFA06D00B4282F /* Debug */,
+				A712C18C2CEFA06D00B4282F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A712C1A12CEFA34100B4282F /* Build configuration list for PBXNativeTarget "CCoverageLLVM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A712C1A22CEFA34100B4282F /* Debug */,
+				A712C1A32CEFA34100B4282F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A712C1C32CEFEF5900B4282F /* Build configuration list for PBXNativeTarget "CCoverageLLVM15" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A712C1C42CEFEF5900B4282F /* Debug */,
+				A712C1C52CEFEF5900B4282F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A712C1E42CF0A37C00B4282F /* Build configuration list for PBXNativeTarget "CCoverageLLVM17" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A712C1E52CF0A37C00B4282F /* Debug */,
+				A712C1E62CF0A37C00B4282F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A712C16C2CEFA06C00B4282F /* Project object */;
+}

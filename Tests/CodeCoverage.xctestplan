@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "0C0D8B79-BA82-4883-9C41-7523AB2175FC",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:CodeCoverage.xcodeproj",
+        "identifier" : "A712C17C2CEFA06D00B4282F",
+        "name" : "CodeCoverageTests"
+      }
+    }
+  ],
+  "version" : 1
+}
