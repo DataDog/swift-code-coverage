@@ -66,6 +66,8 @@ extension Array where Element: StringProtocol {
             }
             start.initialize(to: 0)
             start += 1
+            // it's safe to unwrap.
+            // It's initialized at this moment
             return str!
         }
         return try body(ptrs)
