@@ -30,6 +30,9 @@ public final class CodeCoverage {
     public let tempDir: URL
     public private(set) var initialCoverage: CoverageInfo? = nil
     
+    private var currentFileIndex: UInt64 = 0
+    private let processId: Int32
+    
     public init(processor: CoverageProcessor, coverageFile: String, temp: URL) {
         var fileName = coverageFile.replacingOccurrences(of: "%c", with: "")
         let continuous = fileName != coverageFile
@@ -37,6 +40,7 @@ public final class CodeCoverage {
             fileName = fileName.replacingOccurrences(of: ".profraw", with: "%m.profraw")
         }
         self.coverageFilePath = fileName
+        self.processId = ProcessInfo.processInfo.processIdentifier
         self.processor = processor
         self.tempDir = temp
         if coverageFile != fileName {
@@ -67,8 +71,9 @@ public final class CodeCoverage {
             throw Error.coverageGatheringAlreadyStarted
         }
         processor.writeCoverage()
-        setCoverageFile(to: tempDir.appendingPathComponent(UUID().uuidString + ".profraw",
-                                                           isDirectory: false).path)
+        let fileName = "code-coverage-\(processId)-\(currentFileIndex).profraw"
+        currentFileIndex = currentFileIndex == .max ? 0 : currentFileIndex + 1
+        setCoverageFile(to: tempDir.appendingPathComponent(fileName, isDirectory: false).path)
         processor.resetCounters()
     }
     
@@ -83,8 +88,7 @@ public final class CodeCoverage {
     }
     
     public func filesCovered(in profile: URL) throws -> CoverageInfo {
-        let covered = try processor.filesCovered(in: profile).get()
-        return initialCoverage.map { $0.merged(with: covered) } ?? covered
+        try processor.filesCovered(in: profile).get()
     }
     
     public func setCoverageFile(to path: String) {
