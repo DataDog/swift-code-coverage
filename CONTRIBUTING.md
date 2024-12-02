@@ -13,6 +13,8 @@ To share your idea or request, [open a GitHub Issue](https://github.com/DataDog/
 
 ## Found a bug?
 
+For any urgent matters (such as outages) or issues concerning the Datadog service or UI, contact our support team via https://docs.datadoghq.com/help/ for direct, faster assistance.
+
 You may submit a bug report concerning the Code Coverage for Swift by [opening a GitHub Issue](https://github.com/DataDog/swift-code-coverage/issues/new/choose). Use appropriate template and provide all listed details to help us resolve the issue.
 
 ## Have a patch?
