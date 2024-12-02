@@ -19,10 +19,11 @@ static inline const void* _Nullable find_symbol_32bit(const char* _Nonnull symbo
 
     struct segment_command *cur_seg_cmd;
     uintptr_t cur = (uintptr_t)(image + 1); // skip header
+    // Iterate through segment commands and find pointers to SYMTAB, LINKEDIT and TEXT segments
     for (uint32_t i = 0; i < image->ncmds; i++, cur += cur_seg_cmd->cmdsize) {
         cur_seg_cmd = (struct segment_command *)cur;
         if (cur_seg_cmd->cmd == LC_SEGMENT) {
-            if (!strcmp(cur_seg_cmd->segname, SEG_TEXT)) {
+            if (strcmp(cur_seg_cmd->segname, SEG_TEXT) == 0) {
                 text_segment = cur_seg_cmd;
             } else if (strcmp(cur_seg_cmd->segname, SEG_LINKEDIT) == 0) {
                 linkedit_segment = cur_seg_cmd;
@@ -32,19 +33,24 @@ static inline const void* _Nullable find_symbol_32bit(const char* _Nonnull symbo
         }
     }
 
+    // check that we found them
     if (!symtab_cmd || !linkedit_segment || !text_segment) {
         return NULL;
     }
 
+    // calculate pointers to the symtab list start and symtab text start
     uintptr_t linkedit_base = (uintptr_t)slide + (uintptr_t)(linkedit_segment->vmaddr - linkedit_segment->fileoff);
     struct nlist *symtab = (struct nlist *)(linkedit_base + symtab_cmd->symoff);
     char *strtab = (char *)(linkedit_base + symtab_cmd->stroff);
 
     struct nlist *sym;
     int index;
+    // iterate through symbols and search for our symbol
     for (index = 0, sym = symtab; index < symtab_cmd->nsyms; index += 1, sym += 1) {
-        if (sym->n_un.n_strx != 0 && !strcmp(symbol, strtab + sym->n_un.n_strx)) {
+        if (sym->n_un.n_strx != 0 && strcmp(symbol, strtab + sym->n_un.n_strx) == 0) {
+            // Calculate its address
             uint64_t address = slide + sym->n_value;
+            // arm thumb needs first address bit changed
             if (sym->n_desc & N_ARM_THUMB_DEF) {
                 return (void *)(address | 1);
             } else {
@@ -52,6 +58,7 @@ static inline const void* _Nullable find_symbol_32bit(const char* _Nonnull symbo
             }
         }
     }
+    // not found
     return NULL;
 }
 
@@ -65,10 +72,11 @@ static inline const void* _Nullable find_symbol_64bit(const char* _Nonnull symbo
 
     struct segment_command_64 *cur_seg_cmd;
     uintptr_t cur = (uintptr_t)(image + 1); // skip header
+    // Iterate through segment commands and find pointers to SYMTAB, LINKEDIT and TEXT segments
     for (uint32_t i = 0; i < image->ncmds; i++, cur += cur_seg_cmd->cmdsize) {
         cur_seg_cmd = (struct segment_command_64 *)cur;
         if (cur_seg_cmd->cmd == LC_SEGMENT_64) {
-            if (!strcmp(cur_seg_cmd->segname, SEG_TEXT)) {
+            if (strcmp(cur_seg_cmd->segname, SEG_TEXT) == 0) {
                 text_segment = cur_seg_cmd;
             } else if (strcmp(cur_seg_cmd->segname, SEG_LINKEDIT) == 0) {
                 linkedit_segment = cur_seg_cmd;
@@ -78,19 +86,24 @@ static inline const void* _Nullable find_symbol_64bit(const char* _Nonnull symbo
         }
     }
 
+    // check that we found them
     if (!symtab_cmd || !linkedit_segment || !text_segment) {
         return NULL;
     }
 
+    // calculate pointers to the symtab list start and symtab text start
     uintptr_t linkedit_base = (uintptr_t)slide + (uintptr_t)(linkedit_segment->vmaddr - linkedit_segment->fileoff);
     struct nlist_64 *symtab = (struct nlist_64 *)(linkedit_base + symtab_cmd->symoff);
     char *strtab = (char *)(linkedit_base + symtab_cmd->stroff);
 
     struct nlist_64 *sym;
     int index;
+    // iterate through symbols and search for our symbol
     for (index = 0, sym = symtab; index < symtab_cmd->nsyms; index += 1, sym += 1) {
-        if (sym->n_un.n_strx != 0 && !strcmp(symbol, strtab + sym->n_un.n_strx)) {
+        if (sym->n_un.n_strx != 0 && strcmp(symbol, strtab + sym->n_un.n_strx) == 0) {
+            // Calculate its address
             uint64_t address = slide + sym->n_value;
+            // arm thumb needs first address bit changed
             if (sym->n_desc & N_ARM_THUMB_DEF) {
                 return (void *)(address | 1);
             } else {
@@ -98,7 +111,7 @@ static inline const void* _Nullable find_symbol_64bit(const char* _Nonnull symbo
             }
         }
     }
-    
+    // not found
     return NULL;
 }
 
