@@ -5,13 +5,13 @@
  */
 
 import Foundation
-import CCoverageLLVM
+@_implementationOnly import CCoverageLLVM
 
 public final class CoverageProcessor {
     public let binaries: [CoveredBinary]
     
     private let library: CoverageLibrary
-    private let processor: LLVMCoverageProcessor
+    private let processor: CCoverageProcessor
     
     private init(library: CoverageLibrary, binaries: [CoveredBinary] = .currentProcessBinaries) throws {
         let binariesPath = binaries.map { $0.path }

@@ -19,7 +19,8 @@ static const char* errorMessage(Error E) {
     return cstr;
 }
 
-static LLVMCoverageProcessorResult e_init_processor(const char* const* binaries, uint32_t count) {
+// C wrapper for load() method
+static CCoverageProcessorResult e_init_processor(const char* const* binaries, uint32_t count) {
     std::vector<StringRef> sbinaries;
     sbinaries.reserve(count);
     for (const auto &binary: ArrayRef<const char*>(binaries, count)) {
@@ -27,35 +28,40 @@ static LLVMCoverageProcessorResult e_init_processor(const char* const* binaries,
     }
     auto processor = CodeCoverage::load(sbinaries);
     if (Error E = processor.takeError()) {
-        return LLVMCoverageProcessorResult({
+        return CCoverageProcessorResult({
             .is_error = true,
             .error = errorMessage(std::move(E))
         });
     }
-    return LLVMCoverageProcessorResult({.is_error = false, .processor = processor.get()});
+    return CCoverageProcessorResult({.is_error = false, .processor = processor.get()});
 }
 
-static CoveredFilesResult e_covered_files(const LLVMCoverageProcessor processor,
-                                          const char* profraw_file)
+// C wrapper for coverage() method
+static CCoverageFilesResult e_covered_files(const CCoverageProcessor processor,
+                                            const char* profraw_file)
 {
     
     auto CoverageProcessor = static_cast<CodeCoverage*>(processor);
     auto CoverageOrErr = CoverageProcessor->coverage(profraw_file);
     
     if (Error E = CoverageOrErr.takeError()) {
-        return CoveredFilesResult({
+        return CCoverageFilesResult({
             .is_error = true,
             .error = errorMessage(std::move(E))
         });
     }
     
-    return CoveredFilesResult({.is_error = false, .files = CoverageOrErr.get()});
+    return CCoverageFilesResult({.is_error = false, .files = CoverageOrErr.get()});
 }
 
-static void e_destroy_processor(LLVMCoverageProcessor coverage) {
+// C wrapper for delete
+static void e_destroy_processor(CCoverageProcessor coverage) {
     delete static_cast<CodeCoverage*>(coverage);
 }
 
+// Export pointers for all functions in the structure
+// It's simpler to dynamically load it this way
+// Note that it prefixed with llvm version, so two llvm libs could be loaded at the same time
 struct llvm_coverage_library_exports llvm17_coverage_library_exports = {
     .init_processor = &e_init_processor,
     .covered_files = &e_covered_files,

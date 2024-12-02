@@ -17,13 +17,13 @@ namespace llvm15 {
 class CodeCoverage {
 public:
     static llvm::Expected<CodeCoverage*> load(std::vector<llvm::StringRef> &Binaries);
-    llvm::Expected<CoveredFiles> coverage(llvm::StringRef ProfrawPath);
+    llvm::Expected<CCoverageFiles> coverage(llvm::StringRef ProfrawPath);
 private:
     CodeCoverage() {};
     std::mutex MappingReadersLock;
     std::vector<std::unique_ptr<llvm::coverage::CoverageMappingReader>> MappingReaders;
     llvm::Expected<std::unique_ptr<llvm::MemoryBuffer>> readProfile(llvm::StringRef ProfrawPath);
-    FileCoverage processFile(llvm::StringRef Name, llvm::coverage::CoverageMapping &Coverage);
+    CCoverageFile processFile(llvm::StringRef Name, llvm::coverage::CoverageMapping &Coverage);
 };
 
 }

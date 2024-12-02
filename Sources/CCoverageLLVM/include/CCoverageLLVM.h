@@ -25,17 +25,19 @@ CC_EXPORT const unsigned char CCoverageLLVMVersionString[];
 extern "C" {
 #endif
 
-typedef void* LLVMCoverageProcessor;
+typedef void* CCoverageProcessor;
 
-typedef struct LLVMCoverageProcessorResult {
+// result of constructor call
+typedef struct CCoverageProcessorResult {
     bool is_error;
     union {
-        LLVMCoverageProcessor _Nullable processor;
+        CCoverageProcessor _Nullable processor;
         const char* _Nullable error;
     };
-} LLVMCoverageProcessorResult;
+} CCoverageProcessorResult;
 
-typedef struct SegmentCoverage {
+// This is a copy of LLVM CoverageSegment stucture
+typedef struct CCoverageSegment {
     /// The line where this segment begins.
     unsigned int Line;
     /// The column where this segment begins.
@@ -48,36 +50,39 @@ typedef struct SegmentCoverage {
     bool IsRegionEntry;
     /// Whether this enters a gap region.
     bool IsGapRegion;
-} SegmentCoverage;
+} CCoverageSegment;
 
-typedef struct FileCoverage {
+// One covered file
+typedef struct CCoverageFile {
     const char* _Nonnull name;
-    SegmentCoverage* _Nullable segments;
+    CCoverageSegment* _Nullable segments;
     size_t segments_count;
-} FileCoverage;
+} CCoverageFile;
 
-typedef struct CoveredFiles {
-    FileCoverage* _Nullable files;
+// list of files covered in this report
+typedef struct CCoverageFiles {
+    CCoverageFile* _Nullable files;
     size_t files_count;
-} CoveredFiles;
+} CCoverageFiles;
 
-typedef struct CoveredFilesResult {
+// coverage parsing command result
+typedef struct CCoverageFilesResult {
     bool is_error;
     union {
-        CoveredFiles files;
+        CCoverageFiles files;
         const char* _Nullable error;
     };
-} CoveredFilesResult;
+} CCoverageFilesResult;
 
 
 struct llvm_coverage_library_exports {
     // create coverage processor object from the binaries
-    LLVMCoverageProcessorResult (* _Nonnull init_processor)(const char* _Nonnull const* _Nonnull binaries, uint32_t count);
+    CCoverageProcessorResult (* _Nonnull init_processor)(const char* _Nonnull const* _Nonnull binaries, uint32_t count);
     // parse profraw file and return file stats
-    CoveredFilesResult (* _Nonnull covered_files)(const LLVMCoverageProcessor _Nonnull processor,
-                                                  const char* _Nonnull profraw_file);
+    CCoverageFilesResult (* _Nonnull covered_files)(const CCoverageProcessor _Nonnull processor,
+                                                    const char* _Nonnull profraw_file);
     // delete coverage processor object
-    void (* _Nonnull destroy_processor)(LLVMCoverageProcessor _Nonnull coverage);
+    void (* _Nonnull destroy_processor)(CCoverageProcessor _Nonnull coverage);
     // reset coverage counters for binary
     void (* _Nonnull reset_counters)(const void* _Nonnull func_counters_begin,
                                      const void* _Nonnull func_counters_end,
@@ -86,9 +91,9 @@ struct llvm_coverage_library_exports {
 };
 
 
-const void* _Nullable llvm_coverage_find_symbol_in_image(const char * _Nonnull symbol,
-                                                         const struct mach_header * _Nonnull image,
-                                                         intptr_t slide);
+const void* _Nullable coverage_find_symbol_in_image(const char * _Nonnull symbol,
+                                                    const struct mach_header * _Nonnull image,
+                                                    intptr_t slide);
 #if defined(__cplusplus)
 }
 #endif

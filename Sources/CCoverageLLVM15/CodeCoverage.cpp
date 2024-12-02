@@ -108,7 +108,7 @@ Expected<std::unique_ptr<MemoryBuffer>> CodeCoverage::readProfile(StringRef Prof
 }
 
 // Convert file coverage to the C structure so it can be sent to the Swift
-FileCoverage CodeCoverage::processFile(StringRef Name, CoverageMapping &Coverage) {
+CCoverageFile CodeCoverage::processFile(StringRef Name, CoverageMapping &Coverage) {
     auto CoverageForFile = Coverage.getCoverageForFile(Name);
     
     char* NameStr = new char[Name.size()+1];
@@ -117,10 +117,10 @@ FileCoverage CodeCoverage::processFile(StringRef Name, CoverageMapping &Coverage
     
     auto Count = std::distance(CoverageForFile.begin(), CoverageForFile.end());
     if (Count == 0) {
-        return FileCoverage({ NameStr, nullptr, 0 });
+        return CCoverageFile({ NameStr, nullptr, 0 });
     }
     
-    SegmentCoverage* Segments = new SegmentCoverage[Count];
+    CCoverageSegment* Segments = new CCoverageSegment[Count];
     size_t CurrentSegment = 0;
     for (const auto &Segment: CoverageForFile) {
         Segments[CurrentSegment] = {
@@ -134,12 +134,12 @@ FileCoverage CodeCoverage::processFile(StringRef Name, CoverageMapping &Coverage
         CurrentSegment++;
     }
     
-    return FileCoverage({ NameStr, Segments, size_t(Count) });
+    return CCoverageFile({ NameStr, Segments, size_t(Count) });
 }
 
 // Calculate coverage for profraw file
 // Based on `llvm-cov show` source code from LLVM tools.
-Expected<CoveredFiles> CodeCoverage::coverage(StringRef ProfrawPath) {
+Expected<CCoverageFiles> CodeCoverage::coverage(StringRef ProfrawPath) {
     // Read profraw and get profdata buffer.
     auto ProfileBufferOrErr = readProfile(ProfrawPath);
     if (Error E = ProfileBufferOrErr.takeError()) {
@@ -159,7 +159,7 @@ Expected<CoveredFiles> CodeCoverage::coverage(StringRef ProfrawPath) {
     // We are using method from our patch so we can reuse readers.
     // dynamic_cast can't be used because of lack of RTTI.
     // it's safe because LLVM version is locked
-    // and we know that BinaryCoverageReader inherited directly from base class.
+    // and we know that BinaryCoverageReader inherited directly from the base class.
     for (auto &Reader: MappingReaders) {
         reinterpret_cast<BinaryCoverageReader*>(Reader.get())->reset();
     }
@@ -177,11 +177,11 @@ Expected<CoveredFiles> CodeCoverage::coverage(StringRef ProfrawPath) {
     // Convert report to the C structures
     auto Files = Coverage->getUniqueSourceFiles();
     if (Files.size() == 0) {
-        return CoveredFiles({ nullptr, 0 });
+        return CCoverageFiles({ nullptr, 0 });
     }
-    FileCoverage *CoverageFiles = new FileCoverage[Files.size()];
+    CCoverageFile *CoverageFiles = new CCoverageFile[Files.size()];
     for (size_t Current = 0; Current < Files.size(); Current++) {
         CoverageFiles[Current] = processFile(Files[Current], *Coverage);
     }
-    return CoveredFiles({ CoverageFiles, Files.size() });
+    return CCoverageFiles({ CoverageFiles, Files.size() });
 }
