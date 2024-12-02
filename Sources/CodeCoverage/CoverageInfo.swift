@@ -5,7 +5,7 @@
  */
 
 import Foundation
-import CCoverageLLVM
+@_implementationOnly import CCoverageLLVM
 
 public struct CoverageInfo: Hashable, Equatable, Codable {
     public let files: [String: File]
@@ -28,29 +28,18 @@ public struct CoverageInfo: Hashable, Equatable, Codable {
     }
     
     public func merged(with other: Self) -> Self {
-        var files = self.files
-        for ofile in other.files.values {
-            if let file = files[ofile.name] {
-                var segments = file.segments
-                for osegment in ofile.segments.values {
-                    if let segment = segments[osegment.location] {
-                        segments[osegment.location] = Segment(location: osegment.location,
-                                                              count: segment.count + osegment.count)
-                    } else {
-                        segments[osegment.location] = osegment
-                    }
-                }
-                files[ofile.name] = File(name: file.name, segments: segments)
-            } else {
-                files[ofile.name] = ofile
+        let files = self.files.merging(other.files) { (current, other) in
+            let segments = current.segments.merging(other.segments) { (current, other) in
+                Segment(location: current.location, count: current.count + other.count)
             }
+            return File(name: current.name, segments: segments)
         }
         return Self(files: files)
     }
 }
 
 extension CoverageInfo {
-    public init(cValue: CoveredFiles) {
+    internal init(cValue: CCoverageFiles) {
         defer { cValue.files?.deallocate() }
         let pairs = cValue.bufPtr.map { File(cValue: $0) }.map { ($0.name, $0) }
         self.files = Dictionary(uniqueKeysWithValues: pairs)
@@ -65,7 +54,7 @@ extension CoverageInfo: CustomDebugStringConvertible {
 }
 
 extension CoverageInfo.File {
-    public init(cValue: FileCoverage) {
+    internal init(cValue: CCoverageFile) {
         defer {
             cValue.name.deallocate()
             cValue.segments?.deallocate()
@@ -84,40 +73,30 @@ extension CoverageInfo.File {
                                                     endLine: 0, endColumn: 0)
         var currentCount: UInt64 = 0
         for segment in cValue.segmentsBufPtr {
-            if currentCount == 0 {
-                if segment.Count != 0 {
-                    // start Boundary
-                    currentLocation.startLine = segment.Line
-                    currentLocation.startColumn = segment.Column
-                    currentCount = segment.Count
-                }
-            } else {
-                if segment.Count == 0 {
-                    // end Segment
+            switch (currentCount, segment.Count) {
+            case (0, let sc) where sc != 0: // start Boundary
+                currentLocation.startLine = segment.Line
+                currentLocation.startColumn = segment.Column
+                currentCount = segment.Count
+            case (let cc, 0) where cc != 0: // end Segment
+                currentLocation.endLine = segment.Line
+                currentLocation.endColumn = segment.Column
+                segments[currentLocation] = .init(location: currentLocation, count: currentCount)
+                currentLocation = .init(startLine: 0, startColumn: 0, endLine: 0, endColumn: 0)
+                currentCount = 0
+            case (let cc, let sc) where cc != 0 && sc != 0 && sc != cc: // change Segment
+                if segment.Column > 0 {
                     currentLocation.endLine = segment.Line
+                    currentLocation.endColumn = segment.Column - 1
+                } else {
+                    currentLocation.endLine = segment.Line - 1
                     currentLocation.endColumn = segment.Column
-                    segments[currentLocation] = .init(location: currentLocation,
-                                                      count: currentCount)
-                    currentLocation = CoverageInfo.Location(startLine: 0, startColumn: 0,
-                                                            endLine: 0, endColumn: 0)
-                    currentCount = 0
-                } else if segment.Count != currentCount {
-                    // change Segment
-                    if segment.Column > 0 {
-                        currentLocation.endLine = segment.Line
-                        currentLocation.endColumn = segment.Column - 1
-                    } else {
-                        currentLocation.endLine = segment.Line - 1
-                        currentLocation.endColumn = segment.Column
-                    }
-                    segments[currentLocation] = .init(location: currentLocation,
-                                                      count: currentCount)
-                    currentLocation = CoverageInfo.Location(
-                        startLine: segment.Line, startColumn: segment.Column,
-                        endLine: 0, endColumn: 0
-                    )
-                    currentCount = segment.Count
                 }
+                segments[currentLocation] = .init(location: currentLocation, count: currentCount)
+                currentLocation = .init(startLine: segment.Line, startColumn: segment.Column,
+                                        endLine: 0, endColumn: 0)
+                currentCount = segment.Count
+            default: break
             }
         }
         self.segments = segments
@@ -144,14 +123,14 @@ extension CoverageInfo.Location: CustomDebugStringConvertible {
     }
 }
 
-extension CoveredFiles {
-    var bufPtr: UnsafeBufferPointer<FileCoverage> {
+extension CCoverageFiles {
+    var bufPtr: UnsafeBufferPointer<CCoverageFile> {
         UnsafeBufferPointer(start: files, count: files_count)
     }
 }
 
-extension FileCoverage {
-    var segmentsBufPtr: UnsafeBufferPointer<SegmentCoverage> {
+extension CCoverageFile {
+    var segmentsBufPtr: UnsafeBufferPointer<CCoverageSegment> {
         UnsafeBufferPointer(start: segments, count: segments_count)
     }
 }

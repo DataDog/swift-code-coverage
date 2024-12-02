@@ -5,7 +5,7 @@
  */
 
 import Foundation
-import CCoverageLLVM
+@_implementationOnly import CCoverageLLVM
 
 public enum XcodeVersion: Hashable, Equatable {
     case xcode14
@@ -34,16 +34,12 @@ public final class CodeCoverage {
     private let processId: Int32
     
     public init(processor: CoverageProcessor, coverageFile: String, temp: URL) {
-        var fileName = coverageFile.replacingOccurrences(of: "%c", with: "")
-        let continuous = fileName != coverageFile
-        if fileName.range(of: "%m") == nil {
-            fileName = fileName.replacingOccurrences(of: ".profraw", with: "%m.profraw")
-        }
+        let (fileName, changed, continuous) = Self.fixFileName(coverageFile: coverageFile)
         self.coverageFilePath = fileName
         self.processId = ProcessInfo.processInfo.processIdentifier
         self.processor = processor
         self.tempDir = temp
-        if coverageFile != fileName {
+        if changed {
             if continuous {
                 processor.disableContinuousMode()
             }
@@ -92,13 +88,13 @@ public final class CodeCoverage {
     }
     
     public func setCoverageFile(to path: String) {
-        setenv("LLVM_PROFILE_FILE", path, 1)
+        setenv(Constants.llvmProfileFile, path, 1)
         processor.initializeCoverageFile()
     }
     
     public static var currentCoverageFile: String {
         get throws {
-            guard let coverage = getenv("LLVM_PROFILE_FILE").map({ String(cString: $0) }) else {
+            guard let coverage = getenv(Constants.llvmProfileFile).map({ String(cString: $0) }) else {
                 throw Error.coverageIsDisabled
             }
             return coverage
@@ -124,6 +120,17 @@ public final class CodeCoverage {
         if let file = file {
             self.initialCoverage = try? processor.filesCovered(in: file).get()
         }
+    }
+    
+    private static func fixFileName(coverageFile: String) -> (newName: String, isChanged: Bool, isContinuous: Bool) {
+        var fileName = coverageFile.replacingOccurrences(of: "%c", with: "")
+        let continuous = fileName.count != coverageFile.count
+        var changed = continuous
+        if fileName.range(of: "%m") == nil {
+            fileName = fileName.replacingOccurrences(of: ".profraw", with: "%m.profraw")
+            changed = true
+        }
+        return (fileName, changed, continuous)
     }
 }
 

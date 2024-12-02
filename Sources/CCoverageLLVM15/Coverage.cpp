@@ -20,7 +20,7 @@ static const char* errorMessage(Error E) {
 }
 
 // C wrapper for load() method
-static LLVMCoverageProcessorResult e_init_processor(const char* const* binaries, uint32_t count) {
+static CCoverageProcessorResult e_init_processor(const char* const* binaries, uint32_t count) {
     std::vector<StringRef> sbinaries;
     sbinaries.reserve(count);
     for (const auto &binary: llvm::enumerate(ArrayRef<const char*>(binaries, count))) {
@@ -28,34 +28,34 @@ static LLVMCoverageProcessorResult e_init_processor(const char* const* binaries,
     }
     auto processor = CodeCoverage::load(sbinaries);
     if (Error E = processor.takeError()) {
-        return LLVMCoverageProcessorResult({
+        return CCoverageProcessorResult({
             .is_error = true,
             .error = errorMessage(std::move(E))
         });
     }
-    return LLVMCoverageProcessorResult({.is_error = false, .processor = processor.get()});
+    return CCoverageProcessorResult({.is_error = false, .processor = processor.get()});
 }
 
 // C wrapper for coverage() method
-static CoveredFilesResult e_covered_files(const LLVMCoverageProcessor processor,
-                                          const char* profraw_file)
+static CCoverageFilesResult e_covered_files(const CCoverageProcessor processor,
+                                            const char* profraw_file)
 {
     
     auto CoverageProcessor = static_cast<CodeCoverage*>(processor);
     auto CoverageOrErr = CoverageProcessor->coverage(profraw_file);
     
     if (Error E = CoverageOrErr.takeError()) {
-        return CoveredFilesResult({
+        return CCoverageFilesResult({
             .is_error = true,
             .error = errorMessage(std::move(E))
         });
     }
     
-    return CoveredFilesResult({.is_error = false, .files = CoverageOrErr.get()});
+    return CCoverageFilesResult({.is_error = false, .files = CoverageOrErr.get()});
 }
 
 // C wrapper for delete
-static void e_destroy_processor(LLVMCoverageProcessor coverage) {
+static void e_destroy_processor(CCoverageProcessor coverage) {
     delete static_cast<CodeCoverage*>(coverage);
 }
 

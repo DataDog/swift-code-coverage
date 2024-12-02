@@ -102,9 +102,9 @@ static inline const void* _Nullable find_symbol_64bit(const char* _Nonnull symbo
     return NULL;
 }
 
-const void* _Nullable llvm_coverage_find_symbol_in_image(const char* _Nonnull symbol,
-                                                         const struct mach_header* _Nonnull image,
-                                                         intptr_t slide)
+const void* _Nullable coverage_find_symbol_in_image(const char* _Nonnull symbol,
+                                                    const struct mach_header* _Nonnull image,
+                                                    intptr_t slide)
 {
     if ((image == NULL) || (symbol == NULL)) {
         return NULL;

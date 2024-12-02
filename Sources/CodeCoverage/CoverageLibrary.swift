@@ -5,7 +5,7 @@
  */
 
 import Foundation
-import CCoverageLLVM
+@_implementationOnly import CCoverageLLVM
 
 final class CoverageLibrary {
     private let library: UnsafeMutableRawPointer
@@ -32,7 +32,7 @@ final class CoverageLibrary {
         }
     }
     
-    func createCoverageProcessor(binaries: [String]) -> Result<LLVMCoverageProcessor, Error> {
+    func createCoverageProcessor(binaries: [String]) -> Result<CCoverageProcessor, Error> {
         let result = binaries.withCStringsArray {
             exports.init_processor($0, UInt32(binaries.count))
         }
@@ -45,11 +45,11 @@ final class CoverageLibrary {
         return .success(result.processor!)
     }
     
-    func destroyCoverageProcessor(_ processor: LLVMCoverageProcessor) {
+    func destroyCoverageProcessor(_ processor: CCoverageProcessor) {
         exports.destroy_processor(processor)
     }
     
-    func filesCovered(in profilePath: String, processor: LLVMCoverageProcessor) -> Result<CoveredFiles, Error> {
+    func filesCovered(in profilePath: String, processor: CCoverageProcessor) -> Result<CCoverageFiles, Error> {
         let result = exports.covered_files(processor, profilePath)
         if result.is_error {
             // Crash on empty error string. If is_error is set to true an error string should be set too.

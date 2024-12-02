@@ -36,6 +36,7 @@
 		A7C84DF82CF71C930002115A /* CodeCoverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7C84DF42CF71C930002115A /* CodeCoverage.cpp */; };
 		A7C84DF92CF71C930002115A /* CodeCoverage.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7C84DF52CF71C930002115A /* CodeCoverage.hpp */; };
 		A7C84DFA2CF71C930002115A /* ResetCounters.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7C84DF62CF71C930002115A /* ResetCounters.hpp */; };
+		A7D7E64B2CFDD2EA00B49C35 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D7E64A2CFDD2EA00B49C35 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		A7C84DF42CF71C930002115A /* CodeCoverage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CodeCoverage.cpp; sourceTree = "<group>"; };
 		A7C84DF52CF71C930002115A /* CodeCoverage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CodeCoverage.hpp; sourceTree = "<group>"; };
 		A7C84DF62CF71C930002115A /* ResetCounters.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResetCounters.hpp; sourceTree = "<group>"; };
+		A7D7E64A2CFDD2EA00B49C35 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				A712C1AB2CEFA68B00B4282F /* CodeCoverage.swift */,
+				A7D7E64A2CFDD2EA00B49C35 /* Constants.swift */,
 				A712C1F52CF0D2D500B4282F /* CoverageInfo.swift */,
 				A712C1B52CEFC1AE00B4282F /* CoveredBinary.swift */,
 				A712C1B32CEFB0EA00B4282F /* CoverageLibrary.swift */,
@@ -536,6 +539,7 @@
 				A712C1B42CEFB0EA00B4282F /* CoverageLibrary.swift in Sources */,
 				A712C1B62CEFC1AE00B4282F /* CoveredBinary.swift in Sources */,
 				A712C1B82CEFE40700B4282F /* Utils.swift in Sources */,
+				A7D7E64B2CFDD2EA00B49C35 /* Constants.swift in Sources */,
 				A712C1AC2CEFA68B00B4282F /* CodeCoverage.swift in Sources */,
 				A712C1F62CF0D2D500B4282F /* CoverageInfo.swift in Sources */,
 			);

@@ -5,8 +5,8 @@
  */
 
 import Foundation
-import CCoverageLLVM
 import MachO
+@_implementationOnly import CCoverageLLVM
 
 public struct CoveredBinary {
     let name: String
@@ -48,13 +48,13 @@ public extension CoveredBinary {
             let slide = _dyld_get_image_vmaddr_slide(i)
             guard slide != 0 else { continue }
             
-            if let pi = llvm_coverage_find_symbol_in_image("___llvm_profile_initialize", header, slide),
-               let wf = llvm_coverage_find_symbol_in_image("___llvm_profile_write_file", header, slide),
-               let sp = llvm_coverage_find_symbol_in_image("___llvm_profile_set_page_size", header, slide),
-               let bc = llvm_coverage_find_symbol_in_image("___llvm_profile_begin_counters", header, slide),
-               let ec = llvm_coverage_find_symbol_in_image("___llvm_profile_end_counters", header, slide),
-               let bd = llvm_coverage_find_symbol_in_image("___llvm_profile_begin_data", header, slide),
-               let ed = llvm_coverage_find_symbol_in_image("___llvm_profile_end_data", header, slide)
+            if let pi = coverage_find_symbol_in_image("___llvm_profile_initialize", header, slide),
+               let wf = coverage_find_symbol_in_image("___llvm_profile_write_file", header, slide),
+               let sp = coverage_find_symbol_in_image("___llvm_profile_set_page_size", header, slide),
+               let bc = coverage_find_symbol_in_image("___llvm_profile_begin_counters", header, slide),
+               let ec = coverage_find_symbol_in_image("___llvm_profile_end_counters", header, slide),
+               let bd = coverage_find_symbol_in_image("___llvm_profile_begin_data", header, slide),
+               let ed = coverage_find_symbol_in_image("___llvm_profile_end_data", header, slide)
             {
                 binaries.append(CoveredBinary(name: name, path: path,
                                               profileInitializeFileFunc: unsafeBitCast(pi, to: (@convention(c) () -> Void).self),
