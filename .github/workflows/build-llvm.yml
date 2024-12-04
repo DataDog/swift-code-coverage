@@ -1,0 +1,45 @@
+name: Build LLVM XCFrameworks
+on:
+  workflow_call:
+jobs:
+  build-llvm:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        version: [15, 17]
+        platform: [macosx, maccatalyst, iphoneos, iphonesimulator, appletvos, appletvsimulator]
+    timeout-minutes: 1200
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build LLVM ${{ matrix.version }} for ${{ matrix.platform }}
+        run: make llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
+      - name: Archive libraries
+        run: tar -cJf LLVM${{ matrix.version }}-${{ matrix.platform }}.tar.xz llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LLVM${{ matrix.version }}-${{ matrix.platform }}
+          path: LLVM${{ matrix.version }}-${{ matrix.platform }}.tar.xz
+
+  build-xcframework:
+    needs: build-llvm
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+      - name: Extract artifacts
+        run: find . -name "*.tar.xz" -exec tar xzf {} \;
+      - name: Create XCFrameworks
+        run: make llvm_prebuilt
+      - name: Archive XCFrameworks
+        run: |
+          for framework in llvm/xcframeworks/*.xcframework ; do
+            tar -cJf "$(basename "$framework")".tar.xz "$framework"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LLVM15.xcframework
+          path: LLVM15.xcframework.tar.xz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LLVM17.xcframework
+          path: LLVM17.xcframework.tar.xz

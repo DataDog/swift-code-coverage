@@ -1,0 +1,30 @@
+name: Run Test
+on:
+  workflow_dispatch:
+jobs:
+  build-llvm:
+    name: Build LLVM XCFrameworks
+    uses: "./.github/workflows/build-llvm.yml"
+  test:
+    needs: build-llvm
+    strategy:
+      matrix:
+        xcode:
+          - os: macos-latest
+            xcode: "16.1"
+          - os: macos-14
+            xcode: "15.4"
+          - os: macos-14
+            xcode: "14.3.1"
+    runs-on: ${{ matrix.xcode.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: LLVM*.xcframework
+      - name: Extract artifacts
+        run: find . -name "*.tar.xz" -exec tar xzf {} \;
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_${{ matrix.xcode.xcode }}.app
+      - name: Run tests for all platforms
+        run: make test
