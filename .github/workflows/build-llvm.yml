@@ -37,7 +37,7 @@ jobs:
       - name: Calculate and save cache key for llvm library
         id: llvm-cache-key
         run: |
-          HASH=${{ hashFiles(format('llvm/patches/{0}**', matrix.version), 'Makefile') }}
+          HASH=${{ hashFiles(format('llvm/patches/{0}**', matrix.version), 'Makefile.llvm') }}
           KEY="llvm${{ matrix.version }}-${{ matrix.platform }}-$HASH"
           echo "llvm_current=$KEY" >> "$GITHUB_OUTPUT"
           echo "llvm${{matrix.version}}_${{matrix.platform}}=$KEY" >> "$GITHUB_OUTPUT"
@@ -50,7 +50,7 @@ jobs:
           lookup-only: true
       - name: Build LLVM ${{ matrix.version }} for ${{ matrix.platform }}
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
-        run: make llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
+        run: make -f Makefile.llvm llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
 
   build-xcframework:
     needs: build-llvm-libs
@@ -67,7 +67,7 @@ jobs:
       - name: Calculate and save cache key for llvm framework
         id: llvm-cache-key
         run: |
-          HASH=${{ hashFiles(format('llvm/patches/{0}**', matrix.version), 'Makefile') }}
+          HASH=${{ hashFiles(format('llvm/patches/{0}**', matrix.version), 'Makefile.llvm') }}
           KEY="llvm${{ matrix.version }}-framework-$HASH"
           echo "llvm_current=$KEY" >> "$GITHUB_OUTPUT"
           echo "llvm${{matrix.version}}_framework=$KEY" >> "$GITHUB_OUTPUT"
@@ -122,4 +122,4 @@ jobs:
           fail-on-cache-miss: true
       - name: Create XCFrameworks
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
-        run: make llvm${{matrix.version}}_prebuilt_xcframework
+        run: make -f Makefile.llvm llvm${{matrix.version}}_prebuilt_xcframework
