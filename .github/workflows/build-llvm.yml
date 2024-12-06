@@ -33,7 +33,7 @@ jobs:
     timeout-minutes: 1200
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Calculate and save cache key for llvm library
         id: llvm-cache-key
         run: |
@@ -42,7 +42,7 @@ jobs:
           echo "llvm_current=$KEY" >> "$GITHUB_OUTPUT"
           echo "llvm${{matrix.version}}_${{matrix.platform}}=$KEY" >> "$GITHUB_OUTPUT"
       - name: Check cache for built binary
-        uses: actions/cache@v4
+        uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
         id: llvm-build-cache
         with:
           path: llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
@@ -63,7 +63,7 @@ jobs:
       llvm17: ${{ steps.llvm-cache-key.outputs.llvm17_framework }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Calculate and save cache key for llvm framework
         id: llvm-cache-key
         run: |
@@ -72,7 +72,7 @@ jobs:
           echo "llvm_current=$KEY" >> "$GITHUB_OUTPUT"
           echo "llvm${{matrix.version}}_framework=$KEY" >> "$GITHUB_OUTPUT"
       - name: Check cache for built binary
-        uses: actions/cache@v4
+        uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
         id: llvm-build-cache
         with:
           path: llvm/xcframeworks/LLVM${{ matrix.version }}.xcframework
@@ -80,42 +80,42 @@ jobs:
           lookup-only: true
       - name: Download llvm ${{matrix.version}} for macosx
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
         with:
           path: llvm/build/libs/llvm${{matrix.version}}/macosx
           key: ${{ needs.build-llvm-libs.outputs[format('macosx{0}', matrix.version)] }}
           fail-on-cache-miss: true
       - name: Download llvm ${{matrix.version}} for maccatalyst
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
         with:
           path: llvm/build/libs/llvm${{matrix.version}}/maccatalyst
           key: ${{ needs.build-llvm-libs.outputs[format('maccatalyst{0}', matrix.version)] }}
           fail-on-cache-miss: true
       - name: Download llvm ${{matrix.version}} for iphoneos
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
         with:
           path: llvm/build/libs/llvm${{matrix.version}}/iphoneos
           key: ${{ needs.build-llvm-libs.outputs[format('iphoneos{0}', matrix.version)] }}
           fail-on-cache-miss: true
       - name: Download llvm ${{matrix.version}} for iphonesimulator
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
         with:
           path: llvm/build/libs/llvm${{matrix.version}}/iphonesimulator
           key: ${{ needs.build-llvm-libs.outputs[format('iphonesimulator{0}', matrix.version)] }}
           fail-on-cache-miss: true
       - name: Download llvm ${{matrix.version}} for appletvos
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
         with:
           path: llvm/build/libs/llvm${{matrix.version}}/appletvos
           key: ${{ needs.build-llvm-libs.outputs[format('appletvos{0}', matrix.version)] }}
           fail-on-cache-miss: true
       - name: Download llvm ${{matrix.version}} for appletvsimulator
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
         with:
           path: llvm/build/libs/llvm${{matrix.version}}/appletvsimulator
           key: ${{ needs.build-llvm-libs.outputs[format('appletvsimulator{0}', matrix.version)] }}
