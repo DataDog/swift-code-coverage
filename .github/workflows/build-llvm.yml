@@ -1,45 +1,125 @@
 name: Build LLVM XCFrameworks
 on:
   workflow_call:
+    outputs:
+      llvm17-cache-key:
+        description: "Cache key for LLVM17.xcframework"
+        value: ${{ jobs.build-xcframework.outputs.llvm17 }}
+      llvm15-cache-key:
+        description: "Cache key for LLVM15.xcframework"
+        value: ${{ jobs.build-xcframework.outputs.llvm15 }}
+permissions:
+  contents: read
 jobs:
-  build-llvm:
+  build-llvm-libs:
     runs-on: macos-latest
     strategy:
       matrix:
         version: [15, 17]
         platform: [macosx, maccatalyst, iphoneos, iphonesimulator, appletvos, appletvsimulator]
+    outputs:
+      macosx15: ${{ steps.llvm-cache-key.outputs.llvm15_macosx }}
+      macosx17: ${{ steps.llvm-cache-key.outputs.llvm17_macosx }}
+      maccatalyst15: ${{ steps.llvm-cache-key.outputs.llvm15_maccatalyst }}
+      maccatalyst17: ${{ steps.llvm-cache-key.outputs.llvm17_maccatalyst }}
+      iphoneos15: ${{ steps.llvm-cache-key.outputs.llvm15_iphoneos }}
+      iphoneos17: ${{ steps.llvm-cache-key.outputs.llvm17_iphoneos }}
+      iphonesimulator15: ${{ steps.llvm-cache-key.outputs.llvm15_iphonesimulator }}
+      iphonesimulator17: ${{ steps.llvm-cache-key.outputs.llvm17_iphonesimulator }}
+      appletvos15: ${{ steps.llvm-cache-key.outputs.llvm15_appletvos }}
+      appletvos17: ${{ steps.llvm-cache-key.outputs.llvm17_appletvos }}
+      appletvsimulator15: ${{ steps.llvm-cache-key.outputs.llvm15_appletvsimulator }}
+      appletvsimulator17: ${{ steps.llvm-cache-key.outputs.llvm17_appletvsimulator }}
     timeout-minutes: 1200
     steps:
-      - uses: actions/checkout@v4
-      - name: Build LLVM ${{ matrix.version }} for ${{ matrix.platform }}
-        run: make llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
-      - name: Archive libraries
-        run: tar -cJf LLVM${{ matrix.version }}-${{ matrix.platform }}.tar.xz llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
-      - uses: actions/upload-artifact@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Calculate and save cache key for llvm library
+        id: llvm-cache-key
+        run: |
+          HASH=${{ hashFiles(format('llvm/patches/{0}**', matrix.version), 'Makefile') }}
+          KEY="llvm${{ matrix.version }}-${{ matrix.platform }}-$HASH"
+          echo "llvm_current=$KEY" >> "$GITHUB_OUTPUT"
+          echo "llvm${{matrix.version}}_${{matrix.platform}}=$KEY" >> "$GITHUB_OUTPUT"
+      - name: Check cache for built binary
+        uses: actions/cache@v4
+        id: llvm-build-cache
         with:
-          name: LLVM${{ matrix.version }}-${{ matrix.platform }}
-          path: LLVM${{ matrix.version }}-${{ matrix.platform }}.tar.xz
+          path: llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
+          key: ${{ steps.llvm-cache-key.outputs.llvm_current }}
+          lookup-only: true
+      - name: Build LLVM ${{ matrix.version }} for ${{ matrix.platform }}
+        if: steps.llvm-build-cache.outputs.cache-hit != 'true'
+        run: make llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
 
   build-xcframework:
-    needs: build-llvm
+    needs: build-llvm-libs
     runs-on: macos-latest
+    strategy:
+      matrix:
+        version: [15, 17]
+    outputs:
+      llvm15: ${{ steps.llvm-cache-key.outputs.llvm15_framework }}
+      llvm17: ${{ steps.llvm-cache-key.outputs.llvm17_framework }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-      - name: Extract artifacts
-        run: find . -name "*.tar.xz" -exec tar xzf {} \;
-      - name: Create XCFrameworks
-        run: make llvm_prebuilt
-      - name: Archive XCFrameworks
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Calculate and save cache key for llvm framework
+        id: llvm-cache-key
         run: |
-          for framework in llvm/xcframeworks/*.xcframework ; do
-            tar -cJf "$(basename "$framework")".tar.xz "$framework"
-          done
-      - uses: actions/upload-artifact@v4
+          HASH=${{ hashFiles(format('llvm/patches/{0}**', matrix.version), 'Makefile') }}
+          KEY="llvm${{ matrix.version }}-framework-$HASH"
+          echo "llvm_current=$KEY" >> "$GITHUB_OUTPUT"
+          echo "llvm${{matrix.version}}_framework=$KEY" >> "$GITHUB_OUTPUT"
+      - name: Check cache for built binary
+        uses: actions/cache@v4
+        id: llvm-build-cache
         with:
-          name: LLVM15.xcframework
-          path: LLVM15.xcframework.tar.xz
-      - uses: actions/upload-artifact@v4
+          path: llvm/xcframeworks/LLVM${{ matrix.version }}.xcframework
+          key: ${{ steps.llvm-cache-key.outputs.llvm_current }}
+          lookup-only: true
+      - name: Download llvm ${{matrix.version}} for macosx
+        if: steps.llvm-build-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
         with:
-          name: LLVM17.xcframework
-          path: LLVM17.xcframework.tar.xz
+          path: llvm/build/libs/llvm${{matrix.version}}/macosx
+          key: ${{ needs.build-llvm-libs.outputs[format('macosx{0}', matrix.version)] }}
+          fail-on-cache-miss: true
+      - name: Download llvm ${{matrix.version}} for maccatalyst
+        if: steps.llvm-build-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: llvm/build/libs/llvm${{matrix.version}}/maccatalyst
+          key: ${{ needs.build-llvm-libs.outputs[format('maccatalyst{0}', matrix.version)] }}
+          fail-on-cache-miss: true
+      - name: Download llvm ${{matrix.version}} for iphoneos
+        if: steps.llvm-build-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: llvm/build/libs/llvm${{matrix.version}}/iphoneos
+          key: ${{ needs.build-llvm-libs.outputs[format('iphoneos{0}', matrix.version)] }}
+          fail-on-cache-miss: true
+      - name: Download llvm ${{matrix.version}} for iphonesimulator
+        if: steps.llvm-build-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: llvm/build/libs/llvm${{matrix.version}}/iphonesimulator
+          key: ${{ needs.build-llvm-libs.outputs[format('iphonesimulator{0}', matrix.version)] }}
+          fail-on-cache-miss: true
+      - name: Download llvm ${{matrix.version}} for appletvos
+        if: steps.llvm-build-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: llvm/build/libs/llvm${{matrix.version}}/appletvos
+          key: ${{ needs.build-llvm-libs.outputs[format('appletvos{0}', matrix.version)] }}
+          fail-on-cache-miss: true
+      - name: Download llvm ${{matrix.version}} for appletvsimulator
+        if: steps.llvm-build-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: llvm/build/libs/llvm${{matrix.version}}/appletvsimulator
+          key: ${{ needs.build-llvm-libs.outputs[format('appletvsimulator{0}', matrix.version)] }}
+          fail-on-cache-miss: true
+      - name: Create XCFrameworks
+        if: steps.llvm-build-cache.outputs.cache-hit != 'true'
+        run: make llvm${{matrix.version}}_prebuilt

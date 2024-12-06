@@ -1,9 +1,19 @@
 name: Run Test
 on:
-  workflow_dispatch:
+  push:
+  pull_request:
+  workflow_call:
+    outputs:
+      llvm17-cache-key:
+        description: "Cache key for LLVM17.xcframework"
+        value: ${{ jobs.build-llvm.outputs.llvm17-cache-key }}
+      llvm15-cache-key:
+        description: "Cache key for LLVM15.xcframework"
+        value: ${{ jobs.build-llvm.outputs.llvm15-cache-key }}
+permissions:
+  contents: read
 jobs:
   build-llvm:
-    name: Build LLVM XCFrameworks
     uses: "./.github/workflows/build-llvm.yml"
   test:
     needs: build-llvm
@@ -18,12 +28,20 @@ jobs:
             xcode: "14.3.1"
     runs-on: ${{ matrix.xcode.os }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download LLVM15 framework
+        uses: actions/cache/restore@v4
         with:
-          name: LLVM*.xcframework
-      - name: Extract artifacts
-        run: find . -name "*.tar.xz" -exec tar xzf {} \;
+          path: llvm/xcframeworks/LLVM15.xcframework
+          key: ${{ needs.build-llvm.outputs.llvm15-cache-key }}
+          fail-on-cache-miss: true
+      - name: Download LLVM17 framework
+        uses: actions/cache/restore@v4
+        with:
+          path: llvm/xcframeworks/LLVM17.xcframework
+          key: ${{ needs.build-llvm.outputs.llvm17-cache-key }}
+          fail-on-cache-miss: true
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_${{ matrix.xcode.xcode }}.app
       - name: Run tests for all platforms

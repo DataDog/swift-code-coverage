@@ -1,0 +1,45 @@
+name: Publish new release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release Version'
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  test:
+    uses: "./.github/workflows/test.yml"
+  release:
+    needs: test
+    runs-on: macos-13
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download LLVM15 framework
+        uses: actions/cache/restore@v4
+        with:
+          path: llvm/xcframeworks/LLVM15.xcframework
+          key: ${{ needs.test.outputs.llvm15-cache-key }}
+          fail-on-cache-miss: true
+      - name: Download LLVM17 framework
+        uses: actions/cache/restore@v4
+        with:
+          path: llvm/xcframeworks/LLVM17.xcframework
+          key: ${{ needs.test.outputs.llvm17-cache-key }}
+          fail-on-cache-miss: true
+      - name: Select Xcode 14.3.1
+        run: sudo xcode-select --switch /Applications/Xcode_14.3.1.app
+      - name: Build and upload XCFrameworks, create tag and release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: make XC_LOG=archive version=${{ github.event.inputs.version }} github_release
+      - name: Attach Xcode logs
+        if: '!cancelled()'
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcode-archive-logs
+          path: "*-archive.log"
