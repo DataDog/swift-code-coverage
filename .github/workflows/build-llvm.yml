@@ -37,7 +37,6 @@ jobs:
       - name: Calculate and save cache key for llvm library
         id: llvm-cache-key
         run: |
-          echo "TESTHASH: $${{hashFiles(format('llvm/patches/{0}**', matrix.version))}}"
           HASH=${{ hashFiles(format('llvm/patches/{0}**', matrix.version), 'Makefile') }}
           KEY="llvm${{ matrix.version }}-${{ matrix.platform }}-$HASH"
           echo "llvm_current=$KEY" >> "$GITHUB_OUTPUT"
@@ -123,4 +122,4 @@ jobs:
           fail-on-cache-miss: true
       - name: Create XCFrameworks
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
-        run: make llvm${{matrix.version}}_prebuilt
+        run: make llvm${{matrix.version}}_prebuilt_xcframework
