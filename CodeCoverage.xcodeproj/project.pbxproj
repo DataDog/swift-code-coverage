@@ -11,7 +11,7 @@
 		A712C1832CEFA06D00B4282F /* CodeCoverageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1822CEFA06D00B4282F /* CodeCoverageTests.swift */; };
 		A712C1A02CEFA34100B4282F /* CCoverageLLVM.h in Headers */ = {isa = PBXBuildFile; fileRef = A712C1942CEFA34100B4282F /* CCoverageLLVM.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A712C1A92CEFA39400B4282F /* Symbols.c in Sources */ = {isa = PBXBuildFile; fileRef = A712C1A82CEFA39400B4282F /* Symbols.c */; };
-		A712C1AC2CEFA68B00B4282F /* CodeCoverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1AB2CEFA68B00B4282F /* CodeCoverage.swift */; };
+		A712C1AC2CEFA68B00B4282F /* CoverageCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1AB2CEFA68B00B4282F /* CoverageCollector.swift */; };
 		A712C1B42CEFB0EA00B4282F /* CoverageLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1B32CEFB0EA00B4282F /* CoverageLibrary.swift */; };
 		A712C1B62CEFC1AE00B4282F /* CoveredBinary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1B52CEFC1AE00B4282F /* CoveredBinary.swift */; };
 		A712C1B82CEFE40700B4282F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1B72CEFE40700B4282F /* Utils.swift */; };
@@ -106,7 +106,7 @@
 		A712C1922CEFA34100B4282F /* CCoverageLLVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCoverageLLVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A712C1942CEFA34100B4282F /* CCoverageLLVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCoverageLLVM.h; sourceTree = "<group>"; };
 		A712C1A82CEFA39400B4282F /* Symbols.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Symbols.c; sourceTree = "<group>"; };
-		A712C1AB2CEFA68B00B4282F /* CodeCoverage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCoverage.swift; sourceTree = "<group>"; };
+		A712C1AB2CEFA68B00B4282F /* CoverageCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageCollector.swift; sourceTree = "<group>"; };
 		A712C1B32CEFB0EA00B4282F /* CoverageLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageLibrary.swift; sourceTree = "<group>"; };
 		A712C1B52CEFC1AE00B4282F /* CoveredBinary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoveredBinary.swift; sourceTree = "<group>"; };
 		A712C1B72CEFE40700B4282F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 		A712C1772CEFA06C00B4282F /* CodeCoverage */ = {
 			isa = PBXGroup;
 			children = (
-				A712C1AB2CEFA68B00B4282F /* CodeCoverage.swift */,
+				A712C1AB2CEFA68B00B4282F /* CoverageCollector.swift */,
 				A7D7E64A2CFDD2EA00B49C35 /* Constants.swift */,
 				A712C1F52CF0D2D500B4282F /* CoverageInfo.swift */,
 				A712C1B52CEFC1AE00B4282F /* CoveredBinary.swift */,
@@ -540,7 +540,7 @@
 				A712C1B62CEFC1AE00B4282F /* CoveredBinary.swift in Sources */,
 				A712C1B82CEFE40700B4282F /* Utils.swift in Sources */,
 				A7D7E64B2CFDD2EA00B49C35 /* Constants.swift in Sources */,
-				A712C1AC2CEFA68B00B4282F /* CodeCoverage.swift in Sources */,
+				A712C1AC2CEFA68B00B4282F /* CoverageCollector.swift in Sources */,
 				A712C1F62CF0D2D500B4282F /* CoverageInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

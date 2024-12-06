@@ -89,7 +89,7 @@ set_hash:
 
 build_release:
 	@$(MAKE) set_version
-	@$(MAKE) build_sdk
+	@$(MAKE) build
 	@$(MAKE) set_hash
 
 github_release: build_release	
