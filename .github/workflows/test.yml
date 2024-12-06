@@ -45,4 +45,10 @@ jobs:
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_${{ matrix.xcode.xcode }}.app
       - name: Run tests for all platforms
-        run: make test
+        run: make XC_LOG=tests test
+      - name: Attach Xcode logs
+        if: '!cancelled()'
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcode-tests-logs
+          path: "*-tests.log"
