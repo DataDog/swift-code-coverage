@@ -2,6 +2,8 @@
 # SDK build
 ##
 
+.SECONDARY:
+
 # HELPERS
 
 # Check is variable defined helper
