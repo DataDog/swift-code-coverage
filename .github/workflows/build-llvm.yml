@@ -12,7 +12,7 @@ permissions:
   contents: read
 jobs:
   build-llvm-libs:
-    runs-on: macos-latest
+    runs-on: macos-13
     strategy:
       matrix:
         version: [15, 17]
@@ -48,6 +48,9 @@ jobs:
           path: llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
           key: ${{ steps.llvm-cache-key.outputs.llvm_current }}
           lookup-only: true
+      - name: Select Xcode 14.3.1
+        if: steps.llvm-build-cache.outputs.cache-hit != 'true'
+        run: sudo xcode-select --switch /Applications/Xcode_14.3.1.app
       - name: Build LLVM ${{ matrix.version }} for ${{ matrix.platform }}
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
         run: make -f Makefile.llvm llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
