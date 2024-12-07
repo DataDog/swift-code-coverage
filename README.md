@@ -27,7 +27,7 @@ Add this repository to the SPM dependencies.
 ```swift
 import CodeCoverage
 
-let coverage = try CodeCoverage(for: .xcode16, temp: NSTemporaryDirectory())
+let coverage = try CoverageCollector(for: .xcode16, temp: NSTemporaryDirectory())
 
 // Collected on the initialisaion
 print("Initial coverage: \(coverage.initialCoverage)")
@@ -52,9 +52,9 @@ print("Gathered coverage: \(gathered)")
 
 ## Building
 
-1. Build LLVM libraries with `make build_llvm` command.
+1. Build LLVM libraries with `make -f Makefile.llvm build` command.
 2. Open Xcode project and edit.
-3. To build xcarchive use `make archive` command.
+3. To build xcarchive use `make build` command.
 
 ## Contributing
 

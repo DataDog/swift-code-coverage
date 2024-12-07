@@ -1,9 +1,19 @@
-name: Run Test
+name: Run Tests
 on:
+  pull_request:
   workflow_dispatch:
+  workflow_call:
+    outputs:
+      llvm17-cache-key:
+        description: "Cache key for LLVM17.xcframework"
+        value: ${{ jobs.build-llvm.outputs.llvm17-cache-key }}
+      llvm15-cache-key:
+        description: "Cache key for LLVM15.xcframework"
+        value: ${{ jobs.build-llvm.outputs.llvm15-cache-key }}
+permissions:
+  contents: read
 jobs:
   build-llvm:
-    name: Build LLVM XCFrameworks
     uses: "./.github/workflows/build-llvm.yml"
   test:
     needs: build-llvm
@@ -14,17 +24,31 @@ jobs:
             xcode: "16.1"
           - os: macos-14
             xcode: "15.4"
-          - os: macos-14
+          - os: macos-13
             xcode: "14.3.1"
     runs-on: ${{ matrix.xcode.os }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Download LLVM15 framework
+        uses: actions/cache/restore@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
         with:
-          name: LLVM*.xcframework
-      - name: Extract artifacts
-        run: find . -name "*.tar.xz" -exec tar xzf {} \;
+          path: llvm/xcframeworks/LLVM15.xcframework
+          key: ${{ needs.build-llvm.outputs.llvm15-cache-key }}
+          fail-on-cache-miss: true
+      - name: Download LLVM17 framework
+        uses: actions/cache/restore@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
+        with:
+          path: llvm/xcframeworks/LLVM17.xcframework
+          key: ${{ needs.build-llvm.outputs.llvm17-cache-key }}
+          fail-on-cache-miss: true
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_${{ matrix.xcode.xcode }}.app
       - name: Run tests for all platforms
-        run: make test
+        run: make XC_LOG=tests test
+      - name: Attach Xcode logs
+        if: '!cancelled()'
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
+        with:
+          name: xcode${{ matrix.xcode.xcode }}-tests-logs
+          path: "*-tests.log"

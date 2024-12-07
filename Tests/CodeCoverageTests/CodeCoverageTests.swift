@@ -18,7 +18,7 @@ func test456() {
 }
 
 final class CodeCoverageTests: XCTestCase {
-    static var coverage: CodeCoverage! = nil
+    static var coverage: CoverageCollector! = nil
 
 #if swift(>=5.10)
     static let xcodeVersion: XcodeVersion = .xcode16
@@ -31,9 +31,9 @@ final class CodeCoverageTests: XCTestCase {
 #endif
     
     class override func setUp() {
-        Self.coverage = try! CodeCoverage(for: xcodeVersion,
-                                          temp: URL(fileURLWithPath: NSTemporaryDirectory(),
-                                                    isDirectory: true))
+        Self.coverage = try! CoverageCollector(for: xcodeVersion,
+                                               temp: URL(fileURLWithPath: NSTemporaryDirectory(),
+                                                         isDirectory: true))
     }
     
     override class func tearDown() {
