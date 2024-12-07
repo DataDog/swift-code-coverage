@@ -179,8 +179,8 @@ llvm/build/libs/llvm%/maccatalyst: llvm/build/src/llvm%
 				-DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" \
 				-DCMAKE_OSX_SYSROOT="$(SYSROOT)" \
 				-DCMAKE_OSX_DEPLOYMENT_TARGET="" \
-				-DCMAKE_C_FLAGS="-target arm64-apple-ios14.0-macabi" \
-				-DCMAKE_CXX_FLAGS="-target arm64-apple-ios14.0-macabi")
+				-DCMAKE_C_FLAGS="-target arm64-apple-ios13.0-macabi" \
+				-DCMAKE_CXX_FLAGS="-target arm64-apple-ios13.0-macabi")
 	@mkdir -p llvm/build/build llvm/build/libs
 	@cd llvm/build/build && cmake $(CMAKE_ARGS_PL) "$(PWD)/$</llvm"
 	@env cmake --build llvm/build/build

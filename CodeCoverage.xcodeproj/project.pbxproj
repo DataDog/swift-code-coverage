@@ -132,6 +132,8 @@
 		A7C84DF52CF71C930002115A /* CodeCoverage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CodeCoverage.hpp; sourceTree = "<group>"; };
 		A7C84DF62CF71C930002115A /* ResetCounters.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResetCounters.hpp; sourceTree = "<group>"; };
 		A7D7E64A2CFDD2EA00B49C35 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A7D7E64C2D03CDC600B49C35 /* Makefile.llvm */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.llvm; sourceTree = "<group>"; };
+		A7D7E64D2D03CDC700B49C35 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				A71756922CF1FB8100240492 /* Makefile */,
+				A7D7E64C2D03CDC600B49C35 /* Makefile.llvm */,
+				A7D7E64D2D03CDC700B49C35 /* Package.swift */,
 				A712C1AA2CEFA61E00B4282F /* Sources */,
 				A712C1B92CEFEEED00B4282F /* Tests */,
 				A71756932CF4E44800240492 /* LLVM */,
