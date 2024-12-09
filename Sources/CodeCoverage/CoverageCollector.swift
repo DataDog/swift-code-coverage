@@ -24,7 +24,7 @@ public enum XcodeVersion: Hashable, Equatable {
     }
 }
 
-public final class CodeCoverage {
+public final class CoverageCollector {
     public let coverageFilePath: String
     public let processor: CoverageProcessor
     public let tempDir: URL
@@ -134,7 +134,7 @@ public final class CodeCoverage {
     }
 }
 
-public extension CodeCoverage {
+public extension CoverageCollector {
     enum Error: Swift.Error {
         case coverageIsDisabled
         case coverageGatheringAlreadyStarted
