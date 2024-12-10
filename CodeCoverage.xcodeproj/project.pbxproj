@@ -37,6 +37,10 @@
 		A7C84DF92CF71C930002115A /* CodeCoverage.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7C84DF52CF71C930002115A /* CodeCoverage.hpp */; };
 		A7C84DFA2CF71C930002115A /* ResetCounters.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7C84DF62CF71C930002115A /* ResetCounters.hpp */; };
 		A7D7E64B2CFDD2EA00B49C35 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D7E64A2CFDD2EA00B49C35 /* Constants.swift */; };
+		A7D7E6532D08E02A00B49C35 /* BinaryCoverageReaderRef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7D7E6512D08E02A00B49C35 /* BinaryCoverageReaderRef.cpp */; };
+		A7D7E6542D08E02A00B49C35 /* BinaryCoverageReaderRef.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7D7E6522D08E02A00B49C35 /* BinaryCoverageReaderRef.hpp */; };
+		A7D7E6572D08E25800B49C35 /* BinaryCoverageReaderRef.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7D7E6552D08E25800B49C35 /* BinaryCoverageReaderRef.hpp */; };
+		A7D7E6582D08E25800B49C35 /* BinaryCoverageReaderRef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7D7E6562D08E25800B49C35 /* BinaryCoverageReaderRef.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +138,10 @@
 		A7D7E64A2CFDD2EA00B49C35 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A7D7E64C2D03CDC600B49C35 /* Makefile.llvm */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.llvm; sourceTree = "<group>"; };
 		A7D7E64D2D03CDC700B49C35 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		A7D7E6512D08E02A00B49C35 /* BinaryCoverageReaderRef.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryCoverageReaderRef.cpp; sourceTree = "<group>"; };
+		A7D7E6522D08E02A00B49C35 /* BinaryCoverageReaderRef.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BinaryCoverageReaderRef.hpp; sourceTree = "<group>"; };
+		A7D7E6552D08E25800B49C35 /* BinaryCoverageReaderRef.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BinaryCoverageReaderRef.hpp; sourceTree = "<group>"; };
+		A7D7E6562D08E25800B49C35 /* BinaryCoverageReaderRef.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryCoverageReaderRef.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +287,8 @@
 			children = (
 				A712C1C12CEFEF5900B4282F /* Coverage.h */,
 				A712C1CC2CEFF1A700B4282F /* Coverage.cpp */,
+				A7D7E6522D08E02A00B49C35 /* BinaryCoverageReaderRef.hpp */,
+				A7D7E6512D08E02A00B49C35 /* BinaryCoverageReaderRef.cpp */,
 				A71756B02CF7196400240492 /* CodeCoverage.hpp */,
 				A71756AF2CF7196400240492 /* CodeCoverage.cpp */,
 				A71756972CF4EAE600240492 /* ResetCounters.hpp */,
@@ -290,6 +300,8 @@
 		A712C1E12CF0A37B00B4282F /* CCoverageLLVM17 */ = {
 			isa = PBXGroup;
 			children = (
+				A7D7E6552D08E25800B49C35 /* BinaryCoverageReaderRef.hpp */,
+				A7D7E6562D08E25800B49C35 /* BinaryCoverageReaderRef.cpp */,
 				A712C1E22CF0A37B00B4282F /* Coverage.h */,
 				A712C1EF2CF0A7D600B4282F /* Coverage.cpp */,
 				A7C84DF52CF71C930002115A /* CodeCoverage.hpp */,
@@ -334,6 +346,7 @@
 			files = (
 				A71756B22CF7196400240492 /* CodeCoverage.hpp in Headers */,
 				A712C1C22CEFEF5900B4282F /* Coverage.h in Headers */,
+				A7D7E6542D08E02A00B49C35 /* BinaryCoverageReaderRef.hpp in Headers */,
 				A71756992CF4EAE600240492 /* ResetCounters.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +357,7 @@
 			files = (
 				A712C1E32CF0A37B00B4282F /* Coverage.h in Headers */,
 				A7C84DFA2CF71C930002115A /* ResetCounters.hpp in Headers */,
+				A7D7E6572D08E25800B49C35 /* BinaryCoverageReaderRef.hpp in Headers */,
 				A7C84DF92CF71C930002115A /* CodeCoverage.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A71756982CF4EAE600240492 /* ResetCounters.cpp in Sources */,
+				A7D7E6532D08E02A00B49C35 /* BinaryCoverageReaderRef.cpp in Sources */,
 				A712C1CD2CEFF1A700B4282F /* Coverage.cpp in Sources */,
 				A71756B12CF7196400240492 /* CodeCoverage.cpp in Sources */,
 			);
@@ -580,6 +595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7C84DF72CF71C930002115A /* ResetCounters.cpp in Sources */,
+				A7D7E6582D08E25800B49C35 /* BinaryCoverageReaderRef.cpp in Sources */,
 				A712C1F02CF0A7D600B4282F /* Coverage.cpp in Sources */,
 				A7C84DF82CF71C930002115A /* CodeCoverage.cpp in Sources */,
 			);

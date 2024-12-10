@@ -101,15 +101,18 @@ public final class CoverageCollector {
         }
     }
     
-    private func loadInitialCoverage() {
+    public static var currentCoverageFileURL: URL? {
+        guard let coverageFilePath = try? currentCoverageFile else {
+            return nil
+        }
         let covFileUrl = URL(fileURLWithPath: coverageFilePath, isDirectory: false)
         let covFileName = covFileUrl.lastPathComponent
         let resourceKeys = Set<URLResourceKey>([.isRegularFileKey, .nameKey])
         guard let enumerator = FileManager.default.enumerator(at: covFileUrl.deletingLastPathComponent(),
                                                               includingPropertiesForKeys: Array(resourceKeys),
                                                               options: [.skipsSubdirectoryDescendants, .skipsHiddenFiles])
-        else { return }
-        let file = enumerator.first {
+        else { return nil }
+        return enumerator.first {
             guard let fileURL = $0 as? URL else { return false }
             guard let resourceValues = try? fileURL.resourceValues(forKeys: resourceKeys),
                   let isFile = resourceValues.isRegularFile, isFile,
@@ -117,7 +120,10 @@ public final class CoverageCollector {
             else { return false }
             return name.hasSuffix(".profraw") && !covFileName.commonPrefix(with: name).isEmpty
         }.flatMap { $0 as? URL }
-        if let file = file {
+    }
+    
+    private func loadInitialCoverage() {
+        if let file = Self.currentCoverageFileURL {
             self.initialCoverage = try? processor.filesCovered(in: file).get()
         }
     }
@@ -140,5 +146,17 @@ public extension CoverageCollector {
         case coverageGatheringAlreadyStarted
         case coverageGatheringIsntStarted
         case processor(error: CoverageProcessor.Error)
+    }
+    
+    static var compiledByXcodeVersion: XcodeVersion? {
+    #if swift(>=5.10)
+        return .xcode16
+    #elseif swift(>=5.9) && swift(<5.10)
+        return .xcode15
+    #elseif swift(>=5.7) && swift(<5.9)
+        return .xcode14
+    #else
+        return nil
+    #endif
     }
 }

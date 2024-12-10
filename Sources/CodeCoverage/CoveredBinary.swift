@@ -9,8 +9,8 @@ import MachO
 @_implementationOnly import CCoverageLLVM
 
 public struct CoveredBinary {
-    let name: String
-    let path: String
+    public let name: String
+    public let path: String
     // __llvm_profile_initialize
     let profileInitializeFileFunc: @convention(c) () -> Void
     // __llvm_profile_set_page_size

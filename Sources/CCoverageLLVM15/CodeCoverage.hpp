@@ -9,7 +9,6 @@
 #include <llvm15/ProfileData/Coverage/CoverageMapping.h>
 #include <llvm15/ProfileData/Coverage/CoverageMappingReader.h>
 #include <llvm15/Support/MemoryBuffer.h>
-#include <mutex>
 
 namespace llvm15 {
 
@@ -20,8 +19,7 @@ public:
     llvm::Expected<CCoverageFiles> coverage(llvm::StringRef ProfrawPath);
 private:
     CodeCoverage() {};
-    std::mutex MappingReadersLock;
-    std::vector<std::unique_ptr<llvm::coverage::CoverageMappingReader>> MappingReaders;
+    std::vector<std::unique_ptr<llvm::coverage::BinaryCoverageReader>> MappingReaders;
     llvm::Expected<std::unique_ptr<llvm::MemoryBuffer>> readProfile(llvm::StringRef ProfrawPath);
     CCoverageFile processFile(llvm::StringRef Name, llvm::coverage::CoverageMapping &Coverage);
 };
