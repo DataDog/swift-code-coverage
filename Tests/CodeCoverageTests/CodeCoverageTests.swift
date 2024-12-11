@@ -19,16 +19,8 @@ func test456() {
 
 final class CodeCoverageTests: XCTestCase {
     static var coverage: CoverageCollector! = nil
-
-#if swift(>=5.10)
-    static let xcodeVersion: XcodeVersion = .xcode16
-#elseif swift(>=5.9) && swift(<5.10)
-    static let xcodeVersion: XcodeVersion = .xcode15
-#elseif swift(>=5.7) && swift(<5.9)
-    static let xcodeVersion: XcodeVersion = .xcode14
-#else
-    #error("Unsupported Xcode version")
-#endif
+    
+    static let xcodeVersion = CoverageCollector.compiledByXcodeVersion!
     
     class override func setUp() {
         Self.coverage = try! CoverageCollector(for: xcodeVersion,
@@ -65,7 +57,7 @@ final class CodeCoverageTests: XCTestCase {
         print(covered)
     }
 
-    func testPerformanceExample() throws {
+    func testPerformanceExample() {
         let coverage = Self.coverage!
         self.measure {
             try! coverage.startCoverageGathering()
@@ -73,6 +65,24 @@ final class CodeCoverageTests: XCTestCase {
             let file = try! coverage.stopCoverageGathering()
             defer { try? FileManager.default.removeItem(at: file) }
             let _ = try! coverage.filesCovered(in: file)
+        }
+    }
+    
+    func testMultithreadedParsing() throws {
+        let iterations = 100
+        let files = try (0..<iterations).map { index in
+            try Self.coverage.startCoverageGathering()
+            if index % 2 == 0 {
+                test123()
+            } else {
+                test456()
+            }
+            return try Self.coverage.stopCoverageGathering()
+        }
+        DispatchQueue.concurrentPerform(iterations: iterations) { index in
+            let file = files[index]
+            defer { try? FileManager.default.removeItem(at: file) }
+            let _ = try! Self.coverage.filesCovered(in: file)
         }
     }
 }

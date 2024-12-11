@@ -5,7 +5,7 @@
  */
 
 #include "CodeCoverage.hpp"
-#include <sstream>
+#include "BinaryCoverageReaderRef.hpp"
 
 #include "llvm17/ADT/ArrayRef.h"
 #include "llvm17/ProfileData/InstrProfReader.h"
@@ -169,20 +169,24 @@ Expected<CCoverageFiles> CodeCoverage::coverage(StringRef ProfrawPath) {
     }
     auto ProfileReader = std::move(ProfileReaderOrErr.get());
     
-    // BinaryCoverageReader isn't thread safe. We have to lock.
-    MappingReadersLock.lock();
-    // We are using method from our patch so we can reuse readers.
-    // dynamic_cast can't be used because of lack of RTTI.
-    // it's safe because LLVM version is locked
-    // and we know that BinaryCoverageReader inherited directly from the base class.
+    // We are using methods from our patch so we can reuse readers.
+    // We will create Ref classes for the real readers so we can iterate
+    // in the different threads at the same time.
+    std::vector<std::unique_ptr<CoverageMappingReader>> Readers;
+    Readers.reserve(MappingReaders.size());
+    
     for (auto &Reader: MappingReaders) {
-        reinterpret_cast<BinaryCoverageReader*>(Reader.get())->reset();
+        Readers.push_back(
+            std::unique_ptr<CoverageMappingReader>(
+                new BinaryCoverageReaderRef(Reader.get())
+            )
+        );
     }
+    
     // create coverage mapping from resetted readers and profile
-    auto CoverageOrErr = CoverageMapping::load(ArrayRef(MappingReaders), *ProfileReader);
-    //unlock
-    MappingReadersLock.unlock();
-    // handle error
+    auto CoverageOrErr = CoverageMapping::load(ArrayRef(Readers), *ProfileReader);
+    
+    // handle errors
     if (Error E = CoverageOrErr.takeError()) {
         return std::move(E);
     }
