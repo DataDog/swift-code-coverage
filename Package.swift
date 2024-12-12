@@ -3,8 +3,8 @@
 
 import PackageDescription
 
-let releaseVersion = "1.0.0"
-let relaseChecksum = "f6d8a484134ff6087f274c7cf64b7760be0dbac38788a9bbab35b876fd540968"
+let releaseVersion = "1.1.0"
+let relaseChecksum = "80b6ff41d4c2e49d65e4c19c340d0dccc4ea8b7efb456d59e3825c48e1f90b8c"
 let url = "https://github.com/DataDog/swift-code-coverage/releases/download/\(releaseVersion)/CodeCoverage.zip"
 
 let package = Package(
