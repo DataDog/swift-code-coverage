@@ -48,13 +48,13 @@ public extension CoveredBinary {
             let slide = _dyld_get_image_vmaddr_slide(i)
             guard slide != 0 else { continue }
             
-            if let pi = coverage_find_symbol_in_image("___llvm_profile_initialize", header, slide),
-               let wf = coverage_find_symbol_in_image("___llvm_profile_write_file", header, slide),
-               let sp = coverage_find_symbol_in_image("___llvm_profile_set_page_size", header, slide),
-               let bc = coverage_find_symbol_in_image("___llvm_profile_begin_counters", header, slide),
-               let ec = coverage_find_symbol_in_image("___llvm_profile_end_counters", header, slide),
-               let bd = coverage_find_symbol_in_image("___llvm_profile_begin_data", header, slide),
-               let ed = coverage_find_symbol_in_image("___llvm_profile_end_data", header, slide)
+            if let pi = findSymbol(named: "___llvm_profile_initialize", image: header, slide: slide),
+               let wf = findSymbol(named: "___llvm_profile_write_file", image: header, slide: slide),
+               let sp = findSymbol(named: "___llvm_profile_set_page_size", image: header, slide: slide),
+               let bc = findSymbol(named: "___llvm_profile_begin_counters", image: header, slide: slide),
+               let ec = findSymbol(named: "___llvm_profile_end_counters", image: header, slide: slide),
+               let bd = findSymbol(named: "___llvm_profile_begin_data", image: header, slide: slide),
+               let ed = findSymbol(named: "___llvm_profile_end_data", image: header, slide: slide)
             {
                 binaries.append(CoveredBinary(name: name, path: path,
                                               profileInitializeFileFunc: unsafeBitCast(pi, to: (@convention(c) () -> Void).self),
@@ -64,6 +64,13 @@ public extension CoveredBinary {
             }
         }
         return binaries
+    }
+    
+    static func findSymbol(named name: String,
+                           image header: UnsafePointer<mach_header>,
+                           slide: Int) -> UnsafeRawPointer?
+    {
+        coverage_find_symbol_in_image(name, header, slide)
     }
 }
 
