@@ -10,7 +10,7 @@ import MachO
 
 public struct CoveredBinary {
     public let name: String
-    public let path: String
+    public let url: URL
     // __llvm_profile_initialize
     let profileInitializeFileFunc: @convention(c) () -> Void
     // __llvm_profile_set_page_size
@@ -23,6 +23,8 @@ public struct CoveredBinary {
 }
 
 public extension CoveredBinary {
+    var path: String { url.path }
+    
     func initializeProfileFile() {
         profileInitializeFileFunc()
     }
@@ -43,8 +45,8 @@ public extension CoveredBinary {
             guard let header = _dyld_get_image_header(i) else {
                 continue
             }
-            let path = String(cString: _dyld_get_image_name(i))
-            let name = URL(fileURLWithPath: path).lastPathComponent
+            let url = URL(fileURLWithPath: String(cString: _dyld_get_image_name(i)), isDirectory: false)
+            let name = url.lastPathComponent
             let slide = _dyld_get_image_vmaddr_slide(i)
             guard slide != 0 else { continue }
             
@@ -56,7 +58,7 @@ public extension CoveredBinary {
                let bd = findSymbol(named: "___llvm_profile_begin_data", image: header, slide: slide),
                let ed = findSymbol(named: "___llvm_profile_end_data", image: header, slide: slide)
             {
-                binaries.append(CoveredBinary(name: name, path: path,
+                binaries.append(CoveredBinary(name: name, url: url,
                                               profileInitializeFileFunc: unsafeBitCast(pi, to: (@convention(c) () -> Void).self),
                                               setPageSizeFunc: unsafeBitCast(sp, to: (@convention(c) (UInt) -> Void).self),
                                               writeFileFunc: unsafeBitCast(wf, to: (@convention(c) () -> Void).self),
