@@ -37,7 +37,7 @@ jobs:
       - name: Calculate and save cache key for llvm library
         id: llvm-cache-key
         run: |
-          HASH=${{ hashFiles(format('llvm/patches/{0}**', matrix.version), 'Makefile.llvm') }}
+          HASH=${{ hashFiles('llvm/patches/**', 'Makefile.llvm') }}
           KEY="llvm${{ matrix.version }}-${{ matrix.platform }}-$HASH"
           echo "llvm_current=$KEY" >> "$GITHUB_OUTPUT"
           echo "llvm${{matrix.version}}_${{matrix.platform}}=$KEY" >> "$GITHUB_OUTPUT"
@@ -70,7 +70,7 @@ jobs:
       - name: Calculate and save cache key for llvm framework
         id: llvm-cache-key
         run: |
-          HASH=${{ hashFiles(format('llvm/patches/{0}**', matrix.version), 'Makefile.llvm') }}
+          HASH=${{ hashFiles('llvm/patches/**', 'Makefile.llvm') }}
           KEY="llvm${{ matrix.version }}-framework-$HASH"
           echo "llvm_current=$KEY" >> "$GITHUB_OUTPUT"
           echo "llvm${{matrix.version}}_framework=$KEY" >> "$GITHUB_OUTPUT"

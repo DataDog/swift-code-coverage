@@ -1,7 +1,7 @@
 --- a/llvm/include/llvm/ProfileData/Coverage/CoverageMappingReader.h
 +++ b/llvm/include/llvm/ProfileData/Coverage/CoverageMappingReader.h
-@@ -217,6 +217,10 @@ public:
-                                  StringRef CompilationDir = "");
+@@ -225,6 +225,10 @@ public:
+       llvm::endianness Endian, StringRef CompilationDir = "");
  
    Error readNextRecord(CoverageMappingRecord &Record) override;
 +

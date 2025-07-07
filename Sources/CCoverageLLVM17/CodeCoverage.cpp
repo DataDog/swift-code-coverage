@@ -111,6 +111,7 @@ Expected<std::unique_ptr<MemoryBuffer>> CodeCoverage::readProfile(StringRef Prof
         }
     }
     
+    // Apple LLVM 17 has VTable symbols but by default flag is false and can be ignored
     // New feature in LLVM17. Save binary ids
     std::vector<llvm::object::BuildID> BinaryIds;
     if (Error E = Reader->readBinaryIds(BinaryIds)) {
