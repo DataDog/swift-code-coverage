@@ -149,11 +149,11 @@ public extension CoverageCollector {
     }
     
     static var compiledByXcodeVersion: XcodeVersion? {
-    #if swift(>=5.11) && swift(<6.2)
+    #if compiler(>=5.11) && compiler(<6.2)
         return .xcode16
-    #elseif swift(>=5.9) && swift(<5.11)
+    #elseif compiler(>=5.9) && compiler(<5.11)
         return .xcode15
-    #elseif swift(>=5.7) && swift(<5.9)
+    #elseif compiler(>=5.7) && compiler(<5.9)
         return .xcode14
     #else
         return nil
