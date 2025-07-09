@@ -5,9 +5,11 @@
  */
 
 #pragma once
+#include <stdint.h>
 
-namespace llvm15 {
-void reset_counters(const void* _Nonnull func_counters_begin,
+namespace llvm16 {
+void reset_counters(uint64_t profile_version,
+                    const void* _Nonnull func_counters_begin,
                     const void* _Nonnull func_counters_end,
                     const void* _Nonnull func_data_begin,
                     const void* _Nonnull func_data_end);

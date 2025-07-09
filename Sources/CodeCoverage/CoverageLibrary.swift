@@ -60,10 +60,15 @@ final class CoverageLibrary {
         return .success(result.files)
     }
     
-    func resetCounters(counters: (begin: UnsafeRawPointer, end: UnsafeRawPointer),
-                       data: (begin: UnsafeRawPointer, end: UnsafeRawPointer))
+    func resetCounters(profile version: UInt64,
+                       counters: (begin: UnsafeRawPointer, end: UnsafeRawPointer),
+                       data: (begin: UnsafeRawPointer, end: UnsafeRawPointer),
+                       bitmap: (begin: UnsafeRawPointer, end: UnsafeRawPointer)?) -> Result<(), Error>
     {
-        exports.reset_counters(counters.begin, counters.end, data.begin, data.end)
+        let error = exports.reset_counters(version, counters.begin, counters.end,
+                                           data.begin, data.end, bitmap?.begin, bitmap?.end)
+        defer { error?.deallocate() }
+        return error.map { .failure(.plugin(error: String(cString: $0))) } ?? .success(())
     }
     
     static func library(for xcode: XcodeVersion) -> Result<CoverageLibrary, Error> {

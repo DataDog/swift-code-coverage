@@ -75,10 +75,13 @@ llvm/build/src/llvm-swift-%: llvm/build/src/llvm-swift-%.zip
 	@touch -am $@
 	@xcrun SetFile -d "$$(xcrun GetFileInfo -m $@)" $@
 
-llvm/build/src/llvm15: llvm/build/src/llvm-swift-5.10.1 llvm_tools
+llvm/build/src/llvm16: llvm/build/src/llvm-swift-5.10.1 llvm_tools
 	@cd $(dir $@) && ln -s $(notdir $<) $(notdir $@)
 
-llvm/build/src/llvm17: llvm/build/src/llvm-swift-6.1.2 llvm_tools
+llvm/build/src/llvm17: llvm/build/src/llvm-swift-6.0.3 llvm_tools
+	@cd $(dir $@) && ln -s $(notdir $<) $(notdir $@)
+
+llvm/build/src/llvm19: llvm/build/src/llvm-swift-6.1.2 llvm_tools
 	@cd $(dir $@) && ln -s $(notdir $<) $(notdir $@)
 
 llvm/build/libs/llvm%/macosx: llvm/build/src/llvm%
@@ -199,7 +202,7 @@ llvm/xcframeworks/LLVM%.xcframework: llvm/build/libs/llvm%/macosx llvm/build/lib
 	@mkdir -p llvm/xcframeworks
 	@xcodebuild -create-xcframework $(LIBS) -output $@
 
-build: llvm/xcframeworks/LLVM15.xcframework llvm/xcframeworks/LLVM17.xcframework
+build: llvm/xcframeworks/LLVM16.xcframework llvm/xcframeworks/LLVM17.xcframework llvm/xcframeworks/LLVM19.xcframework
 
 llvm%_prebuilt_xcframework:
 	$(eval PLATFORMS = $(wildcard llvm/build/libs/llvm$*/*))
@@ -207,7 +210,7 @@ llvm%_prebuilt_xcframework:
 	@mkdir -p llvm/xcframeworks
 	@xcodebuild -create-xcframework $(LIBS) -output llvm/xcframeworks/LLVM$*.xcframework
 
-llvm_prebuilt: llvm15_prebuilt_xcframework llvm17_prebuilt_xcframework
+llvm_prebuilt: llvm16_prebuilt_xcframework llvm17_prebuilt_xcframework llvm19_prebuilt_xcframework
 
 clean_llvm_libs:
 	@rm -rf llvm/build/libs llvm/xcframeworks

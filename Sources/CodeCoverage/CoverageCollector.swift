@@ -10,7 +10,8 @@ import Foundation
 public enum XcodeVersion: Hashable, Equatable {
     case xcode14
     case xcode15
-    case xcode16
+    case xcode16_0
+    case xcode16_3
     
     var libraryName: String {
         return "CCoverageLLVM" + llvmVersion
@@ -18,8 +19,9 @@ public enum XcodeVersion: Hashable, Equatable {
     
     var llvmVersion: String {
         switch self {
-        case .xcode14, .xcode15: return "15"
-        case .xcode16: return "17"
+        case .xcode14, .xcode15: return "16"
+        case .xcode16_0: return "17"
+        case .xcode16_3: return "19"
         }
     }
 }
@@ -70,7 +72,7 @@ public final class CoverageCollector {
         let fileName = "code-coverage-\(processId)-\(currentFileIndex).profraw"
         currentFileIndex = currentFileIndex == .max ? 0 : currentFileIndex + 1
         setCoverageFile(to: tempDir.appendingPathComponent(fileName, isDirectory: false).path)
-        processor.resetCounters()
+        try processor.resetCounters()
     }
     
     public func stopCoverageGathering() throws -> URL {
@@ -149,9 +151,11 @@ public extension CoverageCollector {
     }
     
     static var compiledByXcodeVersion: XcodeVersion? {
-    #if compiler(>=5.11) && compiler(<6.2)
-        return .xcode16
-    #elseif compiler(>=5.9) && compiler(<5.11)
+    #if compiler(>=6.1)
+        return .xcode16_3
+    #elseif compiler(>=6.0) && compiler(<6.1)
+        return .xcode16_0
+    #elseif compiler(>=5.9) && compiler(<6.0)
         return .xcode15
     #elseif compiler(>=5.7) && compiler(<5.9)
         return .xcode14

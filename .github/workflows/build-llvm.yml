@@ -2,12 +2,15 @@ name: Build LLVM XCFrameworks
 on:
   workflow_call:
     outputs:
+      llvm19-cache-key:
+        description: "Cache key for LLVM19.xcframework"
+        value: ${{ jobs.build-xcframework.outputs.llvm19 }}
       llvm17-cache-key:
         description: "Cache key for LLVM17.xcframework"
         value: ${{ jobs.build-xcframework.outputs.llvm17 }}
-      llvm15-cache-key:
-        description: "Cache key for LLVM15.xcframework"
-        value: ${{ jobs.build-xcframework.outputs.llvm15 }}
+      llvm16-cache-key:
+        description: "Cache key for LLVM16.xcframework"
+        value: ${{ jobs.build-xcframework.outputs.llvm16 }}
 permissions:
   contents: read
 jobs:
@@ -15,21 +18,27 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        version: [15, 17]
+        version: [16, 17, 19]
         platform: [macosx, maccatalyst, iphoneos, iphonesimulator, appletvos, appletvsimulator]
     outputs:
-      macosx15: ${{ steps.llvm-cache-key.outputs.llvm15_macosx }}
+      macosx16: ${{ steps.llvm-cache-key.outputs.llvm16_macosx }}
       macosx17: ${{ steps.llvm-cache-key.outputs.llvm17_macosx }}
-      maccatalyst15: ${{ steps.llvm-cache-key.outputs.llvm15_maccatalyst }}
+      macosx19: ${{ steps.llvm-cache-key.outputs.llvm19_macosx }}
+      maccatalyst16: ${{ steps.llvm-cache-key.outputs.llvm16_maccatalyst }}
       maccatalyst17: ${{ steps.llvm-cache-key.outputs.llvm17_maccatalyst }}
-      iphoneos15: ${{ steps.llvm-cache-key.outputs.llvm15_iphoneos }}
+      maccatalyst19: ${{ steps.llvm-cache-key.outputs.llvm19_maccatalyst }}
+      iphoneos16: ${{ steps.llvm-cache-key.outputs.llvm16_iphoneos }}
       iphoneos17: ${{ steps.llvm-cache-key.outputs.llvm17_iphoneos }}
-      iphonesimulator15: ${{ steps.llvm-cache-key.outputs.llvm15_iphonesimulator }}
+      iphoneos19: ${{ steps.llvm-cache-key.outputs.llvm19_iphoneos }}
+      iphonesimulator16: ${{ steps.llvm-cache-key.outputs.llvm16_iphonesimulator }}
       iphonesimulator17: ${{ steps.llvm-cache-key.outputs.llvm17_iphonesimulator }}
-      appletvos15: ${{ steps.llvm-cache-key.outputs.llvm15_appletvos }}
+      iphonesimulator19: ${{ steps.llvm-cache-key.outputs.llvm19_iphonesimulator }}
+      appletvos16: ${{ steps.llvm-cache-key.outputs.llvm16_appletvos }}
       appletvos17: ${{ steps.llvm-cache-key.outputs.llvm17_appletvos }}
-      appletvsimulator15: ${{ steps.llvm-cache-key.outputs.llvm15_appletvsimulator }}
+      appletvos19: ${{ steps.llvm-cache-key.outputs.llvm19_appletvos }}
+      appletvsimulator16: ${{ steps.llvm-cache-key.outputs.llvm16_appletvsimulator }}
       appletvsimulator17: ${{ steps.llvm-cache-key.outputs.llvm17_appletvsimulator }}
+      appletvsimulator19: ${{ steps.llvm-cache-key.outputs.llvm19_appletvsimulator }}
     timeout-minutes: 1200
     steps:
       - name: Checkout
@@ -60,10 +69,11 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        version: [15, 17]
+        version: [16, 17, 19]
     outputs:
-      llvm15: ${{ steps.llvm-cache-key.outputs.llvm15_framework }}
+      llvm16: ${{ steps.llvm-cache-key.outputs.llvm16_framework }}
       llvm17: ${{ steps.llvm-cache-key.outputs.llvm17_framework }}
+      llvm19: ${{ steps.llvm-cache-key.outputs.llvm19_framework }}
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2

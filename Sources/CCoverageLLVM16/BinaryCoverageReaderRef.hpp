@@ -5,9 +5,9 @@
  */
 
 #pragma once
-#include <llvm15/ProfileData/Coverage/CoverageMappingReader.h>
+#include <llvm16/ProfileData/Coverage/CoverageMappingReader.h>
 
-namespace llvm15 {
+namespace llvm16 {
 
 class BinaryCoverageReaderRef: public llvm::coverage::CoverageMappingReader {
 private:

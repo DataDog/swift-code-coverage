@@ -1,0 +1,13 @@
+--- a/llvm/include/llvm/ProfileData/Coverage/CoverageMappingReader.h
++++ b/llvm/include/llvm/ProfileData/Coverage/CoverageMappingReader.h
+@@ -217,6 +217,10 @@ public:
+                                  StringRef CompilationDir = "");
+ 
+   Error readNextRecord(CoverageMappingRecord &Record) override;
++
++  ArrayRef<std::string> getFilenamesRef() { return ArrayRef<std::string>(Filenames); };
++
++  ArrayRef<ProfileMappingRecord> getMappingRecordsRef() { return ArrayRef<ProfileMappingRecord>(MappingRecords); };
+ };
+ 
+ /// Reader for the raw coverage filenames.

@@ -7,10 +7,12 @@
 #pragma once
 #include <stdint.h>
 
-namespace llvm17 {
+namespace llvm19 {
 void reset_counters(uint64_t profile_version,
                     const void* _Nonnull func_counters_begin,
                     const void* _Nonnull func_counters_end,
                     const void* _Nonnull func_data_begin,
-                    const void* _Nonnull func_data_end);
+                    const void* _Nonnull func_data_end,
+                    const void* _Nonnull func_bitmap_begin,
+                    const void* _Nonnull func_bitmap_end);
 }

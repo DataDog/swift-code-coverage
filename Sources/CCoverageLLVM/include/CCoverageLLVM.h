@@ -84,10 +84,13 @@ struct llvm_coverage_library_exports {
     // delete coverage processor object
     void (* _Nonnull destroy_processor)(CCoverageProcessor _Nonnull coverage);
     // reset coverage counters for binary
-    void (* _Nonnull reset_counters)(const void* _Nonnull func_counters_begin,
-                                     const void* _Nonnull func_counters_end,
-                                     const void* _Nonnull func_data_begin,
-                                     const void* _Nonnull func_data_end);
+    const char* _Nullable (* _Nonnull reset_counters)(uint64_t profile_version,
+                                                      const void* _Nonnull func_counters_begin,
+                                                      const void* _Nonnull func_counters_end,
+                                                      const void* _Nonnull func_data_begin,
+                                                      const void* _Nonnull func_data_end,
+                                                      const void* _Nullable func_bitmap_begin,
+                                                      const void* _Nullable func_bitmap_end);
 };
 
 

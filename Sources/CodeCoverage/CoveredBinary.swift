@@ -17,13 +17,20 @@ public struct CoveredBinary {
     let setPageSizeFunc: @convention(c) (UInt) -> Void
     // __llvm_profile_write_file
     let writeFileFunc: @convention(c) () -> Void
+    // __llvm_profile_get_version
+    let getProfileVersionFunc: @convention(c) () -> UInt64
     // counters info functions
     let countersFunc: (begin: UnsafeRawPointer, end: UnsafeRawPointer)
     let dataFunc: (begin: UnsafeRawPointer, end: UnsafeRawPointer)
+    let bitmapFunc: (begin: UnsafeRawPointer, end: UnsafeRawPointer)?
 }
 
 public extension CoveredBinary {
     var path: String { url.path }
+    
+    var profileVersion: UInt64 {
+        getProfileVersionFunc()
+    }
     
     func initializeProfileFile() {
         profileInitializeFileFunc()
@@ -53,16 +60,21 @@ public extension CoveredBinary {
             if let pi = findSymbol(named: "___llvm_profile_initialize", image: header, slide: slide),
                let wf = findSymbol(named: "___llvm_profile_write_file", image: header, slide: slide),
                let sp = findSymbol(named: "___llvm_profile_set_page_size", image: header, slide: slide),
+               let gv = findSymbol(named: "___llvm_profile_get_version", image: header, slide: slide),
                let bc = findSymbol(named: "___llvm_profile_begin_counters", image: header, slide: slide),
                let ec = findSymbol(named: "___llvm_profile_end_counters", image: header, slide: slide),
                let bd = findSymbol(named: "___llvm_profile_begin_data", image: header, slide: slide),
                let ed = findSymbol(named: "___llvm_profile_end_data", image: header, slide: slide)
             {
+                let bitmap = findSymbol(named: "___llvm_profile_begin_bitmap", image: header, slide: slide).flatMap { bb in
+                    findSymbol(named: "___llvm_profile_end_bitmap", image: header, slide: slide).map { eb in (bb, eb)}
+                }
                 binaries.append(CoveredBinary(name: name, url: url,
                                               profileInitializeFileFunc: unsafeBitCast(pi, to: (@convention(c) () -> Void).self),
                                               setPageSizeFunc: unsafeBitCast(sp, to: (@convention(c) (UInt) -> Void).self),
                                               writeFileFunc: unsafeBitCast(wf, to: (@convention(c) () -> Void).self),
-                                              countersFunc: (bc, ec), dataFunc: (bd, ed)))
+                                              getProfileVersionFunc:  unsafeBitCast(gv, to: (@convention(c) () -> UInt64).self),
+                                              countersFunc: (bc, ec), dataFunc: (bd, ed), bitmapFunc: bitmap))
             }
         }
         return binaries
