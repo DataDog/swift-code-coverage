@@ -7,11 +7,11 @@
 #pragma once
 #include <CCoverageLLVM/CCoverageLLVM.h>
 
-//! Project version number for CCoverageLLVM15.
-CC_EXPORT double CCoverageLLVM15VersionNumber;
+//! Project version number for CCoverageLLVM19.
+CC_EXPORT double CCoverageLLVM19VersionNumber;
 
-//! Project version string for CCoverageLLVM15.
-CC_EXPORT const unsigned char CCoverageLLVM15VersionString[];
+//! Project version string for CCoverageLLVM19.
+CC_EXPORT const unsigned char CCoverageLLVM19VersionString[];
 
 // Main library export
-CC_EXPORT struct llvm_coverage_library_exports llvm15_coverage_library_exports;
+CC_EXPORT struct llvm_coverage_library_exports llvm19_coverage_library_exports;

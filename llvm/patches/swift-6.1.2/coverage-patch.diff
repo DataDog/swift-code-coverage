@@ -1,0 +1,13 @@
+--- a/llvm/lib/ProfileData/Coverage/CoverageMapping.cpp
++++ b/llvm/lib/ProfileData/Coverage/CoverageMapping.cpp
+@@ -907,6 +907,10 @@
+     Function.pushMCDCRecord(std::move(*Record));
+   }
+ 
++  //[Datadog] We don't want to record not executed functions
++  if(Function.ExecutionCount == 0)
++    return Error::success();
++
+   // Don't create records for (filenames, function) pairs we've already seen.
+   auto FilenamesHash = hash_combine_range(Record.Filenames.begin(),
+                                           Record.Filenames.end());

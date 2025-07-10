@@ -9,7 +9,7 @@
 #include "CodeCoverage.hpp"
 
 using namespace llvm;
-using namespace llvm17;
+using namespace llvm16;
 
 static const char* errorMessage(Error E) {
     auto str = toString(std::move(E));
@@ -23,8 +23,8 @@ static const char* errorMessage(Error E) {
 static CCoverageProcessorResult e_init_processor(const char* const* binaries, uint32_t count) {
     std::vector<StringRef> sbinaries;
     sbinaries.reserve(count);
-    for (const auto &binary: ArrayRef<const char*>(binaries, count)) {
-        sbinaries.push_back(binary);
+    for (const auto &binary: llvm::enumerate(ArrayRef<const char*>(binaries, count))) {
+        sbinaries.push_back(binary.value());
     }
     auto processor = CodeCoverage::load(sbinaries);
     if (Error E = processor.takeError()) {
@@ -63,12 +63,11 @@ static const char* e_reset_counters(uint64_t profile_version,
                                     const void* func_bitmap_begin,
                                     const void* func_bitmap_end)
 {
-    llvm17::reset_counters(profile_version,
+    llvm16::reset_counters(profile_version,
                            func_counters_begin, func_counters_end,
                            func_data_begin, func_data_end);
     return NULL;
 }
-
 
 // C wrapper for delete
 static void e_destroy_processor(CCoverageProcessor coverage) {
@@ -78,7 +77,7 @@ static void e_destroy_processor(CCoverageProcessor coverage) {
 // Export pointers for all functions in the structure
 // It's simpler to dynamically load it this way
 // Note that it prefixed with llvm version, so two llvm libs could be loaded at the same time
-struct llvm_coverage_library_exports llvm17_coverage_library_exports = {
+struct llvm_coverage_library_exports llvm16_coverage_library_exports = {
     .init_processor = &e_init_processor,
     .covered_files = &e_covered_files,
     .destroy_processor = &e_destroy_processor,

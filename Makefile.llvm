@@ -49,36 +49,39 @@ clean_llvm_tools:
 	@rm -rf llvm/build/tools
 	@mkdir -p llvm/build/tools
 
-llvm/build/src/llvm-%.tar.xz:
+llvm/build/src/llvm-swift-%.zip:
 	@mkdir -p llvm/build/src
-	@curl -L -o "$@" https://github.com/llvm/llvm-project/releases/download/llvmorg-$*/llvm-project-$*.src.tar.xz
+	@curl -L -o "$@" https://github.com/swiftlang/llvm-project/archive/refs/tags/swift-$*-RELEASE.zip
 	
 clean_llvm_sources:
 	@rm -rf llvm/build/src
 	@mkdir -p llvm/build/src
 
-llvm/build/src/llvm-%: llvm/build/src/llvm-%.tar.xz
-	@rm -f "llvm/build/src/llvm$*"
-	@tar xzf $<
-	@cd llvm-project-$*.src ;\
-	 for patch in "$(PWD)/llvm/patches/$*"/*; do \
+llvm/build/src/llvm-swift-%: llvm/build/src/llvm-swift-%.zip
+	@rm -f "llvm/build/src/llvm-swift-$*"
+	@unzip -oq $<
+	@cd llvm-project-swift-$*-RELEASE ;\
+	 for patch in "$(PWD)/llvm/patches/swift-$*"/*; do \
 		if [[ "$$patch" == *.diff ]]; then \
 			echo "Applying patch: $$patch" ;\
 			git apply --ignore-space-change --ignore-whitespace "$$patch" ;\
 		fi \
 	 done
-	@cp llvm-project-$*.src/llvm/cmake/platforms/iOS.cmake llvm-project-$*.src/llvm/cmake/platforms/tvOS.cmake
-	@sed -i.bak 's/iphoneos/appletvos/' llvm-project-$*.src/llvm/cmake/platforms/tvOS.cmake
-	@cp llvm-project-$*.src/llvm/cmake/platforms/iOS.cmake llvm-project-$*.src/llvm/cmake/platforms/macOS.cmake
-	@sed -i.bak 's/iphoneos/macosx/' llvm-project-$*.src/llvm/cmake/platforms/macOS.cmake
-	@mv llvm-project-$*.src $@
+	@cp llvm-project-swift-$*-RELEASE/llvm/cmake/platforms/iOS.cmake llvm-project-swift-$*-RELEASE/llvm/cmake/platforms/tvOS.cmake
+	@sed -i.bak 's/iphoneos/appletvos/' llvm-project-swift-$*-RELEASE/llvm/cmake/platforms/tvOS.cmake
+	@cp llvm-project-swift-$*-RELEASE/llvm/cmake/platforms/iOS.cmake llvm-project-swift-$*-RELEASE/llvm/cmake/platforms/macOS.cmake
+	@sed -i.bak 's/iphoneos/macosx/' llvm-project-swift-$*-RELEASE/llvm/cmake/platforms/macOS.cmake
+	@mv llvm-project-swift-$*-RELEASE $@
 	@touch -am $@
 	@xcrun SetFile -d "$$(xcrun GetFileInfo -m $@)" $@
 
-llvm/build/src/llvm15: llvm/build/src/llvm-15.0.0 llvm_tools
+llvm/build/src/llvm16: llvm/build/src/llvm-swift-5.10.1 llvm_tools
 	@cd $(dir $@) && ln -s $(notdir $<) $(notdir $@)
 
-llvm/build/src/llvm17: llvm/build/src/llvm-17.0.6 llvm_tools
+llvm/build/src/llvm17: llvm/build/src/llvm-swift-6.0.3 llvm_tools
+	@cd $(dir $@) && ln -s $(notdir $<) $(notdir $@)
+
+llvm/build/src/llvm19: llvm/build/src/llvm-swift-6.1.2 llvm_tools
 	@cd $(dir $@) && ln -s $(notdir $<) $(notdir $@)
 
 llvm/build/libs/llvm%/macosx: llvm/build/src/llvm%
@@ -199,7 +202,7 @@ llvm/xcframeworks/LLVM%.xcframework: llvm/build/libs/llvm%/macosx llvm/build/lib
 	@mkdir -p llvm/xcframeworks
 	@xcodebuild -create-xcframework $(LIBS) -output $@
 
-build: llvm/xcframeworks/LLVM15.xcframework llvm/xcframeworks/LLVM17.xcframework
+build: llvm/xcframeworks/LLVM16.xcframework llvm/xcframeworks/LLVM17.xcframework llvm/xcframeworks/LLVM19.xcframework
 
 llvm%_prebuilt_xcframework:
 	$(eval PLATFORMS = $(wildcard llvm/build/libs/llvm$*/*))
@@ -207,7 +210,7 @@ llvm%_prebuilt_xcframework:
 	@mkdir -p llvm/xcframeworks
 	@xcodebuild -create-xcframework $(LIBS) -output llvm/xcframeworks/LLVM$*.xcframework
 
-llvm_prebuilt: llvm15_prebuilt_xcframework llvm17_prebuilt_xcframework
+llvm_prebuilt: llvm16_prebuilt_xcframework llvm17_prebuilt_xcframework llvm19_prebuilt_xcframework
 
 clean_llvm_libs:
 	@rm -rf llvm/build/libs llvm/xcframeworks

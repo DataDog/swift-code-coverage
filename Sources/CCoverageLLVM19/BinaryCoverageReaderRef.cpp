@@ -6,7 +6,7 @@
 
 #include "BinaryCoverageReaderRef.hpp"
 
-using namespace llvm15;
+using namespace llvm19;
 using namespace llvm;
 using namespace coverage;
 

@@ -7,16 +7,16 @@
 #include "CodeCoverage.hpp"
 #include "BinaryCoverageReaderRef.hpp"
 
-#include <llvm17/ADT/ArrayRef.h>
-#include <llvm17/ProfileData/InstrProfReader.h>
-#include <llvm17/ProfileData/InstrProfWriter.h>
-#include <llvm17/Support/Errc.h>
-#include <llvm17/Support/FileSystem.h>
-#include <llvm17/Support/VirtualFileSystem.h>
+#include <llvm19/ADT/ArrayRef.h>
+#include <llvm19/ProfileData/InstrProfReader.h>
+#include <llvm19/ProfileData/InstrProfWriter.h>
+#include <llvm19/Support/Errc.h>
+#include <llvm19/Support/FileSystem.h>
+#include <llvm19/Support/VirtualFileSystem.h>
 
 using namespace llvm;
 using namespace coverage;
-using namespace llvm17;
+using namespace llvm19;
 
 // Constructor
 Expected<CodeCoverage*> CodeCoverage::load(std::vector<StringRef> &Binaries) {

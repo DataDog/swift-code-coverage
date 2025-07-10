@@ -6,11 +6,11 @@
 
 #pragma once
 #include <CCoverageLLVM/CCoverageLLVM.h>
-#include <llvm15/ProfileData/Coverage/CoverageMapping.h>
-#include <llvm15/ProfileData/Coverage/CoverageMappingReader.h>
-#include <llvm15/Support/MemoryBuffer.h>
+#include <llvm19/ProfileData/Coverage/CoverageMapping.h>
+#include <llvm19/ProfileData/Coverage/CoverageMappingReader.h>
+#include <llvm19/Support/MemoryBuffer.h>
 
-namespace llvm15 {
+namespace llvm19 {
 
 /// The implementation of the coverage tool.
 class CodeCoverage {

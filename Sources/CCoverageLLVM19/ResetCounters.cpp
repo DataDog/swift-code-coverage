@@ -5,7 +5,7 @@
  */
 
 #include "ResetCounters.hpp"
-#include <llvm15/ProfileData/InstrProf.h>
+#include <llvm19/ProfileData/InstrProf.h>
 
 using namespace llvm;
 
@@ -13,29 +13,42 @@ typedef void *IntPtrT;
 
 typedef struct __attribute__((aligned(INSTR_PROF_DATA_ALIGNMENT))) __llvm_profile_data {
 #define INSTR_PROF_DATA(Type, LLVMType, Name, Initializer) Type Name;
-#include <llvm15/ProfileData/InstrProfData.inc>
+#include <llvm19/ProfileData/InstrProfData.inc>
 } __llvm_profile_data;
 
 typedef struct ValueProfNode * PtrToNodeT;
 typedef struct ValueProfNode {
 #define INSTR_PROF_VALUE_NODE(Type, LLVMType, Name, Initializer) Type Name;
-#include <llvm15/ProfileData/InstrProfData.inc>
+#include <llvm19/ProfileData/InstrProfData.inc>
 } ValueProfNode;
 
-void llvm15::reset_counters(const void* func_counters_begin,
+void llvm19::reset_counters(uint64_t profile_version,
+                            const void* func_counters_begin,
                             const void* func_counters_end,
                             const void* func_data_begin,
-                            const void* func_data_end)
+                            const void* func_data_end,
+                            const void* func_bitmap_begin,
+                            const void* func_bitmap_end)
 {
     // convert pointers to the function pointers
     auto llvm_profile_begin_counters_ptr = reinterpret_cast<char*(*)()>(const_cast<void*>(func_counters_begin));
     auto llvm_profile_end_counters_ptr = reinterpret_cast<char*(*)()>(const_cast<void*>(func_counters_end));
     auto llvm_profile_begin_data = reinterpret_cast<const __llvm_profile_data*(*)()>(const_cast<void*>(func_data_begin));
     auto llvm_profile_end_data = reinterpret_cast<const __llvm_profile_data*(*)()>(const_cast<void*>(func_data_end));
+    auto llvm_profile_begin_bitmap_ptr = reinterpret_cast<char*(*)()>(const_cast<void*>(func_bitmap_begin));
+    auto llvm_profile_end_bitmap_ptr = reinterpret_cast<char*(*)()>(const_cast<void*>(func_bitmap_end));
 
     // get region of counters data
     char *I = (*llvm_profile_begin_counters_ptr)();
     char *E = (*llvm_profile_end_counters_ptr)();
+    // properly select reset value
+    char ResetValue = (profile_version & VARIANT_MASK_BYTE_COVERAGE) ? 0xFF : 0;
+    // clear it
+    memset(I, 0x0, E - I);
+    
+    // get region of bitmap data
+    I = (*llvm_profile_begin_bitmap_ptr)();
+    E = (*llvm_profile_end_bitmap_ptr)();
     // clear it
     memset(I, 0x0, E - I);
 
@@ -64,7 +77,7 @@ void llvm15::reset_counters(const void* func_counters_begin,
         for (i = 0; i < CurrentVSiteCount; ++i) {
             // get list
             ValueProfNode *CurrentVNode = ValueCounters[i];
-            
+
             // clear all counters in the list
             while (CurrentVNode) {
                 CurrentVNode->Count = 0;

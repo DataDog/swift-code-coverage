@@ -5,7 +5,7 @@
  */
 
 #include "ResetCounters.hpp"
-#include <llvm17/ProfileData/InstrProf.h>
+#include <llvm16/ProfileData/InstrProf.h>
 
 using namespace llvm;
 
@@ -13,16 +13,16 @@ typedef void *IntPtrT;
 
 typedef struct __attribute__((aligned(INSTR_PROF_DATA_ALIGNMENT))) __llvm_profile_data {
 #define INSTR_PROF_DATA(Type, LLVMType, Name, Initializer) Type Name;
-#include <llvm17/ProfileData/InstrProfData.inc>
+#include <llvm16/ProfileData/InstrProfData.inc>
 } __llvm_profile_data;
 
 typedef struct ValueProfNode * PtrToNodeT;
 typedef struct ValueProfNode {
 #define INSTR_PROF_VALUE_NODE(Type, LLVMType, Name, Initializer) Type Name;
-#include <llvm17/ProfileData/InstrProfData.inc>
+#include <llvm16/ProfileData/InstrProfData.inc>
 } ValueProfNode;
 
-void llvm17::reset_counters(uint64_t profile_version,
+void llvm16::reset_counters(uint64_t profile_version,
                             const void* func_counters_begin,
                             const void* func_counters_end,
                             const void* func_data_begin,
@@ -40,7 +40,7 @@ void llvm17::reset_counters(uint64_t profile_version,
     // properly select reset value
     char ResetValue = (profile_version & VARIANT_MASK_BYTE_COVERAGE) ? 0xFF : 0;
     // clear it
-    memset(I, 0x0, E - I);
+    memset(I, ResetValue, E - I);
 
     // iterate over profiling nodes in data
     const __llvm_profile_data *DataBegin = (*llvm_profile_begin_data)();
@@ -67,7 +67,7 @@ void llvm17::reset_counters(uint64_t profile_version,
         for (i = 0; i < CurrentVSiteCount; ++i) {
             // get list
             ValueProfNode *CurrentVNode = ValueCounters[i];
-
+            
             // clear all counters in the list
             while (CurrentVNode) {
                 CurrentVNode->Count = 0;

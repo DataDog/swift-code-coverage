@@ -50,9 +50,10 @@ public final class CoverageProcessor {
         }
     }
     
-    public func resetCounters() {
+    public func resetCounters() throws {
         for binary in binaries {
-            library.resetCounters(counters: binary.countersFunc, data: binary.dataFunc)
+            try library.resetCounters(profile: binary.profileVersion, counters: binary.countersFunc,
+                                      data: binary.dataFunc, bitmap: binary.bitmapFunc).get()
         }
     }
     
