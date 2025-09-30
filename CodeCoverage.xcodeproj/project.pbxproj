@@ -3,55 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A712C17E2CEFA06D00B4282F /* CodeCoverage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A712C1752CEFA06C00B4282F /* CodeCoverage.framework */; };
-		A712C1832CEFA06D00B4282F /* CodeCoverageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1822CEFA06D00B4282F /* CodeCoverageTests.swift */; };
-		A712C1A02CEFA34100B4282F /* CCoverageLLVM.h in Headers */ = {isa = PBXBuildFile; fileRef = A712C1942CEFA34100B4282F /* CCoverageLLVM.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A712C1A92CEFA39400B4282F /* Symbols.c in Sources */ = {isa = PBXBuildFile; fileRef = A712C1A82CEFA39400B4282F /* Symbols.c */; };
-		A712C1AC2CEFA68B00B4282F /* CoverageCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1AB2CEFA68B00B4282F /* CoverageCollector.swift */; };
-		A712C1B42CEFB0EA00B4282F /* CoverageLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1B32CEFB0EA00B4282F /* CoverageLibrary.swift */; };
-		A712C1B62CEFC1AE00B4282F /* CoveredBinary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1B52CEFC1AE00B4282F /* CoveredBinary.swift */; };
-		A712C1B82CEFE40700B4282F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1B72CEFE40700B4282F /* Utils.swift */; };
-		A712C1C22CEFEF5900B4282F /* Coverage.h in Headers */ = {isa = PBXBuildFile; fileRef = A712C1C12CEFEF5900B4282F /* Coverage.h */; };
-		A712C1C82CEFEFD900B4282F /* CCoverageLLVM16.plugin in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A712C1BF2CEFEF5900B4282F /* CCoverageLLVM16.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A712C1CD2CEFF1A700B4282F /* Coverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A712C1CC2CEFF1A700B4282F /* Coverage.cpp */; };
-		A712C1E32CF0A37B00B4282F /* Coverage.h in Headers */ = {isa = PBXBuildFile; fileRef = A712C1E22CF0A37B00B4282F /* Coverage.h */; };
-		A712C1EC2CF0A59300B4282F /* CCoverageLLVM17.plugin in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A712C1E02CF0A37B00B4282F /* CCoverageLLVM17.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A712C1F02CF0A7D600B4282F /* Coverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A712C1EF2CF0A7D600B4282F /* Coverage.cpp */; };
-		A712C1F12CF0A8FB00B4282F /* CCoverageLLVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A712C1922CEFA34100B4282F /* CCoverageLLVM.framework */; };
-		A712C1F42CF0AE2B00B4282F /* CoverageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1F32CF0AE2B00B4282F /* CoverageProcessor.swift */; };
-		A712C1F62CF0D2D500B4282F /* CoverageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712C1F52CF0D2D500B4282F /* CoverageInfo.swift */; };
-		A71756982CF4EAE600240492 /* ResetCounters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A71756962CF4EAE600240492 /* ResetCounters.cpp */; };
-		A71756992CF4EAE600240492 /* ResetCounters.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A71756972CF4EAE600240492 /* ResetCounters.hpp */; };
-		A71756A72CF6174D00240492 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A71756A62CF6174D00240492 /* libz.tbd */; };
 		A71756AA2CF6176500240492 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A71756A62CF6174D00240492 /* libz.tbd */; };
-		A71756AE2CF7166D00240492 /* LLVM17.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71756AD2CF7166D00240492 /* LLVM17.xcframework */; };
-		A71756B12CF7196400240492 /* CodeCoverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A71756AF2CF7196400240492 /* CodeCoverage.cpp */; };
-		A71756B22CF7196400240492 /* CodeCoverage.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A71756B02CF7196400240492 /* CodeCoverage.hpp */; };
-		A76F0F932E1D8310009ACD06 /* CCoverageLLVM19.plugin in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A7BF92E32E1D6DE60056D970 /* CCoverageLLVM19.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A76F0F952E1E800A009ACD06 /* LLVM16.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76F0F942E1E800A009ACD06 /* LLVM16.xcframework */; };
-		A76F0F972E1E9DF0009ACD06 /* LLVM19.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76F0F962E1E9DF0009ACD06 /* LLVM19.xcframework */; };
+		A7BF34432E8ADC240031B07D /* CCodeCoverageCollector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BA276E2E8AC43400EFD54E /* CCodeCoverageCollector.framework */; };
+		A7BF348D2E8AF0180031B07D /* CodeCoverageParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BF34522E8AE87E0031B07D /* CodeCoverageParser.framework */; platformFilters = (ios, macos, ); };
+		A7BF349A2E8AF0DD0031B07D /* CCodeCoverageParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A712C1922CEFA34100B4282F /* CCodeCoverageParser.framework */; };
+		A7BF349C2E8C1EBA0031B07D /* CCodeCoverageParserLLVM17.plugin in Embed Plugins */ = {isa = PBXBuildFile; fileRef = A712C1E02CF0A37B00B4282F /* CCodeCoverageParserLLVM17.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A7BF349D2E8C1EBA0031B07D /* CCodeCoverageParserLLVM19.plugin in Embed Plugins */ = {isa = PBXBuildFile; fileRef = A7BF92E32E1D6DE60056D970 /* CCodeCoverageParserLLVM19.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A7BF349E2E8C1EFB0031B07D /* CodeCoverageCollector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BF341E2E8AD9750031B07D /* CodeCoverageCollector.framework */; platformFilters = (ios, macos, ); };
 		A7BF92DE2E1D6DE60056D970 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A71756A62CF6174D00240492 /* libz.tbd */; };
-		A7BF92ED2E1D6E2A0056D970 /* CodeCoverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7BF92E72E1D6E2A0056D970 /* CodeCoverage.cpp */; };
-		A7BF92EE2E1D6E2A0056D970 /* Coverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7BF92E92E1D6E2A0056D970 /* Coverage.cpp */; };
-		A7BF92EF2E1D6E2A0056D970 /* BinaryCoverageReaderRef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7BF92E52E1D6E2A0056D970 /* BinaryCoverageReaderRef.cpp */; };
-		A7BF92F02E1D6E2A0056D970 /* ResetCounters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7BF92EB2E1D6E2A0056D970 /* ResetCounters.cpp */; };
-		A7BF92F12E1D6E2A0056D970 /* Coverage.h in Headers */ = {isa = PBXBuildFile; fileRef = A7BF92E82E1D6E2A0056D970 /* Coverage.h */; };
-		A7BF92F22E1D6E2A0056D970 /* BinaryCoverageReaderRef.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7BF92E42E1D6E2A0056D970 /* BinaryCoverageReaderRef.hpp */; };
-		A7BF92F32E1D6E2A0056D970 /* ResetCounters.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7BF92EA2E1D6E2A0056D970 /* ResetCounters.hpp */; };
-		A7BF92F42E1D6E2A0056D970 /* CodeCoverage.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7BF92E62E1D6E2A0056D970 /* CodeCoverage.hpp */; };
-		A7C84DF72CF71C930002115A /* ResetCounters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7C84DF32CF71C930002115A /* ResetCounters.cpp */; };
-		A7C84DF82CF71C930002115A /* CodeCoverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7C84DF42CF71C930002115A /* CodeCoverage.cpp */; };
-		A7C84DF92CF71C930002115A /* CodeCoverage.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7C84DF52CF71C930002115A /* CodeCoverage.hpp */; };
-		A7C84DFA2CF71C930002115A /* ResetCounters.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7C84DF62CF71C930002115A /* ResetCounters.hpp */; };
-		A7D7E64B2CFDD2EA00B49C35 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D7E64A2CFDD2EA00B49C35 /* Constants.swift */; };
-		A7D7E6532D08E02A00B49C35 /* BinaryCoverageReaderRef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7D7E6512D08E02A00B49C35 /* BinaryCoverageReaderRef.cpp */; };
-		A7D7E6542D08E02A00B49C35 /* BinaryCoverageReaderRef.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7D7E6522D08E02A00B49C35 /* BinaryCoverageReaderRef.hpp */; };
-		A7D7E6572D08E25800B49C35 /* BinaryCoverageReaderRef.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A7D7E6552D08E25800B49C35 /* BinaryCoverageReaderRef.hpp */; };
-		A7D7E6582D08E25800B49C35 /* BinaryCoverageReaderRef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7D7E6562D08E25800B49C35 /* BinaryCoverageReaderRef.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,34 +26,6 @@
 			remoteGlobalIDString = A712C1742CEFA06C00B4282F;
 			remoteInfo = CodeCoverage;
 		};
-		A712C1B02CEFA6CB00B4282F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A712C1912CEFA34100B4282F;
-			remoteInfo = CCoverageLLVM;
-		};
-		A712C1C62CEFEF9800B4282F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A712C1BE2CEFEF5900B4282F;
-			remoteInfo = CoverageLLVM15;
-		};
-		A712C1C92CEFEFEB00B4282F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A712C1912CEFA34100B4282F;
-			remoteInfo = CCoverageLLVM;
-		};
-		A712C1EA2CF0A58400B4282F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A712C1DF2CF0A37B00B4282F;
-			remoteInfo = CoverageLLVM17;
-		};
 		A712C1ED2CF0A75800B4282F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
@@ -97,7 +33,42 @@
 			remoteGlobalIDString = A712C1912CEFA34100B4282F;
 			remoteInfo = CCoverageLLVM;
 		};
-		A76F0F912E1D82FF009ACD06 /* PBXContainerItemProxy */ = {
+		A7BF343C2E8AD9B20031B07D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7BA276D2E8AC43400EFD54E;
+			remoteInfo = CCodeCoverageCollector;
+		};
+		A7BF34872E8AEFCA0031B07D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7BF341D2E8AD9750031B07D;
+			remoteInfo = CodeCoverageCollector;
+		};
+		A7BF34892E8AEFCA0031B07D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7BF34512E8AE87E0031B07D;
+			remoteInfo = CodeCoverageProcessor;
+		};
+		A7BF34902E8AF0350031B07D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A712C1912CEFA34100B4282F;
+			remoteInfo = CCoverageLLVM;
+		};
+		A7BF34942E8AF0350031B07D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A712C1DF2CF0A37B00B4282F;
+			remoteInfo = CCoverageLLVM17;
+		};
+		A7BF34962E8AF0350031B07D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A712C16C2CEFA06C00B4282F /* Project object */;
 			proxyType = 1;
@@ -114,17 +85,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A712C1B22CEFA6CB00B4282F /* Embed Frameworks */ = {
+		A7BF349B2E8C1E970031B07D /* Embed Plugins */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				A76F0F932E1D8310009ACD06 /* CCoverageLLVM19.plugin in Embed Frameworks */,
-				A712C1C82CEFEFD900B4282F /* CCoverageLLVM16.plugin in Embed Frameworks */,
-				A712C1EC2CF0A59300B4282F /* CCoverageLLVM17.plugin in Embed Frameworks */,
+				A7BF349C2E8C1EBA0031B07D /* CCodeCoverageParserLLVM17.plugin in Embed Plugins */,
+				A7BF349D2E8C1EBA0031B07D /* CCodeCoverageParserLLVM19.plugin in Embed Plugins */,
 			);
-			name = "Embed Frameworks";
+			name = "Embed Plugins";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -132,60 +102,128 @@
 /* Begin PBXFileReference section */
 		A712C1752CEFA06C00B4282F /* CodeCoverage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodeCoverage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A712C17D2CEFA06D00B4282F /* CodeCoverageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeCoverageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A712C1822CEFA06D00B4282F /* CodeCoverageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCoverageTests.swift; sourceTree = "<group>"; };
-		A712C1922CEFA34100B4282F /* CCoverageLLVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCoverageLLVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A712C1942CEFA34100B4282F /* CCoverageLLVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCoverageLLVM.h; sourceTree = "<group>"; };
-		A712C1A82CEFA39400B4282F /* Symbols.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Symbols.c; sourceTree = "<group>"; };
-		A712C1AB2CEFA68B00B4282F /* CoverageCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageCollector.swift; sourceTree = "<group>"; };
-		A712C1B32CEFB0EA00B4282F /* CoverageLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageLibrary.swift; sourceTree = "<group>"; };
-		A712C1B52CEFC1AE00B4282F /* CoveredBinary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoveredBinary.swift; sourceTree = "<group>"; };
-		A712C1B72CEFE40700B4282F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		A712C1BF2CEFEF5900B4282F /* CCoverageLLVM16.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCoverageLLVM16.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
-		A712C1C12CEFEF5900B4282F /* Coverage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Coverage.h; sourceTree = "<group>"; };
-		A712C1CC2CEFF1A700B4282F /* Coverage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Coverage.cpp; sourceTree = "<group>"; };
-		A712C1E02CF0A37B00B4282F /* CCoverageLLVM17.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCoverageLLVM17.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
-		A712C1E22CF0A37B00B4282F /* Coverage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Coverage.h; sourceTree = "<group>"; };
-		A712C1EF2CF0A7D600B4282F /* Coverage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Coverage.cpp; sourceTree = "<group>"; };
-		A712C1F32CF0AE2B00B4282F /* CoverageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageProcessor.swift; sourceTree = "<group>"; };
-		A712C1F52CF0D2D500B4282F /* CoverageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageInfo.swift; sourceTree = "<group>"; };
-		A71756902CF0E15900240492 /* CodeCoverage.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CodeCoverage.xctestplan; sourceTree = "<group>"; };
+		A712C1922CEFA34100B4282F /* CCodeCoverageParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCodeCoverageParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A712C1E02CF0A37B00B4282F /* CCodeCoverageParserLLVM17.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCodeCoverageParserLLVM17.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		A71756922CF1FB8100240492 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		A71756962CF4EAE600240492 /* ResetCounters.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ResetCounters.cpp; sourceTree = "<group>"; };
-		A71756972CF4EAE600240492 /* ResetCounters.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResetCounters.hpp; sourceTree = "<group>"; };
 		A71756A62CF6174D00240492 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		A71756AD2CF7166D00240492 /* LLVM17.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LLVM17.xcframework; sourceTree = "<group>"; };
-		A71756AF2CF7196400240492 /* CodeCoverage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CodeCoverage.cpp; sourceTree = "<group>"; };
-		A71756B02CF7196400240492 /* CodeCoverage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CodeCoverage.hpp; sourceTree = "<group>"; };
-		A76F0F942E1E800A009ACD06 /* LLVM16.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LLVM16.xcframework; sourceTree = "<group>"; };
-		A76F0F962E1E9DF0009ACD06 /* LLVM19.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LLVM19.xcframework; sourceTree = "<group>"; };
-		A7BF92E32E1D6DE60056D970 /* CCoverageLLVM19.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCoverageLLVM19.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7BF92E42E1D6E2A0056D970 /* BinaryCoverageReaderRef.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BinaryCoverageReaderRef.hpp; sourceTree = "<group>"; };
-		A7BF92E52E1D6E2A0056D970 /* BinaryCoverageReaderRef.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryCoverageReaderRef.cpp; sourceTree = "<group>"; };
-		A7BF92E62E1D6E2A0056D970 /* CodeCoverage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CodeCoverage.hpp; sourceTree = "<group>"; };
-		A7BF92E72E1D6E2A0056D970 /* CodeCoverage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CodeCoverage.cpp; sourceTree = "<group>"; };
-		A7BF92E82E1D6E2A0056D970 /* Coverage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Coverage.h; sourceTree = "<group>"; };
-		A7BF92E92E1D6E2A0056D970 /* Coverage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Coverage.cpp; sourceTree = "<group>"; };
-		A7BF92EA2E1D6E2A0056D970 /* ResetCounters.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResetCounters.hpp; sourceTree = "<group>"; };
-		A7BF92EB2E1D6E2A0056D970 /* ResetCounters.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ResetCounters.cpp; sourceTree = "<group>"; };
-		A7C84DF32CF71C930002115A /* ResetCounters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResetCounters.cpp; sourceTree = "<group>"; };
-		A7C84DF42CF71C930002115A /* CodeCoverage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CodeCoverage.cpp; sourceTree = "<group>"; };
-		A7C84DF52CF71C930002115A /* CodeCoverage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CodeCoverage.hpp; sourceTree = "<group>"; };
-		A7C84DF62CF71C930002115A /* ResetCounters.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResetCounters.hpp; sourceTree = "<group>"; };
-		A7D7E64A2CFDD2EA00B49C35 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A7BA276E2E8AC43400EFD54E /* CCodeCoverageCollector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCodeCoverageCollector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7BF341E2E8AD9750031B07D /* CodeCoverageCollector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodeCoverageCollector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7BF34522E8AE87E0031B07D /* CodeCoverageParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodeCoverageParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7BF92E32E1D6DE60056D970 /* CCodeCoverageParserLLVM19.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCodeCoverageParserLLVM19.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D7E64C2D03CDC600B49C35 /* Makefile.llvm */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.llvm; sourceTree = "<group>"; };
 		A7D7E64D2D03CDC700B49C35 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		A7D7E6512D08E02A00B49C35 /* BinaryCoverageReaderRef.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryCoverageReaderRef.cpp; sourceTree = "<group>"; };
-		A7D7E6522D08E02A00B49C35 /* BinaryCoverageReaderRef.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BinaryCoverageReaderRef.hpp; sourceTree = "<group>"; };
-		A7D7E6552D08E25800B49C35 /* BinaryCoverageReaderRef.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BinaryCoverageReaderRef.hpp; sourceTree = "<group>"; };
-		A7D7E6562D08E25800B49C35 /* BinaryCoverageReaderRef.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryCoverageReaderRef.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A7BF33E92E8AD5CA0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CCodeCoverageParser/include/CCodeCoverageParser.h,
+				CCodeCoverageParser/stub.c,
+			);
+			publicHeaders = (
+				CCodeCoverageParser/include/CCodeCoverageParser.h,
+			);
+			target = A712C1912CEFA34100B4282F /* CCodeCoverageParser */;
+		};
+		A7BF33EB2E8AD5CA0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CCodeCoverageParserLLVM17/BinaryCoverageReaderRef.cpp,
+				CCodeCoverageParserLLVM17/BinaryCoverageReaderRef.hpp,
+				CCodeCoverageParserLLVM17/CodeCoverage.cpp,
+				CCodeCoverageParserLLVM17/CodeCoverage.hpp,
+				CCodeCoverageParserLLVM17/Coverage.cpp,
+			);
+			target = A712C1DF2CF0A37B00B4282F /* CCodeCoverageParserLLVM17 */;
+		};
+		A7BF33EC2E8AD5CA0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CCodeCoverageParserLLVM19/BinaryCoverageReaderRef.cpp,
+				CCodeCoverageParserLLVM19/BinaryCoverageReaderRef.hpp,
+				CCodeCoverageParserLLVM19/CodeCoverage.cpp,
+				CCodeCoverageParserLLVM19/CodeCoverage.hpp,
+				CCodeCoverageParserLLVM19/Coverage.cpp,
+			);
+			target = A7BF92CF2E1D6DE60056D970 /* CCodeCoverageParserLLVM19 */;
+		};
+		A7BF33ED2E8AD5CA0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CodeCoverage/Processor.swift,
+			);
+			target = A712C1742CEFA06C00B4282F /* CodeCoverage */;
+		};
+		A7BF34052E8AD6A70031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CCodeCoverageCollector/include/CCodeCoverageCollector.h,
+				CCodeCoverageCollector/llvm17.c,
+				CCodeCoverageCollector/llvm19.c,
+				CCodeCoverageCollector/symbols.c,
+			);
+			publicHeaders = (
+				CCodeCoverageCollector/include/CCodeCoverageCollector.h,
+			);
+			target = A7BA276D2E8AC43400EFD54E /* CCodeCoverageCollector */;
+		};
+		A7BF34172E8AD7720031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				LLVM17.xcframework,
+			);
+			target = A712C1DF2CF0A37B00B4282F /* CCodeCoverageParserLLVM17 */;
+		};
+		A7BF34182E8AD7720031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				LLVM19.xcframework,
+			);
+			target = A7BF92CF2E1D6DE60056D970 /* CCodeCoverageParserLLVM19 */;
+		};
+		A7BF347C2E8AEF0B0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CodeCoverageCollector/Collector.swift,
+				CodeCoverageCollector/Constants.swift,
+				CodeCoverageCollector/CoveredBinary.swift,
+				CodeCoverageCollector/XcodeVersion.swift,
+			);
+			target = A7BF341D2E8AD9750031B07D /* CodeCoverageCollector */;
+		};
+		A7BF34862E8AEF180031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CodeCoverageParser/Info.swift,
+				CodeCoverageParser/Library.swift,
+				CodeCoverageParser/Parser.swift,
+				CodeCoverageParser/Utils.swift,
+			);
+			target = A7BF34512E8AE87E0031B07D /* CodeCoverageParser */;
+		};
+		A7BF34A32E8C1F840031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CodeCoverageTests/CodeCoverageTests.swift,
+			);
+			target = A712C17C2CEFA06D00B4282F /* CodeCoverageTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A7BF33C22E8AD5C90031B07D /* Sources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A7BF34052E8AD6A70031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF33E92E8AD5CA0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF33EB2E8AD5CA0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF33EC2E8AD5CA0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF347C2E8AEF0B0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF34862E8AEF180031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF33ED2E8AD5CA0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Sources; sourceTree = "<group>"; };
+		A7BF340C2E8AD76A0031B07D /* Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A7BF34A32E8C1F840031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Tests; sourceTree = "<group>"; };
+		A7BF34122E8AD7720031B07D /* xcframeworks */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A7BF34172E8AD7720031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF34182E8AD7720031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); name = xcframeworks; path = llvm/xcframeworks; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A712C1722CEFA06C00B4282F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A712C1F12CF0A8FB00B4282F /* CCoverageLLVM.framework in Frameworks */,
+				A7BF348D2E8AF0180031B07D /* CodeCoverageParser.framework in Frameworks */,
+				A7BF349E2E8C1EFB0031B07D /* CodeCoverageCollector.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,21 +242,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A712C1BC2CEFEF5900B4282F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A71756A72CF6174D00240492 /* libz.tbd in Frameworks */,
-				A76F0F952E1E800A009ACD06 /* LLVM16.xcframework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A712C1DD2CF0A37B00B4282F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A71756AE2CF7166D00240492 /* LLVM17.xcframework in Frameworks */,
 				A71756AA2CF6176500240492 /* libz.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7BA276B2E8AC43400EFD54E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7BF341B2E8AD9750031B07D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7BF34432E8ADC240031B07D /* CCodeCoverageCollector.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7BF344F2E8AE87E0031B07D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7BF349A2E8AF0DD0031B07D /* CCodeCoverageParser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +277,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A76F0F972E1E9DF0009ACD06 /* LLVM19.xcframework in Frameworks */,
 				A7BF92DE2E1D6DE60056D970 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,9 +290,9 @@
 				A71756922CF1FB8100240492 /* Makefile */,
 				A7D7E64C2D03CDC600B49C35 /* Makefile.llvm */,
 				A7D7E64D2D03CDC700B49C35 /* Package.swift */,
-				A712C1AA2CEFA61E00B4282F /* Sources */,
-				A712C1B92CEFEEED00B4282F /* Tests */,
-				A71756932CF4E44800240492 /* LLVM */,
+				A7BF33C22E8AD5C90031B07D /* Sources */,
+				A7BF340C2E8AD76A0031B07D /* Tests */,
+				A7BF34122E8AD7720031B07D /* xcframeworks */,
 				A712C1762CEFA06C00B4282F /* Products */,
 				A712C1AD2CEFA6CB00B4282F /* Frameworks */,
 			);
@@ -253,63 +303,14 @@
 			children = (
 				A712C1752CEFA06C00B4282F /* CodeCoverage.framework */,
 				A712C17D2CEFA06D00B4282F /* CodeCoverageTests.xctest */,
-				A712C1922CEFA34100B4282F /* CCoverageLLVM.framework */,
-				A712C1BF2CEFEF5900B4282F /* CCoverageLLVM16.plugin */,
-				A712C1E02CF0A37B00B4282F /* CCoverageLLVM17.plugin */,
-				A7BF92E32E1D6DE60056D970 /* CCoverageLLVM19.plugin */,
+				A712C1922CEFA34100B4282F /* CCodeCoverageParser.framework */,
+				A712C1E02CF0A37B00B4282F /* CCodeCoverageParserLLVM17.plugin */,
+				A7BF92E32E1D6DE60056D970 /* CCodeCoverageParserLLVM19.plugin */,
+				A7BA276E2E8AC43400EFD54E /* CCodeCoverageCollector.framework */,
+				A7BF341E2E8AD9750031B07D /* CodeCoverageCollector.framework */,
+				A7BF34522E8AE87E0031B07D /* CodeCoverageParser.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		A712C1772CEFA06C00B4282F /* CodeCoverage */ = {
-			isa = PBXGroup;
-			children = (
-				A712C1AB2CEFA68B00B4282F /* CoverageCollector.swift */,
-				A7D7E64A2CFDD2EA00B49C35 /* Constants.swift */,
-				A712C1F52CF0D2D500B4282F /* CoverageInfo.swift */,
-				A712C1B52CEFC1AE00B4282F /* CoveredBinary.swift */,
-				A712C1B32CEFB0EA00B4282F /* CoverageLibrary.swift */,
-				A712C1F32CF0AE2B00B4282F /* CoverageProcessor.swift */,
-				A712C1B72CEFE40700B4282F /* Utils.swift */,
-			);
-			path = CodeCoverage;
-			sourceTree = "<group>";
-		};
-		A712C1812CEFA06D00B4282F /* CodeCoverageTests */ = {
-			isa = PBXGroup;
-			children = (
-				A712C1822CEFA06D00B4282F /* CodeCoverageTests.swift */,
-			);
-			path = CodeCoverageTests;
-			sourceTree = "<group>";
-		};
-		A712C1932CEFA34100B4282F /* CCoverageLLVM */ = {
-			isa = PBXGroup;
-			children = (
-				A712C1A72CEFA36900B4282F /* include */,
-				A712C1A82CEFA39400B4282F /* Symbols.c */,
-			);
-			path = CCoverageLLVM;
-			sourceTree = "<group>";
-		};
-		A712C1A72CEFA36900B4282F /* include */ = {
-			isa = PBXGroup;
-			children = (
-				A712C1942CEFA34100B4282F /* CCoverageLLVM.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		A712C1AA2CEFA61E00B4282F /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				A712C1932CEFA34100B4282F /* CCoverageLLVM */,
-				A712C1C02CEFEF5900B4282F /* CCoverageLLVM16 */,
-				A712C1E12CF0A37B00B4282F /* CCoverageLLVM17 */,
-				A7BF92EC2E1D6E2A0056D970 /* CCoverageLLVM19 */,
-				A712C1772CEFA06C00B4282F /* CodeCoverage */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		A712C1AD2CEFA6CB00B4282F /* Frameworks */ = {
@@ -318,71 +319,6 @@
 				A71756A62CF6174D00240492 /* libz.tbd */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A712C1B92CEFEEED00B4282F /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				A712C1812CEFA06D00B4282F /* CodeCoverageTests */,
-				A71756902CF0E15900240492 /* CodeCoverage.xctestplan */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		A712C1C02CEFEF5900B4282F /* CCoverageLLVM16 */ = {
-			isa = PBXGroup;
-			children = (
-				A712C1C12CEFEF5900B4282F /* Coverage.h */,
-				A712C1CC2CEFF1A700B4282F /* Coverage.cpp */,
-				A7D7E6522D08E02A00B49C35 /* BinaryCoverageReaderRef.hpp */,
-				A7D7E6512D08E02A00B49C35 /* BinaryCoverageReaderRef.cpp */,
-				A71756B02CF7196400240492 /* CodeCoverage.hpp */,
-				A71756AF2CF7196400240492 /* CodeCoverage.cpp */,
-				A71756972CF4EAE600240492 /* ResetCounters.hpp */,
-				A71756962CF4EAE600240492 /* ResetCounters.cpp */,
-			);
-			path = CCoverageLLVM16;
-			sourceTree = "<group>";
-		};
-		A712C1E12CF0A37B00B4282F /* CCoverageLLVM17 */ = {
-			isa = PBXGroup;
-			children = (
-				A7D7E6552D08E25800B49C35 /* BinaryCoverageReaderRef.hpp */,
-				A7D7E6562D08E25800B49C35 /* BinaryCoverageReaderRef.cpp */,
-				A712C1E22CF0A37B00B4282F /* Coverage.h */,
-				A712C1EF2CF0A7D600B4282F /* Coverage.cpp */,
-				A7C84DF52CF71C930002115A /* CodeCoverage.hpp */,
-				A7C84DF42CF71C930002115A /* CodeCoverage.cpp */,
-				A7C84DF62CF71C930002115A /* ResetCounters.hpp */,
-				A7C84DF32CF71C930002115A /* ResetCounters.cpp */,
-			);
-			path = CCoverageLLVM17;
-			sourceTree = "<group>";
-		};
-		A71756932CF4E44800240492 /* LLVM */ = {
-			isa = PBXGroup;
-			children = (
-				A76F0F962E1E9DF0009ACD06 /* LLVM19.xcframework */,
-				A76F0F942E1E800A009ACD06 /* LLVM16.xcframework */,
-				A71756AD2CF7166D00240492 /* LLVM17.xcframework */,
-			);
-			name = LLVM;
-			path = llvm/xcframeworks;
-			sourceTree = "<group>";
-		};
-		A7BF92EC2E1D6E2A0056D970 /* CCoverageLLVM19 */ = {
-			isa = PBXGroup;
-			children = (
-				A7BF92E42E1D6E2A0056D970 /* BinaryCoverageReaderRef.hpp */,
-				A7BF92E52E1D6E2A0056D970 /* BinaryCoverageReaderRef.cpp */,
-				A7BF92E62E1D6E2A0056D970 /* CodeCoverage.hpp */,
-				A7BF92E72E1D6E2A0056D970 /* CodeCoverage.cpp */,
-				A7BF92E82E1D6E2A0056D970 /* Coverage.h */,
-				A7BF92E92E1D6E2A0056D970 /* Coverage.cpp */,
-				A7BF92EA2E1D6E2A0056D970 /* ResetCounters.hpp */,
-				A7BF92EB2E1D6E2A0056D970 /* ResetCounters.cpp */,
-			);
-			path = CCoverageLLVM19;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,18 +335,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A712C1A02CEFA34100B4282F /* CCoverageLLVM.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A712C1BA2CEFEF5900B4282F /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A71756B22CF7196400240492 /* CodeCoverage.hpp in Headers */,
-				A712C1C22CEFEF5900B4282F /* Coverage.h in Headers */,
-				A7D7E6542D08E02A00B49C35 /* BinaryCoverageReaderRef.hpp in Headers */,
-				A71756992CF4EAE600240492 /* ResetCounters.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,10 +342,27 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A712C1E32CF0A37B00B4282F /* Coverage.h in Headers */,
-				A7C84DFA2CF71C930002115A /* ResetCounters.hpp in Headers */,
-				A7D7E6572D08E25800B49C35 /* BinaryCoverageReaderRef.hpp in Headers */,
-				A7C84DF92CF71C930002115A /* CodeCoverage.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7BA27692E8AC43400EFD54E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7BF34192E8AD9750031B07D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7BF344D2E8AE87E0031B07D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,10 +370,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7BF92F12E1D6E2A0056D970 /* Coverage.h in Headers */,
-				A7BF92F22E1D6E2A0056D970 /* BinaryCoverageReaderRef.hpp in Headers */,
-				A7BF92F32E1D6E2A0056D970 /* ResetCounters.hpp in Headers */,
-				A7BF92F42E1D6E2A0056D970 /* CodeCoverage.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,15 +384,12 @@
 				A712C1712CEFA06C00B4282F /* Sources */,
 				A712C1722CEFA06C00B4282F /* Frameworks */,
 				A712C1732CEFA06C00B4282F /* Resources */,
-				A712C1B22CEFA6CB00B4282F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A76F0F922E1D82FF009ACD06 /* PBXTargetDependency */,
-				A712C1B12CEFA6CB00B4282F /* PBXTargetDependency */,
-				A712C1EB2CF0A58400B4282F /* PBXTargetDependency */,
-				A712C1C72CEFEF9800B4282F /* PBXTargetDependency */,
+				A7BF34882E8AEFCA0031B07D /* PBXTargetDependency */,
+				A7BF348A2E8AEFCA0031B07D /* PBXTargetDependency */,
 			);
 			name = CodeCoverage;
 			productName = CodeCoverage;
@@ -480,9 +414,9 @@
 			productReference = A712C17D2CEFA06D00B4282F /* CodeCoverageTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A712C1912CEFA34100B4282F /* CCoverageLLVM */ = {
+		A712C1912CEFA34100B4282F /* CCodeCoverageParser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A712C1A12CEFA34100B4282F /* Build configuration list for PBXNativeTarget "CCoverageLLVM" */;
+			buildConfigurationList = A712C1A12CEFA34100B4282F /* Build configuration list for PBXNativeTarget "CCodeCoverageParser" */;
 			buildPhases = (
 				A712C18D2CEFA34100B4282F /* Headers */,
 				A712C18E2CEFA34100B4282F /* Sources */,
@@ -493,33 +427,14 @@
 			);
 			dependencies = (
 			);
-			name = CCoverageLLVM;
+			name = CCodeCoverageParser;
 			productName = CCoverageLLVM;
-			productReference = A712C1922CEFA34100B4282F /* CCoverageLLVM.framework */;
+			productReference = A712C1922CEFA34100B4282F /* CCodeCoverageParser.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A712C1BE2CEFEF5900B4282F /* CCoverageLLVM16 */ = {
+		A712C1DF2CF0A37B00B4282F /* CCodeCoverageParserLLVM17 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A712C1C32CEFEF5900B4282F /* Build configuration list for PBXNativeTarget "CCoverageLLVM16" */;
-			buildPhases = (
-				A712C1BA2CEFEF5900B4282F /* Headers */,
-				A712C1BB2CEFEF5900B4282F /* Sources */,
-				A712C1BC2CEFEF5900B4282F /* Frameworks */,
-				A712C1BD2CEFEF5900B4282F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A712C1CA2CEFEFEB00B4282F /* PBXTargetDependency */,
-			);
-			name = CCoverageLLVM16;
-			productName = CoverageLLVM15;
-			productReference = A712C1BF2CEFEF5900B4282F /* CCoverageLLVM16.plugin */;
-			productType = "com.apple.product-type.framework";
-		};
-		A712C1DF2CF0A37B00B4282F /* CCoverageLLVM17 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A712C1E42CF0A37C00B4282F /* Build configuration list for PBXNativeTarget "CCoverageLLVM17" */;
+			buildConfigurationList = A712C1E42CF0A37C00B4282F /* Build configuration list for PBXNativeTarget "CCodeCoverageParserLLVM17" */;
 			buildPhases = (
 				A712C1DB2CF0A37B00B4282F /* Headers */,
 				A712C1DC2CF0A37B00B4282F /* Sources */,
@@ -531,14 +446,79 @@
 			dependencies = (
 				A712C1EE2CF0A75800B4282F /* PBXTargetDependency */,
 			);
-			name = CCoverageLLVM17;
+			name = CCodeCoverageParserLLVM17;
 			productName = CoverageLLVM17;
-			productReference = A712C1E02CF0A37B00B4282F /* CCoverageLLVM17.plugin */;
+			productReference = A712C1E02CF0A37B00B4282F /* CCodeCoverageParserLLVM17.plugin */;
 			productType = "com.apple.product-type.framework";
 		};
-		A7BF92CF2E1D6DE60056D970 /* CCoverageLLVM19 */ = {
+		A7BA276D2E8AC43400EFD54E /* CCodeCoverageCollector */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A7BF92E02E1D6DE60056D970 /* Build configuration list for PBXNativeTarget "CCoverageLLVM19" */;
+			buildConfigurationList = A7BA27742E8AC43400EFD54E /* Build configuration list for PBXNativeTarget "CCodeCoverageCollector" */;
+			buildPhases = (
+				A7BA27692E8AC43400EFD54E /* Headers */,
+				A7BA276A2E8AC43400EFD54E /* Sources */,
+				A7BA276B2E8AC43400EFD54E /* Frameworks */,
+				A7BA276C2E8AC43400EFD54E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CCodeCoverageCollector;
+			packageProductDependencies = (
+			);
+			productName = CCodeCoverage;
+			productReference = A7BA276E2E8AC43400EFD54E /* CCodeCoverageCollector.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A7BF341D2E8AD9750031B07D /* CodeCoverageCollector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7BF342E2E8AD9750031B07D /* Build configuration list for PBXNativeTarget "CodeCoverageCollector" */;
+			buildPhases = (
+				A7BF34192E8AD9750031B07D /* Headers */,
+				A7BF341A2E8AD9750031B07D /* Sources */,
+				A7BF341B2E8AD9750031B07D /* Frameworks */,
+				A7BF341C2E8AD9750031B07D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7BF343D2E8AD9B20031B07D /* PBXTargetDependency */,
+			);
+			name = CodeCoverageCollector;
+			packageProductDependencies = (
+			);
+			productName = CodeCoverageCollector;
+			productReference = A7BF341E2E8AD9750031B07D /* CodeCoverageCollector.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A7BF34512E8AE87E0031B07D /* CodeCoverageParser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7BF34572E8AE87E0031B07D /* Build configuration list for PBXNativeTarget "CodeCoverageParser" */;
+			buildPhases = (
+				A7BF344D2E8AE87E0031B07D /* Headers */,
+				A7BF344E2E8AE87E0031B07D /* Sources */,
+				A7BF344F2E8AE87E0031B07D /* Frameworks */,
+				A7BF34502E8AE87E0031B07D /* Resources */,
+				A7BF349B2E8C1E970031B07D /* Embed Plugins */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7BF34912E8AF0350031B07D /* PBXTargetDependency */,
+				A7BF34952E8AF0350031B07D /* PBXTargetDependency */,
+				A7BF34972E8AF0350031B07D /* PBXTargetDependency */,
+			);
+			name = CodeCoverageParser;
+			packageProductDependencies = (
+			);
+			productName = CodeCoverageProcessor;
+			productReference = A7BF34522E8AE87E0031B07D /* CodeCoverageParser.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A7BF92CF2E1D6DE60056D970 /* CCodeCoverageParserLLVM19 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7BF92E02E1D6DE60056D970 /* Build configuration list for PBXNativeTarget "CCodeCoverageParserLLVM19" */;
 			buildPhases = (
 				A7BF92D22E1D6DE60056D970 /* Headers */,
 				A7BF92D72E1D6DE60056D970 /* Sources */,
@@ -550,9 +530,9 @@
 			dependencies = (
 				A7BF92D02E1D6DE60056D970 /* PBXTargetDependency */,
 			);
-			name = CCoverageLLVM19;
+			name = CCodeCoverageParserLLVM19;
 			productName = CoverageLLVM17;
-			productReference = A7BF92E32E1D6DE60056D970 /* CCoverageLLVM19.plugin */;
+			productReference = A7BF92E32E1D6DE60056D970 /* CCodeCoverageParserLLVM19.plugin */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -562,7 +542,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					A712C1742CEFA06C00B4282F = {
@@ -575,11 +555,17 @@
 					A712C1912CEFA34100B4282F = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
-					A712C1BE2CEFEF5900B4282F = {
-						CreatedOnToolsVersion = 14.3.1;
-					};
 					A712C1DF2CF0A37B00B4282F = {
 						CreatedOnToolsVersion = 14.3.1;
+					};
+					A7BA276D2E8AC43400EFD54E = {
+						CreatedOnToolsVersion = 26.0.1;
+					};
+					A7BF341D2E8AD9750031B07D = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					A7BF34512E8AE87E0031B07D = {
+						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
@@ -595,10 +581,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A712C1912CEFA34100B4282F /* CCoverageLLVM */,
-				A712C1BE2CEFEF5900B4282F /* CCoverageLLVM16 */,
-				A712C1DF2CF0A37B00B4282F /* CCoverageLLVM17 */,
-				A7BF92CF2E1D6DE60056D970 /* CCoverageLLVM19 */,
+				A7BA276D2E8AC43400EFD54E /* CCodeCoverageCollector */,
+				A712C1912CEFA34100B4282F /* CCodeCoverageParser */,
+				A712C1DF2CF0A37B00B4282F /* CCodeCoverageParserLLVM17 */,
+				A7BF92CF2E1D6DE60056D970 /* CCodeCoverageParserLLVM19 */,
+				A7BF341D2E8AD9750031B07D /* CodeCoverageCollector */,
+				A7BF34512E8AE87E0031B07D /* CodeCoverageParser */,
 				A712C1742CEFA06C00B4282F /* CodeCoverage */,
 				A712C17C2CEFA06D00B4282F /* CodeCoverageTests */,
 			);
@@ -627,14 +615,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A712C1BD2CEFEF5900B4282F /* Resources */ = {
+		A712C1DE2CF0A37B00B4282F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A712C1DE2CF0A37B00B4282F /* Resources */ = {
+		A7BA276C2E8AC43400EFD54E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7BF341C2E8AD9750031B07D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7BF34502E8AE87E0031B07D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -655,13 +657,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A712C1F42CF0AE2B00B4282F /* CoverageProcessor.swift in Sources */,
-				A712C1B42CEFB0EA00B4282F /* CoverageLibrary.swift in Sources */,
-				A712C1B62CEFC1AE00B4282F /* CoveredBinary.swift in Sources */,
-				A712C1B82CEFE40700B4282F /* Utils.swift in Sources */,
-				A7D7E64B2CFDD2EA00B49C35 /* Constants.swift in Sources */,
-				A712C1AC2CEFA68B00B4282F /* CoverageCollector.swift in Sources */,
-				A712C1F62CF0D2D500B4282F /* CoverageInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,7 +664,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A712C1832CEFA06D00B4282F /* CodeCoverageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,18 +671,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A712C1A92CEFA39400B4282F /* Symbols.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A712C1BB2CEFEF5900B4282F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A71756982CF4EAE600240492 /* ResetCounters.cpp in Sources */,
-				A7D7E6532D08E02A00B49C35 /* BinaryCoverageReaderRef.cpp in Sources */,
-				A712C1CD2CEFF1A700B4282F /* Coverage.cpp in Sources */,
-				A71756B12CF7196400240492 /* CodeCoverage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,10 +678,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7C84DF72CF71C930002115A /* ResetCounters.cpp in Sources */,
-				A7D7E6582D08E25800B49C35 /* BinaryCoverageReaderRef.cpp in Sources */,
-				A712C1F02CF0A7D600B4282F /* Coverage.cpp in Sources */,
-				A7C84DF82CF71C930002115A /* CodeCoverage.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7BA276A2E8AC43400EFD54E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7BF341A2E8AD9750031B07D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7BF344E2E8AE87E0031B07D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,10 +706,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7BF92ED2E1D6E2A0056D970 /* CodeCoverage.cpp in Sources */,
-				A7BF92EE2E1D6E2A0056D970 /* Coverage.cpp in Sources */,
-				A7BF92EF2E1D6E2A0056D970 /* BinaryCoverageReaderRef.cpp in Sources */,
-				A7BF92F02E1D6E2A0056D970 /* ResetCounters.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,39 +717,44 @@
 			target = A712C1742CEFA06C00B4282F /* CodeCoverage */;
 			targetProxy = A712C17F2CEFA06D00B4282F /* PBXContainerItemProxy */;
 		};
-		A712C1B12CEFA6CB00B4282F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A712C1912CEFA34100B4282F /* CCoverageLLVM */;
-			targetProxy = A712C1B02CEFA6CB00B4282F /* PBXContainerItemProxy */;
-		};
-		A712C1C72CEFEF9800B4282F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A712C1BE2CEFEF5900B4282F /* CCoverageLLVM16 */;
-			targetProxy = A712C1C62CEFEF9800B4282F /* PBXContainerItemProxy */;
-		};
-		A712C1CA2CEFEFEB00B4282F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A712C1912CEFA34100B4282F /* CCoverageLLVM */;
-			targetProxy = A712C1C92CEFEFEB00B4282F /* PBXContainerItemProxy */;
-		};
-		A712C1EB2CF0A58400B4282F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A712C1DF2CF0A37B00B4282F /* CCoverageLLVM17 */;
-			targetProxy = A712C1EA2CF0A58400B4282F /* PBXContainerItemProxy */;
-		};
 		A712C1EE2CF0A75800B4282F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A712C1912CEFA34100B4282F /* CCoverageLLVM */;
+			target = A712C1912CEFA34100B4282F /* CCodeCoverageParser */;
 			targetProxy = A712C1ED2CF0A75800B4282F /* PBXContainerItemProxy */;
 		};
-		A76F0F922E1D82FF009ACD06 /* PBXTargetDependency */ = {
+		A7BF343D2E8AD9B20031B07D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A7BF92CF2E1D6DE60056D970 /* CCoverageLLVM19 */;
-			targetProxy = A76F0F912E1D82FF009ACD06 /* PBXContainerItemProxy */;
+			target = A7BA276D2E8AC43400EFD54E /* CCodeCoverageCollector */;
+			targetProxy = A7BF343C2E8AD9B20031B07D /* PBXContainerItemProxy */;
+		};
+		A7BF34882E8AEFCA0031B07D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7BF341D2E8AD9750031B07D /* CodeCoverageCollector */;
+			targetProxy = A7BF34872E8AEFCA0031B07D /* PBXContainerItemProxy */;
+		};
+		A7BF348A2E8AEFCA0031B07D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7BF34512E8AE87E0031B07D /* CodeCoverageParser */;
+			targetProxy = A7BF34892E8AEFCA0031B07D /* PBXContainerItemProxy */;
+		};
+		A7BF34912E8AF0350031B07D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A712C1912CEFA34100B4282F /* CCodeCoverageParser */;
+			targetProxy = A7BF34902E8AF0350031B07D /* PBXContainerItemProxy */;
+		};
+		A7BF34952E8AF0350031B07D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A712C1DF2CF0A37B00B4282F /* CCodeCoverageParserLLVM17 */;
+			targetProxy = A7BF34942E8AF0350031B07D /* PBXContainerItemProxy */;
+		};
+		A7BF34972E8AF0350031B07D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7BF92CF2E1D6DE60056D970 /* CCodeCoverageParserLLVM19 */;
+			targetProxy = A7BF34962E8AF0350031B07D /* PBXContainerItemProxy */;
 		};
 		A7BF92D02E1D6DE60056D970 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A712C1912CEFA34100B4282F /* CCoverageLLVM */;
+			target = A712C1912CEFA34100B4282F /* CCodeCoverageParser */;
 			targetProxy = A7BF92D12E1D6DE60056D970 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -796,11 +796,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -815,15 +817,17 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024-Present Datadog, Inc.";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = "1.2.0";
+				MARKETING_VERSION = 1.2.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TVOS_DEPLOYMENT_TARGET = 11.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -865,10 +869,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -878,14 +884,16 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024-Present Datadog, Inc.";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = "1.2.0";
+				MARKETING_VERSION = 1.2.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				TVOS_DEPLOYMENT_TARGET = 11.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -895,16 +903,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -915,8 +920,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CodeCoverage;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -935,16 +939,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -955,8 +956,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CodeCoverage;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1019,14 +1019,12 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1038,8 +1036,6 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1059,14 +1055,12 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1078,8 +1072,6 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1094,92 +1086,14 @@
 			};
 			name = Release;
 		};
-		A712C1C42CEFEF5900B4282F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = mh_dylib;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM15;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = auto;
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,3";
-				WRAPPER_EXTENSION = plugin;
-			};
-			name = Debug;
-		};
-		A712C1C52CEFEF5900B4282F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = mh_dylib;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM15;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = auto;
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,3";
-				WRAPPER_EXTENSION = plugin;
-			};
-			name = Release;
-		};
 		A712C1E52CF0A37C00B4282F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1191,8 +1105,6 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM17;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1213,11 +1125,9 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1229,8 +1139,6 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM17;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1246,16 +1154,245 @@
 			};
 			name = Release;
 		};
+		A7BA27722E8AC43400EFD54E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCodeCoverage;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = Debug;
+		};
+		A7BA27732E8AC43400EFD54E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCodeCoverage;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = Release;
+		};
+		A7BF342F2E8AD9750031B07D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CodeCoverageCollector;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		A7BF34302E8AD9750031B07D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CodeCoverageCollector;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		A7BF34582E8AE87E0031B07D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CodeCoverageProcessor;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = Debug;
+		};
+		A7BF34592E8AE87E0031B07D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CodeCoverageProcessor;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = Release;
+		};
 		A7BF92E12E1D6DE60056D970 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1267,8 +1404,6 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM17;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1289,11 +1424,9 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1305,8 +1438,6 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.datadoghq.CCoverageLLVM17;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1352,7 +1483,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A712C1A12CEFA34100B4282F /* Build configuration list for PBXNativeTarget "CCoverageLLVM" */ = {
+		A712C1A12CEFA34100B4282F /* Build configuration list for PBXNativeTarget "CCodeCoverageParser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A712C1A22CEFA34100B4282F /* Debug */,
@@ -1361,16 +1492,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A712C1C32CEFEF5900B4282F /* Build configuration list for PBXNativeTarget "CCoverageLLVM16" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A712C1C42CEFEF5900B4282F /* Debug */,
-				A712C1C52CEFEF5900B4282F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A712C1E42CF0A37C00B4282F /* Build configuration list for PBXNativeTarget "CCoverageLLVM17" */ = {
+		A712C1E42CF0A37C00B4282F /* Build configuration list for PBXNativeTarget "CCodeCoverageParserLLVM17" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A712C1E52CF0A37C00B4282F /* Debug */,
@@ -1379,7 +1501,34 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A7BF92E02E1D6DE60056D970 /* Build configuration list for PBXNativeTarget "CCoverageLLVM19" */ = {
+		A7BA27742E8AC43400EFD54E /* Build configuration list for PBXNativeTarget "CCodeCoverageCollector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7BA27722E8AC43400EFD54E /* Debug */,
+				A7BA27732E8AC43400EFD54E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7BF342E2E8AD9750031B07D /* Build configuration list for PBXNativeTarget "CodeCoverageCollector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7BF342F2E8AD9750031B07D /* Debug */,
+				A7BF34302E8AD9750031B07D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7BF34572E8AE87E0031B07D /* Build configuration list for PBXNativeTarget "CodeCoverageParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7BF34582E8AE87E0031B07D /* Debug */,
+				A7BF34592E8AE87E0031B07D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7BF92E02E1D6DE60056D970 /* Build configuration list for PBXNativeTarget "CCodeCoverageParserLLVM19" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A7BF92E12E1D6DE60056D970 /* Debug */,

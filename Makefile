@@ -67,7 +67,7 @@ build/symbols/%.zip: build/%/iphoneos.xcarchive build/%/iphonesimulator.xcarchiv
 	done
 	@cd $(PWD)/build/symbols/$*; zip -ry ../$*.zip ./*
 
-build: build/xcframework/CodeCoverage.zip build/symbols/CodeCoverage.zip
+build: build/xcframework/CodeCoverageParser.zip build/symbols/CodeCoverageParser.zip
 
 clean:
 	rm -rf ./build
