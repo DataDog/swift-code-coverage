@@ -72,12 +72,15 @@ build: build/xcframework/CodeCoverageParser.zip build/symbols/CodeCoverageParser
 clean:
 	rm -rf ./build
 
-test:
+test: build/xcframework/CodeCoverageParser.xcframework
 	$(call xctest,CodeCoverage,macOS,$(XC_LOG))
 	$(call xctest,CodeCoverage,iOSsim,$(XC_LOG))
 	$(call xctest,CodeCoverage,tvOSsim,$(XC_LOG))
 	$(call xctest,CodeCoverage,MacCatalyst,$(XC_LOG))
-
+	$(if $(XC_LOG),\
+		LOCAL_PARSER_BINARY=1 swift test --enable-code-coverage | tee swift-test-$(XC_LOG).log,\
+		LOCAL_PARSER_BINARY=1 swift test --enable-code-coverage)
+	
 # RELEASE LOGIC
 
 set_version:
