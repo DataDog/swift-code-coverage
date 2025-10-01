@@ -86,7 +86,7 @@ set_version:
 	sed -i "" "s|let[[:blank:]]*releaseVersion.*|let releaseVersion = \"$(version)\"|g" Package.swift
 
 set_hash:
-	$(eval HASH := $(shell swift package compute-checksum ./build/xcframework/CodeCoverage.zip))
+	$(eval HASH := $(shell swift package compute-checksum ./build/xcframework/CodeCoverageParser.zip))
 	sed -i "" "s|let[[:blank:]]*relaseChecksum.*|let relaseChecksum = \"$(HASH)\"|g" Package.swift
 
 build_release:
@@ -98,14 +98,38 @@ github_release: build_release
 	@:$(call check_defined, GH_TOKEN, GitHub token)
 	# Update gh tool if needed
 	@brew list gh &>/dev/null || brew install gh
-	# Commit updated xcodeproj and Package.swift
-	@git add Package.swift CodeCoverage.xcodeproj/project.pbxproj
+	# Stash changes
+	@git stash --include-untracked
+	# Create and push branch for release
 	@git checkout -b release-$(version)
-	@git commit -m "Updated binary package version to $(version)"
+	@git push -f -u origin release-$(version)
+	# Get changes back
+	@git stash pop
+	# Commit updated xcodeproj, podspec and Package.swift
+	# We will use GH API to do that, because we need a signed commit
+	@gh api graphql \
+  		-F githubRepository="$(GITHUB_REPOSITORY)" \
+  		-F branchName="release-$(version)" \
+  		-F expectedHeadOid=$$(git rev-parse HEAD) \
+  		-F commitMessage="Updated binary package version to $(version)" \
+  		-F files[][path]="Package.swift" -F files[][contents]=$$(base64 -i Package.swift) \
+		-F files[][path]="CodeCoverage.xcodeproj/project.pbxproj" -F files[][contents]=$$(base64 -i CodeCoverage.xcodeproj/project.pbxproj) \
+  		-F 'query=@.github/api/createCommitOnBranch.gql'
+	# Pull new commit
+	# Reset changes to files (we already pushed them)
+	@git reset --hard
+	# Save untracked
+	@git stash --include-untracked
+	# Pull latest commit
+	@git pull
+	# Create tag and push it
 	@git tag -f $(version)
 	@git push -f --tags origin release-$(version)
+	# Restore untracked
+	@git stash pop
 	# rename symbols file
-	@mv build/symbols/CodeCoverage.zip build/symbols/CodeCoverage.symbols.zip
-	#make github release
+	@rm -f build/symbols/CodeCoverageParser.zip
+	@mv build/symbols/CodeCoverageParser.zip build/symbols/CodeCoverageParser.symbols.zip
+	# make github release
 	@gh release create $(version) --draft --verify-tag --generate-notes \
-		build/xcframework/CodeCoverage.zip build/symbols/CodeCoverage.symbols.zip
+		build/xcframework/CodeCoverageParser.zip build/symbols/CodeCoverageParser.symbols.zip
