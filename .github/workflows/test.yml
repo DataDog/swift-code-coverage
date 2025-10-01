@@ -22,10 +22,13 @@ jobs:
         xcode:
           - os: macos-26
             xcode: "26.0"
+            iossim: "iPhone 17"
           - os: macos-15
             xcode: "16.4"
+            iossim: "iPhone 16"
           - os: macos-14
             xcode: "16.2"
+            iossim: "iPhone 16"
     runs-on: ${{ matrix.xcode.os }}
     steps:
       - name: Checkout
@@ -47,7 +50,7 @@ jobs:
       - name: Build CodeCoverageParser for SPM tests
         run: make XC_LOG=build build
       - name: Run tests for all platforms
-        run: make XC_LOG=tests test
+        run: make IOS_SIMULATOR="${{ matrix.xcode.iossim }}" XC_LOG=tests test
       - name: Attach Xcode test logs
         if: '!cancelled()'
         uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3

@@ -14,7 +14,7 @@ __check_defined = $(if $(value $1),, $(error Undefined $1$(if $2, ($2))$(if $(va
 define xctest
 	$(if $(filter $2,macOS),$(eval SDK=macosx)$(eval DEST='platform=macOS'),)
 	$(if $(filter $2,MacCatalyst),$(eval SDK=macosx)$(eval DEST='platform=macOS,variant=Mac Catalyst'),)
-	$(if $(filter $2,iOSsim),$(eval SDK=iphonesimulator)$(eval DEST='platform=iOS Simulator,name=iPhone SE (3rd generation)'),)
+	$(if $(filter $2,iOSsim),$(eval SDK=iphonesimulator)$(eval DEST='platform=iOS Simulator,name=$4'),)
 	$(if $(filter $2,tvOSsim),$(eval SDK=appletvsimulator)$(eval DEST='platform=tvOS Simulator,name=Apple TV'),)
 	$(if $3,\
 		set -o pipefail; xcodebuild -scheme $1 -sdk $(SDK) -destination $(DEST) test | tee $1-$2-$3.log | xcbeautify,\
@@ -73,10 +73,11 @@ clean:
 	rm -rf ./build
 
 test: build/xcframework/CodeCoverageParser.xcframework
-	$(call xctest,CodeCoverage,macOS,$(XC_LOG))
-	$(call xctest,CodeCoverage,iOSsim,$(XC_LOG))
-	$(call xctest,CodeCoverage,tvOSsim,$(XC_LOG))
-	$(call xctest,CodeCoverage,MacCatalyst,$(XC_LOG))
+	$(if $(IOS_SIMULATOR),$(eval SIMULATOR = $(IOS_SIMULATOR)),$(eval SIMULATOR = iPhone 16))
+	$(call xctest,CodeCoverage,macOS,$(XC_LOG),'')
+	$(call xctest,CodeCoverage,iOSsim,$(XC_LOG),$(SIMULATOR))
+	$(call xctest,CodeCoverage,tvOSsim,$(XC_LOG),'')
+	$(call xctest,CodeCoverage,MacCatalyst,$(XC_LOG),'')
 	$(if $(XC_LOG),\
 		LOCAL_PARSER_BINARY=1 swift test --enable-code-coverage | tee swift-test-$(XC_LOG).log,\
 		LOCAL_PARSER_BINARY=1 swift test --enable-code-coverage)
