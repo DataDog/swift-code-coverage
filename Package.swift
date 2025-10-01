@@ -6,7 +6,7 @@ import Foundation
 
 let releaseVersion = "1.2.0"
 let relaseChecksum = "6fedb29929e454764583dfeb54fdffa47b76c8ca25474a8c9867aac466d7cb98"
-let url = "https://github.com/DataDog/swift-code-coverage/releases/download/\(releaseVersion)/CodeCoverage.zip"
+let url = "https://github.com/DataDog/swift-code-coverage/releases/download/\(releaseVersion)/CodeCoverageParser.zip"
 
 var package = Package(
     name: "swift-code-coverage",

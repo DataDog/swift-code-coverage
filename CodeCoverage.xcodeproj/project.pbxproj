@@ -15,7 +15,7 @@
 		A7BF349C2E8C1EBA0031B07D /* CCodeCoverageParserLLVM17.plugin in Embed Plugins */ = {isa = PBXBuildFile; fileRef = A712C1E02CF0A37B00B4282F /* CCodeCoverageParserLLVM17.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A7BF349D2E8C1EBA0031B07D /* CCodeCoverageParserLLVM19.plugin in Embed Plugins */ = {isa = PBXBuildFile; fileRef = A7BF92E32E1D6DE60056D970 /* CCodeCoverageParserLLVM19.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A7BF349E2E8C1EFB0031B07D /* CodeCoverageCollector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BF341E2E8AD9750031B07D /* CodeCoverageCollector.framework */; platformFilters = (ios, macos, ); };
-		A7BF92DE2E1D6DE60056D970 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A71756A62CF6174D00240492 /* libz.tbd */; };
+		A7BF34FA2E8D66A30031B07D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A71756A62CF6174D00240492 /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,20 +168,6 @@
 			);
 			target = A7BA276D2E8AC43400EFD54E /* CCodeCoverageCollector */;
 		};
-		A7BF34172E8AD7720031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				LLVM17.xcframework,
-			);
-			target = A712C1DF2CF0A37B00B4282F /* CCodeCoverageParserLLVM17 */;
-		};
-		A7BF34182E8AD7720031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				LLVM19.xcframework,
-			);
-			target = A7BF92CF2E1D6DE60056D970 /* CCodeCoverageParserLLVM19 */;
-		};
 		A7BF347C2E8AEF0B0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -209,12 +195,26 @@
 			);
 			target = A712C17C2CEFA06D00B4282F /* CodeCoverageTests */;
 		};
+		A7BF34F32E8D5A560031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				LLVM17.xcframework,
+			);
+			target = A712C1DF2CF0A37B00B4282F /* CCodeCoverageParserLLVM17 */;
+		};
+		A7BF34F92E8D66950031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				LLVM19.xcframework,
+			);
+			target = A7BF92CF2E1D6DE60056D970 /* CCodeCoverageParserLLVM19 */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A7BF33C22E8AD5C90031B07D /* Sources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A7BF34052E8AD6A70031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF33E92E8AD5CA0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF33EB2E8AD5CA0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF33EC2E8AD5CA0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF347C2E8AEF0B0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF34862E8AEF180031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF33ED2E8AD5CA0031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Sources; sourceTree = "<group>"; };
 		A7BF340C2E8AD76A0031B07D /* Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A7BF34A32E8C1F840031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Tests; sourceTree = "<group>"; };
-		A7BF34122E8AD7720031B07D /* xcframeworks */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A7BF34172E8AD7720031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF34182E8AD7720031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); name = xcframeworks; path = llvm/xcframeworks; sourceTree = "<group>"; };
+		A7BF34122E8AD7720031B07D /* xcframeworks */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A7BF34F32E8D5A560031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A7BF34F92E8D66950031B07D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); name = xcframeworks; path = llvm/xcframeworks; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,7 +277,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7BF92DE2E1D6DE60056D970 /* libz.tbd in Frameworks */,
+				A7BF34FA2E8D66A30031B07D /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
