@@ -33,8 +33,8 @@ final class CoverageParserLibrary {
     }
     
     deinit {
-        Self.cacheLock.whileLocked {
-            Self.libraryCache.removeValue(forKey: version)
+        Self.libraryCache.withLock { cache in
+            cache.removeValue(forKey: version)
             dlclose(library)
         }
     }
@@ -48,8 +48,8 @@ final class CoverageParserLibrary {
     }
     
     static func library(for llvm: LLVMVersion) -> Result<CoverageParserLibrary, Error> {
-        cacheLock.whileLocked {
-            if let library = libraryCache[llvm]?.value {
+        libraryCache.withLock { cache in
+            if let library = cache[llvm]?.value {
                 return .success(library)
             }
             let bundle = Bundle(for: Self.self)
@@ -61,7 +61,7 @@ final class CoverageParserLibrary {
                 .appendingPathComponent(llvm.libraryName, isDirectory: false)
             do {
                 let library = try Self(from: libUrl, version: llvm)
-                libraryCache[llvm] = Weak(library)
+                cache[llvm] = Weak(library)
                 return .success(library)
             } catch let err as Error {
                 return .failure(err)
@@ -71,8 +71,7 @@ final class CoverageParserLibrary {
         }
     }
     
-    private static var libraryCache: [LLVMVersion: Weak<CoverageParserLibrary>] = [:]
-    private static var cacheLock: UnfairLock = UnfairLock()
+    private static let libraryCache: UnfairLock<[LLVMVersion: Weak<CoverageParserLibrary>]> = UnfairLock(initialState: [:])
 }
 
 extension CoverageParserLibrary {

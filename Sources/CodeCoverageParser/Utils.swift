@@ -6,12 +6,14 @@
 
 import Foundation
 
-final class UnfairLock {
-    private let _lock: os_unfair_lock_t
+final class UnfairLock<State>: Sendable {
+    nonisolated(unsafe) private let _lock: os_unfair_lock_t
+    nonisolated(unsafe) private var _state: State
     
-    init() {
+    init(initialState state: State) {
         _lock = .allocate(capacity: 1)
         _lock.initialize(to: .init())
+        _state = state
     }
     
     deinit {
@@ -27,10 +29,10 @@ final class UnfairLock {
         os_unfair_lock_unlock(_lock)
     }
     
-    func whileLocked<T>(_ action: () throws -> T) rethrows -> T {
+    func withLock<R>(_ action: (inout State) throws -> R) rethrows -> R {
         os_unfair_lock_lock(_lock)
         defer { os_unfair_lock_unlock(_lock) }
-        return try action()
+        return try action(&_state)
     }
 }
 
