@@ -132,7 +132,7 @@ github_release: build_release
 	# Restore untracked
 	@git stash pop
 	# rename symbols file
-	@rm -f build/symbols/CodeCoverageParser.zip
+	@rm -f build/symbols/CodeCoverageParser.symbols.zip
 	@mv build/symbols/CodeCoverageParser.zip build/symbols/CodeCoverageParser.symbols.zip
 	# make github release
 	@gh release create $(version) --draft --verify-tag --generate-notes \
