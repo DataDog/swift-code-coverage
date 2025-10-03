@@ -23,9 +23,7 @@ final class CodeCoverageTests: XCTestCase {
     static let xcodeVersion: XcodeVersion = .compiledBy!
     
     class override func setUp() {
-        Self.coverage = try! CoverageProcessor(for: xcodeVersion,
-                                               temp: URL(fileURLWithPath: NSTemporaryDirectory(),
-                                                         isDirectory: true))
+        Self.coverage = try! CoverageProcessor(for: xcodeVersion)
     }
     
     override class func tearDown() {
