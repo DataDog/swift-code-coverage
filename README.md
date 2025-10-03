@@ -10,7 +10,7 @@ It injects itself into the LLVM profiler, so depends on it and allows to use com
 
 It doesn't work with Continuos Mode of LLVM profiler, library will disable it automatically.
 
-Right now library supports Xcode 14 - 16 versions (LLVM 15-19).
+Right now library supports Xcode 16 - 26 versions (LLVM 17 and 19).
 
 Start and stop methods of the library are not thread safe! File coverage parsing is thread safe and can be called from the background threads.
 
@@ -20,14 +20,14 @@ Start and stop methods of the library are not thread safe! File coverage parsing
 Add this repository to the SPM dependencies.
 
 ```swift
-.package(url: "https://github.com/DataDog/swift-code-coverage.git", from: "1.0.0")
+.package(url: "https://github.com/DataDog/swift-code-coverage.git", from: "2.0.0")
 ```
 
 ### Example
 ```swift
 import CodeCoverage
 
-let coverage = try CoverageCollector(for: .xcode16, temp: NSTemporaryDirectory())
+let coverage = try CoverageProcessor(for: .compiledBy!)
 
 // Collected on the initialisaion
 print("Initial coverage: \(coverage.initialCoverage)")
@@ -54,7 +54,7 @@ print("Gathered coverage: \(gathered)")
 
 1. Build LLVM libraries with `make -f Makefile.llvm build` command.
 2. Open Xcode project and edit.
-3. To build xcarchive use `make build` command.
+3. To build xcarchive for the parser use `make build` command.
 
 ## Contributing
 

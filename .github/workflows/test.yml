@@ -10,9 +10,6 @@ on:
       llvm17-cache-key:
         description: "Cache key for LLVM17.xcframework"
         value: ${{ jobs.build-llvm.outputs.llvm17-cache-key }}
-      llvm16-cache-key:
-        description: "Cache key for LLVM16.xcframework"
-        value: ${{ jobs.build-llvm.outputs.llvm16-cache-key }}
 permissions:
   contents: read
 jobs:
@@ -23,24 +20,19 @@ jobs:
     strategy:
       matrix:
         xcode:
+          - os: macos-26
+            xcode: "26.0"
+            iossim: "iPhone 17"
           - os: macos-15
             xcode: "16.4"
-          - os: macos-15
-            xcode: "16.1"
+            iossim: "iPhone 16"
           - os: macos-14
-            xcode: "15.4"
-          - os: macos-13
-            xcode: "14.3.1"
+            xcode: "16.2"
+            iossim: "iPhone 16"
     runs-on: ${{ matrix.xcode.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - name: Download LLVM16 framework
-        uses: actions/cache/restore@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
-        with:
-          path: llvm/xcframeworks/LLVM16.xcframework
-          key: ${{ needs.build-llvm.outputs.llvm16-cache-key }}
-          fail-on-cache-miss: true
       - name: Download LLVM17 framework
         uses: actions/cache/restore@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
         with:
@@ -55,11 +47,19 @@ jobs:
           fail-on-cache-miss: true
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_${{ matrix.xcode.xcode }}.app
+      - name: Build CodeCoverageParser for SPM tests
+        run: make XC_LOG=build build
       - name: Run tests for all platforms
-        run: make XC_LOG=tests test
-      - name: Attach Xcode logs
+        run: make IOS_SIMULATOR="${{ matrix.xcode.iossim }}" XC_LOG=tests test
+      - name: Attach Xcode test logs
         if: '!cancelled()'
         uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
         with:
           name: xcode${{ matrix.xcode.xcode }}-tests-logs
           path: "*-tests.log"
+      - name: Attach Xcode build logs
+        if: '!cancelled()'
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
+        with:
+          name: xcode${{ matrix.xcode.xcode }}-build-logs
+          path: "*-build.log"

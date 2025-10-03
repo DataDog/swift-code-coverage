@@ -18,20 +18,24 @@ func test456() {
 }
 
 final class CodeCoverageTests: XCTestCase {
-    static var coverage: CoverageCollector! = nil
+    nonisolated(unsafe) static var coverage: CoverageProcessor! = nil
     
-    static let xcodeVersion = CoverageCollector.compiledByXcodeVersion!
+    static let xcodeVersion: XcodeVersion = .compiledBy!
     
     class override func setUp() {
-        Self.coverage = try! CoverageCollector(for: xcodeVersion,
-                                               temp: URL(fileURLWithPath: NSTemporaryDirectory(),
-                                                         isDirectory: true))
+        Self.coverage = try! CoverageProcessor(for: xcodeVersion)
     }
     
     override class func tearDown() {
         Self.coverage = nil
     }
 
+    func testVersion() {
+        let version = Self.coverage!.llvmVersion
+        XCTAssert(version.hasPrefix(String(Self.xcodeVersion.llvmVersion.rawValue)),
+                  "Wrong version: \(version), expected: \(Self.xcodeVersion.llvmVersion.rawValue).*")
+    }
+    
     func testSimple() throws {
         let coverage = Self.coverage!
         

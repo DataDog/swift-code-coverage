@@ -8,35 +8,26 @@ on:
       llvm17-cache-key:
         description: "Cache key for LLVM17.xcframework"
         value: ${{ jobs.build-xcframework.outputs.llvm17 }}
-      llvm16-cache-key:
-        description: "Cache key for LLVM16.xcframework"
-        value: ${{ jobs.build-xcframework.outputs.llvm16 }}
 permissions:
   contents: read
 jobs:
   build-llvm-libs:
-    runs-on: macos-13
+    runs-on: macos-14
     strategy:
       matrix:
-        version: [16, 17, 19]
+        version: [17, 19]
         platform: [macosx, maccatalyst, iphoneos, iphonesimulator, appletvos, appletvsimulator]
     outputs:
-      macosx16: ${{ steps.llvm-cache-key.outputs.llvm16_macosx }}
       macosx17: ${{ steps.llvm-cache-key.outputs.llvm17_macosx }}
       macosx19: ${{ steps.llvm-cache-key.outputs.llvm19_macosx }}
-      maccatalyst16: ${{ steps.llvm-cache-key.outputs.llvm16_maccatalyst }}
       maccatalyst17: ${{ steps.llvm-cache-key.outputs.llvm17_maccatalyst }}
       maccatalyst19: ${{ steps.llvm-cache-key.outputs.llvm19_maccatalyst }}
-      iphoneos16: ${{ steps.llvm-cache-key.outputs.llvm16_iphoneos }}
       iphoneos17: ${{ steps.llvm-cache-key.outputs.llvm17_iphoneos }}
       iphoneos19: ${{ steps.llvm-cache-key.outputs.llvm19_iphoneos }}
-      iphonesimulator16: ${{ steps.llvm-cache-key.outputs.llvm16_iphonesimulator }}
       iphonesimulator17: ${{ steps.llvm-cache-key.outputs.llvm17_iphonesimulator }}
       iphonesimulator19: ${{ steps.llvm-cache-key.outputs.llvm19_iphonesimulator }}
-      appletvos16: ${{ steps.llvm-cache-key.outputs.llvm16_appletvos }}
       appletvos17: ${{ steps.llvm-cache-key.outputs.llvm17_appletvos }}
       appletvos19: ${{ steps.llvm-cache-key.outputs.llvm19_appletvos }}
-      appletvsimulator16: ${{ steps.llvm-cache-key.outputs.llvm16_appletvsimulator }}
       appletvsimulator17: ${{ steps.llvm-cache-key.outputs.llvm17_appletvsimulator }}
       appletvsimulator19: ${{ steps.llvm-cache-key.outputs.llvm19_appletvsimulator }}
     timeout-minutes: 1200
@@ -57,9 +48,9 @@ jobs:
           path: llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
           key: ${{ steps.llvm-cache-key.outputs.llvm_current }}
           lookup-only: true
-      - name: Select Xcode 14.3.1
+      - name: Select Xcode 16.2
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
-        run: sudo xcode-select --switch /Applications/Xcode_14.3.1.app
+        run: sudo xcode-select --switch /Applications/Xcode_16.2.app
       - name: Build LLVM ${{ matrix.version }} for ${{ matrix.platform }}
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
         run: make -f Makefile.llvm llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
@@ -69,9 +60,8 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        version: [16, 17, 19]
+        version: [17, 19]
     outputs:
-      llvm16: ${{ steps.llvm-cache-key.outputs.llvm16_framework }}
       llvm17: ${{ steps.llvm-cache-key.outputs.llvm17_framework }}
       llvm19: ${{ steps.llvm-cache-key.outputs.llvm19_framework }}
     steps:
