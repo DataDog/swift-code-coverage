@@ -22,7 +22,10 @@ public struct CoverageProcessor {
         self.parser = parser
     }
     
-    public init(for xcode: XcodeVersion, temp: URL, binaries: [CoveredBinary] = .currentProcessBinaries) throws {
+    public init(for xcode: XcodeVersion,
+                temp: URL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true),
+                binaries: [CoveredBinary] = .currentProcessBinaries) throws
+    {
         let (collector, parser) = try Self.mapError {
             let collector = try CoverageCollector(for: xcode, temp: temp, binaries: binaries)
             return try (collector, CoverageParser(for: collector, loadInitialCoverage: true))

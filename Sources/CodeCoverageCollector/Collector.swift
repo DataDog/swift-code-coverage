@@ -32,7 +32,10 @@ public final class CoverageCollector {
         binaries.writeCoverage()
     }
     
-    public convenience init(for xcode: XcodeVersion, temp: URL, binaries: [CoveredBinary] = .currentProcessBinaries) throws {
+    public convenience init(for xcode: XcodeVersion,
+                            temp: URL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true),
+                            binaries: [CoveredBinary] = .currentProcessBinaries) throws
+    {
         let coverageFile = try Self.currentCoverageFile
         self.init(coverageFile: coverageFile, temp: temp, xcode: xcode, binaries: binaries)
     }

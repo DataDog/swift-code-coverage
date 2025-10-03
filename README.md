@@ -27,7 +27,7 @@ Add this repository to the SPM dependencies.
 ```swift
 import CodeCoverage
 
-let coverage = try CoverageProcessor(for: .compiledBy!, temp: NSTemporaryDirectory())
+let coverage = try CoverageProcessor(for: .compiledBy!)
 
 // Collected on the initialisaion
 print("Initial coverage: \(coverage.initialCoverage)")
