@@ -135,5 +135,5 @@ github_release: build_release
 	@rm -f build/symbols/CodeCoverageParser.symbols.zip
 	@mv build/symbols/CodeCoverageParser.zip build/symbols/CodeCoverageParser.symbols.zip
 	# make github release
-	@gh release create $(version) --draft --verify-tag --generate-notes \
+	@gh release create $(version) --prerelease --verify-tag --generate-notes \
 		build/xcframework/CodeCoverageParser.zip build/symbols/CodeCoverageParser.symbols.zip
