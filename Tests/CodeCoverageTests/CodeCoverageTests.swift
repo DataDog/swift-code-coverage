@@ -7,7 +7,9 @@
 import XCTest
 @testable import CodeCoverage
 
-func test234() {}
+func test234() {
+    let _ = 1
+}
 
 func test123() {
     test234()
@@ -15,6 +17,11 @@ func test123() {
 
 func test456() {
     test123()
+}
+
+func test789() {
+    test123()
+    test456()
 }
 
 final class CodeCoverageTests: XCTestCase {
@@ -53,7 +60,7 @@ final class CodeCoverageTests: XCTestCase {
         let coverage = Self.coverage!
         
         try coverage.startCoverageGathering()
-        test456()
+        test789()
         let file = try coverage.stopCoverageGathering()
         defer { try? FileManager.default.removeItem(at: file) }
         
@@ -65,7 +72,7 @@ final class CodeCoverageTests: XCTestCase {
         let coverage = Self.coverage!
         self.measure {
             try! coverage.startCoverageGathering()
-            test123()
+            test789()
             let file = try! coverage.stopCoverageGathering()
             defer { try? FileManager.default.removeItem(at: file) }
             let _ = try! coverage.filesCovered(in: file)
@@ -73,20 +80,27 @@ final class CodeCoverageTests: XCTestCase {
     }
     
     func testMultithreadedParsing() throws {
-        let iterations = 100
+        let iterations = 1000
+        // Collector isn't thread safe and should be called from the main thread
         let files = try (0..<iterations).map { index in
             try Self.coverage.startCoverageGathering()
             if index % 2 == 0 {
-                test123()
+                test789()
             } else {
                 test456()
             }
             return try Self.coverage.stopCoverageGathering()
         }
-        DispatchQueue.concurrentPerform(iterations: iterations) { index in
-            let file = files[index]
-            defer { try? FileManager.default.removeItem(at: file) }
-            let _ = try! Self.coverage.filesCovered(in: file)
+        // Parser should work properly with multiple threads
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = ProcessInfo.processInfo.activeProcessorCount
+        queue.qualityOfService = .userInteractive
+        files.forEach { file in
+            queue.addOperation {
+                defer { try? FileManager.default.removeItem(at: file) }
+                let _ = try! Self.coverage.filesCovered(in: file)
+            }
         }
+        queue.waitUntilAllOperationsAreFinished()
     }
 }

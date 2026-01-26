@@ -69,7 +69,7 @@ Expected<std::unique_ptr<MemoryBuffer>> CodeCoverage::readProfile(StringRef Prof
     }
     
     // Create reader for file
-    auto FS = llvm::vfs::getRealFileSystem();
+    auto FS = llvm::vfs::createPhysicalFileSystem();
     auto ReaderOrErr = InstrProfReader::create(ProfrawPath, *FS);
     if (Error E = ReaderOrErr.takeError()) {
         return std::move(E);
