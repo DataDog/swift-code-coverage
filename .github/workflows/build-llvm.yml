@@ -43,9 +43,9 @@ jobs:
           path: llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}
           key: ${{ steps.llvm-cache-key.outputs.llvm_current }}
           lookup-only: true
-      - name: Select Xcode 26.0
+      - name: Select Xcode 26.2
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
-        run: sudo xcode-select --switch /Applications/Xcode_26.0.app
+        run: sudo xcode-select --switch /Applications/Xcode_26.2.app
       - name: Build LLVM ${{ matrix.version }} for ${{ matrix.platform }}
         if: steps.llvm-build-cache.outputs.cache-hit != 'true'
         run: make -f Makefile.llvm llvm/build/libs/llvm${{ matrix.version }}/${{ matrix.platform }}

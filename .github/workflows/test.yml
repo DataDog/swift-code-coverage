@@ -18,7 +18,7 @@ jobs:
       matrix:
         xcode:
           - os: macos-26
-            xcode: "26.0"
+            xcode: "26.2"
             iossim: "iPhone 17"
             watchossim: "Apple Watch Series 11 (46mm)"
     runs-on: ${{ matrix.xcode.os }}
