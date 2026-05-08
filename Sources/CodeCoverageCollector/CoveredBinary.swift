@@ -46,7 +46,7 @@ public extension CoveredBinary {
     
     func resetCounters(xcode: XcodeVersion) throws {
         switch xcode {
-        case .xcode16_3, .xcode26:
+        case .xcode26:
             guard let bitmap = bitmapFunc else {
                 throw CoverageCollector.Error.binaryBitmapCallbacksAreNil
             }
@@ -54,10 +54,6 @@ public extension CoveredBinary {
                                            countersFunc.begin, countersFunc.end,
                                            dataFunc.begin, dataFunc.end,
                                            bitmap.begin, bitmap.end)
-        case .xcode16_0:
-            coverage_reset_counters_llvm17(profileVersion,
-                                           countersFunc.begin, countersFunc.end,
-                                           dataFunc.begin, dataFunc.end)
         }
     }
     

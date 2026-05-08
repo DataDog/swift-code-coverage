@@ -64,3 +64,9 @@ fastlane/test_output
 /llvm/build
 /llvm/xcframeworks
 /build
+
+# Build/test logs
+*.log
+
+# Claude Code local state
+.claude/
