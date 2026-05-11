@@ -15,10 +15,18 @@ jobs:
     needs: test
     runs-on: macos-26
     permissions:
-      contents: write
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Get GitHub token via dd-octo-sts
+        uses: DataDog/dd-octo-sts-action@96a25462dbcb10ebf0bfd6e2ccc917d2ab235b9a # v1.0.4
+        id: octo-sts
+        with:
+          scope: DataDog/swift-code-coverage
+          policy: self.github.create-release.workflow-dispatch
       - name: Download LLVM19 framework
         uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
@@ -27,9 +35,13 @@ jobs:
           fail-on-cache-miss: true
       - name: Select Xcode 26.2
         run: sudo xcode-select --switch /Applications/Xcode_26.2.app
+      - name: Configure git remote with token
+        env:
+          GH_TOKEN: ${{ steps.octo-sts.outputs.token }}
+        run: git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
       - name: Build and upload XCFrameworks, create tag and release
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.octo-sts.outputs.token }}
         run: make XC_LOG=archive version=${{ github.event.inputs.version }} github_release
       - name: Attach Xcode logs
         if: '!cancelled()'
