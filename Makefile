@@ -3,6 +3,7 @@
 ##
 
 .SECONDARY:
+.PHONY: build clean test set_version set_hash build_release github_release
 
 # HELPERS
 
@@ -16,6 +17,8 @@ define xctest
 	$(if $(filter $2,MacCatalyst),$(eval SDK=macosx)$(eval DEST='platform=macOS,variant=Mac Catalyst'),)
 	$(if $(filter $2,iOSsim),$(eval SDK=iphonesimulator)$(eval DEST='platform=iOS Simulator,name=$4'),)
 	$(if $(filter $2,tvOSsim),$(eval SDK=appletvsimulator)$(eval DEST='platform=tvOS Simulator,name=Apple TV'),)
+	$(if $(filter $2,watchOSsim),$(eval SDK=watchsimulator)$(eval DEST='platform=watchOS Simulator,name=$4'),)
+	$(if $(filter $2,visionOSsim),$(eval SDK=xrsimulator)$(eval DEST='platform=visionOS Simulator,name=Apple Vision Pro'),)
 	$(if $3,\
 		set -o pipefail; xcodebuild -scheme $1 -sdk $(SDK) -destination $(DEST) test | tee $1-$2-$3.log | xcbeautify,\
 		xcodebuild -scheme $1 -sdk $(SDK) -destination $(DEST) test)
@@ -48,9 +51,23 @@ build/%/appletvos.xcarchive:
 build/%/appletvsimulator.xcarchive:
 	$(call xcarchive,$*,appletvsimulator,'generic/platform=tvOS Simulator',appletvsimulator,$(XC_LOG))
 
+build/%/watchos.xcarchive:
+	$(call xcarchive,$*,watchos,'generic/platform=watchOS',watchos,$(XC_LOG))
+
+build/%/watchsimulator.xcarchive:
+	$(call xcarchive,$*,watchsimulator,'generic/platform=watchOS Simulator',watchsimulator,$(XC_LOG))
+
+build/%/xros.xcarchive:
+	$(call xcarchive,$*,xros,'generic/platform=visionOS',xros,$(XC_LOG))
+
+build/%/xrsimulator.xcarchive:
+	$(call xcarchive,$*,xrsimulator,'generic/platform=visionOS Simulator',xrsimulator,$(XC_LOG))
+
 build/xcframework/%.xcframework: build/%/iphoneos.xcarchive build/%/iphonesimulator.xcarchive \
 								 build/%/macos.xcarchive build/%/maccatalyst.xcarchive \
-								 build/%/appletvos.xcarchive build/%/appletvsimulator.xcarchive
+								 build/%/appletvos.xcarchive build/%/appletvsimulator.xcarchive \
+								 build/%/watchos.xcarchive build/%/watchsimulator.xcarchive \
+								 build/%/xros.xcarchive build/%/xrsimulator.xcarchive
 	@mkdir -p $(PWD)/build/xcframework
 	@xargs xcodebuild -create-xcframework -output $@ <<<"$(foreach archive,$^,-framework $(archive)/Products/Library/Frameworks/$*.framework)"
 
@@ -59,7 +76,9 @@ build/xcframework/%.zip: build/xcframework/%.xcframework
 
 build/symbols/%.zip: build/%/iphoneos.xcarchive build/%/iphonesimulator.xcarchive \
 					 build/%/macos.xcarchive build/%/maccatalyst.xcarchive \
-					 build/%/appletvos.xcarchive build/%/appletvsimulator.xcarchive
+					 build/%/appletvos.xcarchive build/%/appletvsimulator.xcarchive \
+					 build/%/watchos.xcarchive build/%/watchsimulator.xcarchive \
+					 build/%/xros.xcarchive build/%/xrsimulator.xcarchive
 	@for archive in $^ ; do \
 		name=$$(basename $$archive | cut -d'.' -f1) ;\
 		mkdir -p $(PWD)/build/symbols/$*/$$name ;\
@@ -73,11 +92,14 @@ clean:
 	rm -rf ./build
 
 test: build/xcframework/CodeCoverageParser.xcframework
-	$(if $(IOS_SIMULATOR),$(eval SIMULATOR = $(IOS_SIMULATOR)),$(eval SIMULATOR = iPhone 16))
+	$(if $(IOS_SIMULATOR),$(eval IOS_SIM = $(IOS_SIMULATOR)),$(eval IOS_SIM = iPhone 17))
+	$(if $(WATCHOS_SIMULATOR),$(eval WATCH_SIM = $(WATCHOS_SIMULATOR)),$(eval WATCH_SIM = Apple Watch Series 11 (46mm)))
 	$(call xctest,CodeCoverage,macOS,$(XC_LOG),'')
-	$(call xctest,CodeCoverage,iOSsim,$(XC_LOG),$(SIMULATOR))
+	$(call xctest,CodeCoverage,iOSsim,$(XC_LOG),$(IOS_SIM))
 	$(call xctest,CodeCoverage,tvOSsim,$(XC_LOG),'')
 	$(call xctest,CodeCoverage,MacCatalyst,$(XC_LOG),'')
+	$(call xctest,CodeCoverage,watchOSsim,$(XC_LOG),$(WATCH_SIM))
+	$(call xctest,CodeCoverage,visionOSsim,$(XC_LOG),'')
 	$(if $(XC_LOG),\
 		LOCAL_PARSER_BINARY=1 swift test --enable-code-coverage | tee swift-test-$(XC_LOG).log,\
 		LOCAL_PARSER_BINARY=1 swift test --enable-code-coverage)

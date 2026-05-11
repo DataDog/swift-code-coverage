@@ -10,7 +10,7 @@ It injects itself into the LLVM profiler, so depends on it and allows to use com
 
 It doesn't work with Continuos Mode of LLVM profiler, library will disable it automatically.
 
-Right now library supports Xcode 16 - 26 versions (LLVM 17 and 19).
+Right now library supports Xcode 26 (LLVM 19).
 
 Start and stop methods of the library are not thread safe! File coverage parsing is thread safe and can be called from the background threads.
 

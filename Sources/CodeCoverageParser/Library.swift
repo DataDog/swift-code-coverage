@@ -10,7 +10,6 @@ internal import CCodeCoverageParser
 internal typealias CParser = UnsafePointer<CCoverageParser>
 
 public enum LLVMVersion: UInt8, Hashable, Equatable {
-    case llvm17 = 17
     case llvm19 = 19
 }
 

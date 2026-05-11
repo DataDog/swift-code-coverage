@@ -4,7 +4,7 @@
                      ArrayRef<std::optional<StringRef>> Redirects,
                      unsigned MemoryLimit, std::string *ErrMsg,
                      BitVector *AffinityMask, bool DetachProcess) {
-+#if __is_target_os(tvos)
++#if __is_target_os(tvos) || __is_target_os(watchos) || __is_target_os(xros)
 +  return false;
 +#else
    if (!llvm::sys::fs::exists(Program)) {
