@@ -129,8 +129,8 @@ github_release: build_release
 	# Create and push branch for release
 	@git checkout -b release-$(version)
 	@git push -f -u origin release-$(version)
-	# Get changes back
-	@git stash pop
+	# Get changes back (if any were stashed)
+	@if git stash list | grep -q .; then git stash pop; fi
 	# Commit updated xcodeproj, podspec and Package.swift
 	# We will use GH API to do that, because we need a signed commit
 	@gh api graphql \
@@ -151,8 +151,8 @@ github_release: build_release
 	# Create tag and push it
 	@git tag -f $(version)
 	@git push -f --tags origin release-$(version)
-	# Restore untracked
-	@git stash pop
+	# Restore untracked (if any were stashed)
+	@if git stash list | grep -q .; then git stash pop; fi
 	# rename symbols file
 	@rm -f build/symbols/CodeCoverageParser.symbols.zip
 	@mv build/symbols/CodeCoverageParser.zip build/symbols/CodeCoverageParser.symbols.zip
