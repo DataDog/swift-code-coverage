@@ -85,7 +85,7 @@ public extension CoverageProcessor {
 public extension XcodeVersion {
     var llvmVersion: LLVMVersion {
         switch self {
-        case .xcode26: return .llvm19
+        case .xcode26, .xcode27: return .llvm19
         @unknown default: fatalError("Unknown Xcode version \(self). Should never happen")
         }
     }

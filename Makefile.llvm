@@ -9,12 +9,12 @@
 # multiple of those env vars are present simultaneously, even on a host NATIVE
 # sub-build. Each rule passes its value explicitly via -DCMAKE_OSX_DEPLOYMENT_TARGET
 # so only one platform's minimum is ever in scope.
-MIN_MACOS_VER := 11.0
+MIN_MACOS_VER := 12.0
 MIN_IOS_VER := 15.0
 MIN_TVOS_VER := 15.0
-MIN_WATCHOS_VER := 8.0
+MIN_WATCHOS_VER := 9.0
 MIN_XROS_VER := 1.0
-MIN_MACCATALYST_VER := 14.0
+MIN_MACCATALYST_VER := 15.0
 
 export PATH := $(PWD)/llvm/build/tools/bin:$(PATH)
 
