@@ -10,7 +10,7 @@ let url = "https://github.com/DataDog/swift-code-coverage/releases/download/\(re
 
 var package = Package(
     name: "swift-code-coverage",
-    platforms: [.macOS(.v11), .macCatalyst(.v14), .iOS(.v15), .tvOS(.v15), .watchOS(.v8), .visionOS(.v1)],
+    platforms: [.macOS(.v12), .macCatalyst(.v15), .iOS(.v15), .tvOS(.v15), .watchOS(.v9), .visionOS(.v1)],
     products: [
         .library(name: "CodeCoverage",
                  targets: ["CodeCoverage"]),

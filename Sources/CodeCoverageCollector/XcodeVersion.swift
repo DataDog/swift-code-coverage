@@ -8,11 +8,14 @@ import Foundation
 
 public enum XcodeVersion: Hashable, Equatable, Sendable {
     case xcode26
+    case xcode27
 }
 
 public extension XcodeVersion {
     static var compiledBy: XcodeVersion? {
-    #if compiler(>=6.2)
+    #if compiler(>=6.4)
+        return .xcode27
+    #elseif compiler(>=6.2)
         return .xcode26
     #else
         return nil

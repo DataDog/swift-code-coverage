@@ -16,7 +16,7 @@ define xctest
 	$(if $(filter $2,macOS),$(eval SDK=macosx)$(eval DEST='platform=macOS'),)
 	$(if $(filter $2,MacCatalyst),$(eval SDK=macosx)$(eval DEST='platform=macOS,variant=Mac Catalyst'),)
 	$(if $(filter $2,iOSsim),$(eval SDK=iphonesimulator)$(eval DEST='platform=iOS Simulator,name=$4'),)
-	$(if $(filter $2,tvOSsim),$(eval SDK=appletvsimulator)$(eval DEST='platform=tvOS Simulator,name=Apple TV'),)
+	$(if $(filter $2,tvOSsim),$(eval SDK=appletvsimulator)$(eval DEST='platform=tvOS Simulator,name=$4'),)
 	$(if $(filter $2,watchOSsim),$(eval SDK=watchsimulator)$(eval DEST='platform=watchOS Simulator,name=$4'),)
 	$(if $(filter $2,visionOSsim),$(eval SDK=xrsimulator)$(eval DEST='platform=visionOS Simulator,name=Apple Vision Pro'),)
 	$(if $3,\
@@ -94,9 +94,10 @@ clean:
 test: build/xcframework/CodeCoverageParser.xcframework
 	$(if $(IOS_SIMULATOR),$(eval IOS_SIM = $(IOS_SIMULATOR)),$(eval IOS_SIM = iPhone 17))
 	$(if $(WATCHOS_SIMULATOR),$(eval WATCH_SIM = $(WATCHOS_SIMULATOR)),$(eval WATCH_SIM = Apple Watch Series 11 (46mm)))
+	$(if $(TVOS_SIMULATOR),$(eval TVOS_SIM = $(TVOS_SIMULATOR)),$(eval TVOS_SIM = Apple TV))
 	$(call xctest,CodeCoverage,macOS,$(XC_LOG),'')
 	$(call xctest,CodeCoverage,iOSsim,$(XC_LOG),$(IOS_SIM))
-	$(call xctest,CodeCoverage,tvOSsim,$(XC_LOG),'')
+	$(call xctest,CodeCoverage,tvOSsim,$(XC_LOG),$(TVOS_SIM))
 	$(call xctest,CodeCoverage,MacCatalyst,$(XC_LOG),'')
 	$(call xctest,CodeCoverage,watchOSsim,$(XC_LOG),$(WATCH_SIM))
 	$(call xctest,CodeCoverage,visionOSsim,$(XC_LOG),'')
