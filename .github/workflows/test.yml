@@ -21,6 +21,11 @@ jobs:
             xcode: "26.2"
             iossim: "iPhone 17"
             watchossim: "Apple Watch Series 11 (46mm)"
+          - os: xcode-27
+            xcode: "27.0"
+            iossim: "iPhone 18 Pro"
+            watchossim: "Apple Watch Series 12 (46mm)"
+            tvossim: "Apple TV 4K (3rd generation)"
     runs-on: ${{ matrix.xcode.os }}
     steps:
       - name: Checkout
@@ -36,7 +41,7 @@ jobs:
       - name: Build CodeCoverageParser for SPM tests
         run: make XC_LOG=build build
       - name: Run tests for all platforms
-        run: make IOS_SIMULATOR="${{ matrix.xcode.iossim }}" WATCHOS_SIMULATOR="${{ matrix.xcode.watchossim }}" XC_LOG=tests test
+        run: make IOS_SIMULATOR="${{ matrix.xcode.iossim }}" WATCHOS_SIMULATOR="${{ matrix.xcode.watchossim }}" TVOS_SIMULATOR="${{ matrix.xcode.tvossim }}" XC_LOG=tests test
       - name: Attach Xcode test logs
         if: '!cancelled()'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
