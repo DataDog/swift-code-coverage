@@ -8,7 +8,7 @@ This library allows to gather coverage programmatically.
 
 It injects itself into the LLVM profiler, so depends on it and allows to use common code coverage at the same time (merges coverage back).
 
-It doesn't work with Continuos Mode of LLVM profiler, library will disable it automatically.
+It doesn't work with Continuous Mode of LLVM profiler, library will disable it automatically.
 
 Right now library supports Xcode 26 - 27 versions (LLVM 19).
 
